@@ -13,6 +13,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import com.derpz.dfm.item.ModItems;
+
 public class NukaColaItem extends Item {
     private static final int DRINK_DURATION = 32;
 
@@ -33,11 +35,11 @@ public class NukaColaItem extends Item {
             pStack.shrink(1);
         }
 
-        return pStack.isEmpty() ? new ItemStack(Items.BUCKET) : pStack;
+        return new ItemStack(ModItems.BOTTLE_CAP.get());
     }
 
     public int getUseDuration(ItemStack pStack) {
-        return 32;
+        return DRINK_DURATION;
     }
 
     public @NotNull UseAnim getUseAnimation(ItemStack pStack) {

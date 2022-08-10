@@ -23,9 +23,12 @@ public class ModItems {
     public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
             () -> new DebugItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
+    public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
     //food
     public static final RegistryObject<Item> NUKA_COLA = ITEMS.register("nuka_cola",
-            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA)));
+            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA).stacksTo(1)));
 
     //weapon
     public static final RegistryObject<Item> COMMIE_WACKER = ITEMS.register("commie_wacker",
