@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model": "dfm:block/debug_block"}
+  }
+}

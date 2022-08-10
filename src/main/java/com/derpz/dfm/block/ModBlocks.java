@@ -1,6 +1,8 @@
 package com.derpz.dfm.block;
 
 import com.derpz.dfm.FalloutMod;
+import com.derpz.dfm.block.custom.DebugBlock;
+import com.derpz.dfm.item.ModCreativeModeTab;
 import com.derpz.dfm.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,7 +23,11 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SCRAP_METAL_BLOCK = registerBlock("scrap_metal_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(5f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+                    .strength(5f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
+
+    public static final RegistryObject<Block> DEBUG_BLOCK = registerBlock("debug_block",
+            () -> new DebugBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

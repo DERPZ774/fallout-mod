@@ -1,6 +1,13 @@
 {
 "item.dfm.scrap_metal": "Scrap Metal",
+"item.dfm.commie_wacker": "Commie Wacker",
+"item.dfm.debug_item": "Debug Item",
 
 
-"block.dfm.scrap_metal_block": "Scrap Metal Block"
+"block.dfm.scrap_metal_block": "Scrap Metal Block",
+"block.dfm.debug_block": "Debug Block",
+
+"itemGroup.fallout_tab": "Fallout Mod",
+
+"item.dfm.debug_item.no_valuables": "No Valuables Found"
 }

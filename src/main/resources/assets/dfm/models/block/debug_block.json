@@ -1,0 +1,6 @@
+{
+  "parent" : "block/cube_all",
+  "textures": {
+    "all": "dfm:block/debug_block"
+  }
+}
