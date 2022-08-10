@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "dfm:block/scrap_metal_block",
+    "top": "dfm:block/scrap_metal_block",
+    "side": "dfm:block/scrap_metal_block"
+  }
+}

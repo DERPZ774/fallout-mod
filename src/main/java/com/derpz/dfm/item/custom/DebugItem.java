@@ -1,7 +1,9 @@
 package com.derpz.dfm.item.custom;
 
+import com.derpz.dfm.util.ModTags;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -68,9 +70,17 @@ public class DebugItem extends Item {
     }
 
     private boolean isValuableBlock(Block block) {
-        return block == Blocks.COAL_ORE || block == Blocks.COPPER_ORE
-                || block == Blocks.DIAMOND_BLOCK || block == Blocks.IRON_ORE;
+        return Registry.BLOCK.getHolderOrThrow(Registry.BLOCK.getResourceKey(block).get()).is(ModTags.Blocks.DEBUG_ITEM_VALUABLES);
 
     }
+
+    /*
+    This passes the valuables manually. Above code changes this to a json system for mod compatibility.
+
+     private boolean isValuableBlock(Block block) {
+        return block == Blocks.COAL_ORE || block == Blocks.COPPER_ORE
+                || block == Blocks.DIAMOND_BLOCK || block == Blocks.IRON_ORE;
+    }
+     */
 
 }
