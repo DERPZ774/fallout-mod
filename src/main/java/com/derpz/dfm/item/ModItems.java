@@ -2,6 +2,7 @@ package com.derpz.dfm.item;
 
 import com.derpz.dfm.FalloutMod;
 import com.derpz.dfm.item.custom.DebugItem;
+import com.derpz.dfm.item.custom.NukaColaItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +22,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
             () -> new DebugItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    //food
+    public static final RegistryObject<Item> NUKA_COLA = ITEMS.register("nuka_cola",
+            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA)));
 
     //weapon
     public static final RegistryObject<Item> COMMIE_WACKER = ITEMS.register("commie_wacker",

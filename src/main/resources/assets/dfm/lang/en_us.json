@@ -3,11 +3,17 @@
 "item.dfm.commie_wacker": "Commie Wacker",
 "item.dfm.debug_item": "Debug Item",
 
+"item.dfm.nuka_cola": "Nuka Cola",
+
 
 "block.dfm.scrap_metal_block": "Scrap Metal Block",
 "block.dfm.debug_block": "Debug Block",
 
 "itemGroup.fallout_tab": "Fallout Mod",
 
-"item.dfm.debug_item.no_valuables": "No Valuables Found"
+"item.dfm.debug_item.no_valuables": "No Valuables Found",
+
+"tooltip.dfm.debug_item.tooltip.shift": "Debug tool mothafu-",
+"tooltip.dfm.debug_item.tooltip": "Press §l§3Shift§r!",
+"tooltip.block.debug_block": "Debug Block mothafu-"
 }
