@@ -27,7 +27,7 @@ public class ModItems {
 
     //food
     public static final RegistryObject<Item> NUKA_COLA = ITEMS.register("nuka_cola",
-            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA).stacksTo(1)));
+            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA)));
 
     //weapon
     public static final RegistryObject<Item> COMMIE_WACKER = ITEMS.register("commie_wacker",
