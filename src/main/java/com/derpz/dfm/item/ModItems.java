@@ -2,8 +2,7 @@ package com.derpz.dfm.item;
 
 import com.derpz.dfm.FalloutMod;
 import com.derpz.dfm.item.custom.DebugItem;
-import com.derpz.dfm.item.custom.NukaColaItem;
-import net.minecraft.world.item.CreativeModeTab;
+import com.derpz.dfm.item.custom.drinks.NukaColaItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +17,9 @@ public class ModItems {
     //copy and edit for new items
     //items
     public static final RegistryObject<Item> SCRAP_METAL = ITEMS.register("scrap_metal",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",

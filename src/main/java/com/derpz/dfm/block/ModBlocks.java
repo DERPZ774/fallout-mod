@@ -9,6 +9,8 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,10 +26,28 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, FalloutMod.MOD_ID);
 
+    //Reg block registration
     public static final RegistryObject<Block> SCRAP_METAL_BLOCK = registerBlock("scrap_metal_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(5f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
 
+
+    //Decorations
+
+    //Stairs
+    public static final RegistryObject<Block> SCRAP_METAL_STAIRS = registerBlock("scrap_metal_stairs",
+            () -> new StairBlock(()-> ModBlocks.SCRAP_METAL_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(5f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
+
+
+    //Slabs
+    public static final RegistryObject<Block> SCRAP_METAL_SLAB = registerBlock("scrap_metal_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(5f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
+
+
+    //Special blocks
     public static final RegistryObject<Block> DEBUG_BLOCK = registerBlock("debug_block",
             () -> new DebugBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB, "tooltip.block.debug_block");
