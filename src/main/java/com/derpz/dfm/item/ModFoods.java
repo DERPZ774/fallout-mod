@@ -6,7 +6,7 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
     public static final FoodProperties NUKA_COLA = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.2f)
-            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 60), 1f).build();
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 60), 1f).alwaysEat().build();
 
 
 }

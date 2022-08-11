@@ -32,7 +32,7 @@ public class NukaColaItem extends Item {
             if (pStack.isEmpty()) {
                 return new ItemStack(ModItems.BOTTLE_CAP.get());
             } else {
-                pStack.shrink(1);
+                pStack.shrink(0);
             }
 
             if (player != null) {
