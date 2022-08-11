@@ -1,0 +1,6 @@
+{
+  "parent": "dfm:item/nuka_cola",
+  "textures": {
+    "3": "dfm:item/nuka_quantum"
+  }
+}

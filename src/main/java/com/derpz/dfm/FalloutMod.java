@@ -46,3 +46,5 @@ public class FalloutMod {
     }
 
 }
+/// TODO: 8/10/2022 Make Cummie Whacker Dev only
+/// TODO: 8/10/2022 Dom register all the items in the lang file <3

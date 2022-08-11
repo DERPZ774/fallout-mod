@@ -1,6 +1,7 @@
 {
 "item.dfm.scrap_metal": "Scrap Metal",
-"item.dfm.commie_wacker": "Commie Wacker",
+"item.dfm.commie_whacker": "Commie Whacker",
+"item.dfm.cummie_whacker": "Cummie Whacker",
 "item.dfm.debug_item": "Debug Item",
 "item.dfm.nuka_cola": "Nuka Cola",
 "item.dfm.bottle_cap": "Bottle Cap",
@@ -10,6 +11,8 @@
 "block.dfm.debug_block": "Debug Block",
 
 "itemGroup.fallout_tab": "Fallout Mod",
+"itemGroup.nuka_cola_tab": "Nuka Cola",
+"itemGroup.melee_weapons_tab": "Melee Weapons",
 
 "item.dfm.debug_item.no_valuables": "No Valuables Found",
 
