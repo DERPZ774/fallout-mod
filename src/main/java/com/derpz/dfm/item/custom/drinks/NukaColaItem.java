@@ -59,4 +59,3 @@ public class NukaColaItem extends Item {
     }
 }
 
-/// TODO: 8/10/2022 Extend this class when making new colas
