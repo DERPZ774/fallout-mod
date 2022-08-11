@@ -26,5 +26,7 @@
 
 "tooltip.dfm.debug_item.tooltip.shift": "Debug tool mothafu-",
 "tooltip.dfm.debug_item.tooltip": "Press §l§3Shift§r!",
-"tooltip.block.debug_block": "Debug Block mothafu-"
+"tooltip.block.debug_block": "Debug Block mothafu-",
+
+"key.dfm.rad_check_key": "Check Rads"
 }
