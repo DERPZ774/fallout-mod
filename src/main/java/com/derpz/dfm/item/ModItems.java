@@ -39,6 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> NUKA_COLA_QUANTUM = ITEMS.register("nuka_cola_quantum",
             () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_CHERRY)));
 
+    public static final RegistryObject<Item> NUKA_COLA_QUANTUM = ITEMS.register("nuka_cola_quantum",
+            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).food(ModFoods.NUKA_COLA_QUANTUM)));
+
     //weapon
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",
             () ->   new CommieWhackerItem(ModTiers.SCRAP_METAL, 2, 3f,
