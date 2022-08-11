@@ -1,6 +1,7 @@
 package com.derpz.dfm;
 
 import com.derpz.dfm.block.ModBlocks;
+import com.derpz.dfm.effect.ModEffect;
 import com.derpz.dfm.item.ModItems;
 import com.derpz.dfm.networking.ModMessages;
 import com.mojang.logging.LogUtils;
@@ -33,6 +34,8 @@ public class FalloutMod {
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+
+        ModEffect.register(eventBus);
 
         eventBus.addListener(this::setup);
 
