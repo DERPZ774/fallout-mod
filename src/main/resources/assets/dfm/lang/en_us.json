@@ -8,6 +8,12 @@
 "item.dfm.bottle_cap": "Bottle Cap",
 "item.dfm.nuka_cola_quantum": "Nuka-Cola Quantum",
 
+"item.dfm.scrap_metal_sword": "Scrap Metal Sword",
+"item.dfm.scrap_metal_pickaxe": "Scrap Metal Pickaxe",
+"item.dfm.scrap_metal_axe": "Scrap Metal Axe",
+"item.dfm.scrap_metal_shovel": "Scrap Metal Shovel",
+"item.dfm.scrap_metal_hoe": "Scrap Metal Hoe",
+
 
 "block.dfm.scrap_metal_block": "Scrap Metal Block",
 "block.dfm.debug_block": "Debug Block",
