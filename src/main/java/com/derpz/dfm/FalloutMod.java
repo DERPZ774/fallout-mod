@@ -2,6 +2,7 @@ package com.derpz.dfm;
 
 import com.derpz.dfm.block.ModBlocks;
 import com.derpz.dfm.item.ModItems;
+import com.derpz.dfm.networking.ModMessages;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -43,6 +44,10 @@ public class FalloutMod {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        event.enqueueWork(() ->{
+            ModMessages.register();
+        });
     }
 
 }
