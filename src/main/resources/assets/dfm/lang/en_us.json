@@ -13,9 +13,12 @@
 "item.dfm.scrap_metal_axe": "Scrap Metal Axe",
 "item.dfm.scrap_metal_shovel": "Scrap Metal Shovel",
 "item.dfm.scrap_metal_hoe": "Scrap Metal Hoe",
+"item.dfm.cap_stash": "Cap Stash",
 
 
 "block.dfm.scrap_metal_block": "Scrap Metal Block",
+"block.dfm.scrap_metal_stairs": "Scrap Metal Stairs",
+"block.dfm.scrap_metal_slab": "Scrap Metal Slab",
 "block.dfm.debug_block": "Debug Block",
 
 "itemGroup.fallout_tab": "Fallout Mod",
