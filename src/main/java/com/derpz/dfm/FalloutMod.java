@@ -41,6 +41,8 @@ public class FalloutMod {
 
         ModEffect.register(eventBus);
 
+        ModEffect.register(eventBus);
+
         eventBus.addListener(this::setup);
 
         // Register ourselves for server and other game events we are interested in
