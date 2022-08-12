@@ -13,13 +13,14 @@ public class RadEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+        /*
         if (pLivingEntity.getHealth()>(20.0f)-(2.0f)-(pAmplifier*2.0f)) {
             pLivingEntity.hurt(DamageSource.MAGIC, 1.0F);
         }
         if(pLivingEntity instanceof Player) {
             ((Player)pLivingEntity).causeFoodExhaustion(0.005F * (float)(1));
         }
-        
+         */
         super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 
