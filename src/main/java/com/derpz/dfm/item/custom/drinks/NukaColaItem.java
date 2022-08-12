@@ -2,7 +2,6 @@ package com.derpz.dfm.item.custom.drinks;
 
 import com.derpz.dfm.item.ModItems;
 import com.derpz.dfm.networking.ModMessages;
-import com.derpz.dfm.networking.packet.ExampleC2SPacket;
 import com.derpz.dfm.networking.packet.RadC2SPacket;
 
 import net.minecraft.advancements.CriteriaTriggers;
