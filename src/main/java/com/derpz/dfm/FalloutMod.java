@@ -1,9 +1,7 @@
 package com.derpz.dfm;
 
 import com.derpz.dfm.block.ModBlocks;
-import com.derpz.dfm.effect.ModEffect;
 import com.derpz.dfm.item.ModItems;
-import com.derpz.dfm.networking.ModMessages;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -39,9 +37,6 @@ public class FalloutMod {
         ModBlocks.register(eventBus);
         ModelLoaderRegistry.registerLoader(new ResourceLocation(MOD_ID, "separate_perspective"), SeparatePerspectiveModel.Loader.INSTANCE);
 
-        ModEffect.register(eventBus);
-
-        ModEffect.register(eventBus);
 
         eventBus.addListener(this::setup);
 
@@ -54,9 +49,10 @@ public class FalloutMod {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        event.enqueueWork(() ->{
+        /*event.enqueueWork(() ->{
             ModMessages.register();
         });
+         */
     }
 
 }

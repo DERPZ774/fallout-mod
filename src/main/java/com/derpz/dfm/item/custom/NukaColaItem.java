@@ -1,9 +1,6 @@
 package com.derpz.dfm.item.custom;
 
 import com.derpz.dfm.item.ModItems;
-import com.derpz.dfm.networking.ModMessages;
-import com.derpz.dfm.networking.packet.RadC2SPacket;
-
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -40,7 +37,6 @@ public class NukaColaItem extends Item {
 
             if (player != null) {
                 player.getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
-                ModMessages.sendToServer(new RadC2SPacket());
             }
         }
 
