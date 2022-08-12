@@ -2,6 +2,7 @@ package com.derpz.dfm.block;
 
 import com.derpz.dfm.FalloutMod;
 import com.derpz.dfm.block.custom.DebugBlock;
+import com.derpz.dfm.block.custom.LampBlock;
 import com.derpz.dfm.item.ModCreativeModeTab;
 import com.derpz.dfm.item.ModItems;
 import net.minecraft.network.chat.Component;
@@ -51,6 +52,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEBUG_BLOCK = registerBlock("debug_block",
             () -> new DebugBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB, "tooltip.block.debug_block");
+
+    public static final RegistryObject<Block> LAMP = registerBlock("lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(2f).requiresCorrectToolForDrops().
+                    lightLevel((state) -> state.getValue(LampBlock.CLICKED) ? 15 : 0)),
+            ModCreativeModeTab.FALLOUT_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab, String tooltipKey) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

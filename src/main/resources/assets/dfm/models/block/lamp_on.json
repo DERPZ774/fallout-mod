@@ -1,0 +1,6 @@
+{
+  "parent": "dfm:block/lamp_off",
+  "textures": {
+    "2": "block/yellow_concrete"
+  }
+}
