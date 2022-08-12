@@ -11,7 +11,13 @@
     "gui": {
       "parent": "item/generated",
       "textures": {
-        "layer0": "dfm:item/bottle_full"
+        "layer0": "dfm:item/nuka_cola_quantum_bottle"
+      }
+    },
+    "fixed": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "dfm:item/nuka_cola_quantum_bottle"
       }
     }
   }
