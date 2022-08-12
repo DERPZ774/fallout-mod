@@ -1,9 +1,11 @@
 package com.derpz.dfm.item;
 
 import com.derpz.dfm.FalloutMod;
+import com.derpz.dfm.item.custom.CommieWhackerItem;
 import com.derpz.dfm.item.custom.DebugItem;
 import com.derpz.dfm.item.custom.ModTiers;
-import com.derpz.dfm.item.custom.drinks.NukaColaItem;
+import com.derpz.dfm.item.custom.NukaColaItem;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -68,6 +70,24 @@ public class ModItems {
     public static final RegistryObject<Item> SCRAP_METAL_AXE = ITEMS.register("scrap_metal_axe",
             () -> new AxeItem(ModTiers.SCRAP_METAL, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    //Armor
+    public static final RegistryObject<Item> SCRAP_METAL_HELMET = ITEMS.register("scrap_metal_helmet",
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.HEAD,
+                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    public static final RegistryObject<Item> SCRAP_METAL_CHESTPLATE = ITEMS.register("scrap_metal_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.CHEST,
+                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    public static final RegistryObject<Item> SCRAP_METAL_LEGGINGS = ITEMS.register("scrap_metal_leggings",
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.LEGS,
+                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
+    public static final RegistryObject<Item> SCRAP_METAL_BOOTS = ITEMS.register("scrap_metal_boots",
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.FEET,
+                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

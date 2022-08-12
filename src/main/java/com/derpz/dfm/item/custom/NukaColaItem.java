@@ -1,4 +1,4 @@
-package com.derpz.dfm.item.custom.drinks;
+package com.derpz.dfm.item.custom;
 
 import com.derpz.dfm.item.ModItems;
 import com.derpz.dfm.networking.ModMessages;

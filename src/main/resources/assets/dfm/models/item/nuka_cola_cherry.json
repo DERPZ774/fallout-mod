@@ -1,6 +1,18 @@
 {
-  "parent": "dfm:item/nuka_cola",
-  "textures": {
-    "3": "dfm:item/nuka_cherry"
+  "parent":"forge:item/default",
+  "loader":"dfm:separate_perspective",
+  "base": {
+    "parent": "dfm:item/nuka_cola_in_hand",
+    "textures": {
+      "3": "dfm:item/nuka_cherry"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "dfm:item/bottle_full"
+      }
+    }
   }
 }

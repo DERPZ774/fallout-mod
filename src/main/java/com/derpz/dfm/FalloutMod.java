@@ -5,8 +5,11 @@ import com.derpz.dfm.effect.ModEffect;
 import com.derpz.dfm.item.ModItems;
 import com.derpz.dfm.networking.ModMessages;
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.client.model.SeparatePerspectiveModel;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,6 +37,7 @@ public class FalloutMod {
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModelLoaderRegistry.registerLoader(new ResourceLocation(MOD_ID, "separate_perspective"), SeparatePerspectiveModel.Loader.INSTANCE);
 
         ModEffect.register(eventBus);
 

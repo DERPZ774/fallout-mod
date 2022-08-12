@@ -1,4 +1,4 @@
-package com.derpz.dfm.item;
+package com.derpz.dfm.item.custom;
 
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
