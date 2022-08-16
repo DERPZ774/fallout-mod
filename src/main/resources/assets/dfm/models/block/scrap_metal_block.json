@@ -1,6 +1,0 @@
-{
-  "parent" : "block/cube_all",
-  "textures": {
-    "all": "dfm:block/scrap_metal_block"
-  }
-}

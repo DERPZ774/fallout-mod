@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "nukaisl:nuka_cola"
+    },
+    "title": "Nuka Cola",
+    "description": "That tasted funny...",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "nukaisl:nukaisl",
+  "criteria": {
+    "nuka_cola": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "nukaisl:nuka_cola"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["nuka_cola"]
+  ]
+}

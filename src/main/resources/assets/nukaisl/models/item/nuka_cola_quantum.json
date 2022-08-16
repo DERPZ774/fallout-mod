@@ -1,0 +1,24 @@
+{
+  "parent":"forge:item/default",
+  "loader":"nukaisl:separate_perspective",
+  "base": {
+    "parent": "nukaisl:item/nuka_cola_in_hand",
+    "textures": {
+      "3": "nukaisl:item/nuka_quantum"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
+      }
+    },
+    "fixed": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
+      }
+    }
+  }
+}

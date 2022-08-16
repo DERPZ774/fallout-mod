@@ -1,0 +1,6 @@
+{
+  "parent" : "block/cube_all",
+  "textures": {
+    "all": "nukaisl:block/scrap_metal_block"
+  }
+}

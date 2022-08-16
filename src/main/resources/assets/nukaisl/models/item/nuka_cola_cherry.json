@@ -1,0 +1,16 @@
+
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nukaisl:item/nuka_cherry_bottle"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "nukaisl:cap": 1
+      },
+      "model": "nukaisl:item/bottle_full_uncapped",
+      "texture": "nukaisl:item/nuka_cherry_bottle_uncapped"
+    }
+  ]
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "dfm:item/scrap_metal_shovel"
-  }
-}

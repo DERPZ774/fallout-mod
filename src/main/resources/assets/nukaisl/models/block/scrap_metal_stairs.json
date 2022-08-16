@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "nukaisl:block/scrap_metal_block",
+    "top": "nukaisl:block/scrap_metal_block",
+    "side": "nukaisl:block/scrap_metal_block"
+  }
+}

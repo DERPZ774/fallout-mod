@@ -1,0 +1,14 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "nukaisl:item/bottle_full"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"nukaisl:cap": 1
+			},
+			"model": "nukaisl:item/bottle_full_uncapped"
+		}
+	]
+}

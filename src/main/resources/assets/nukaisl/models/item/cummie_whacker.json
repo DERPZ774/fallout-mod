@@ -1,0 +1,6 @@
+{
+	"parent": "nukaisl:item/commie_whacker",
+	"textures": {
+		"1": "nukaisl:item/cummie_whacker"
+	}
+}

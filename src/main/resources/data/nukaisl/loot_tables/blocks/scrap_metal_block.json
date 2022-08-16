@@ -1,0 +1,13 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "nukaisl:scrap_metal_block"
+          }
+        ]
+      }
+    ]
+}  

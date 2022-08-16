@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "clicked=false": { "model": "dfm:block/lamp_off" },
-    "clicked=true": { "model": "dfm:block/lamp_on" }
-  }
-}
