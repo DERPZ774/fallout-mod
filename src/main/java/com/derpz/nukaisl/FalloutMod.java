@@ -10,6 +10,7 @@ import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.entity.client.TestRenderer;
 import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.networking.ModMessages;
+import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.recipe.ModRecipes;
 import com.derpz.nukaisl.screen.ModMenuTypes;
 import com.derpz.nukaisl.screen.NukaColaOpenerScreen;
@@ -55,6 +56,7 @@ public class FalloutMod {
 
 
         ModRecipes.register(eventBus);
+        ModParticles.register(eventBus);
         ModEffects.register(eventBus);
         ModEntityTypes.register(eventBus);
 

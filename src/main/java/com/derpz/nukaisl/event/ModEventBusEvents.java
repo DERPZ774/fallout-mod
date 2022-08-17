@@ -4,11 +4,15 @@ import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.entity.custom.TestEntity;
 import com.derpz.nukaisl.event.loot.BottleCapInChestsAdditionModifier;
+import com.derpz.nukaisl.particle.ModParticles;
+import com.derpz.nukaisl.particle.custom.RadiationParticles;
 import com.derpz.nukaisl.recipe.NukaColaBottleOpenerRecipe;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.SeparatePerspectiveModel;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -33,6 +37,12 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         Registry.register(Registry.RECIPE_TYPE, NukaColaBottleOpenerRecipe.Type.ID, NukaColaBottleOpenerRecipe.Type.INSTANCE);
+    }
+
+    @SubscribeEvent
+    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particleEngine.register(ModParticles.RADIATION_PARTICLES.get(),
+                RadiationParticles.Provider::new);
     }
 
     @SubscribeEvent
