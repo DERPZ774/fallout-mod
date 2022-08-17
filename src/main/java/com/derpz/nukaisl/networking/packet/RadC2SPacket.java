@@ -29,7 +29,7 @@ public class RadC2SPacket {
            
             player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(rads -> {
                 rads.addRads(20); //increase rad level
-                //send rad count increasse message to player
+                //send rad count increase message to player
                 
                 int amp = 0;
                 if(rads.getRads() >100 && rads.getRads()<200){

@@ -78,9 +78,7 @@ public class FalloutMod {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        event.enqueueWork(() ->{
-            ModMessages.register();
-        });
+        event.enqueueWork(ModMessages::register);
     }
 
 }

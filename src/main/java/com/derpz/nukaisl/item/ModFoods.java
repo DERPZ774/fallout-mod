@@ -16,4 +16,4 @@ public class ModFoods {
 
 
 }
-/// TODO: 8/10/2022 Add all colas with special effects & add animations via geckolib
+/// TODO: 8/10/2022 Add all colas with special effects & add animations via gecko-lib
