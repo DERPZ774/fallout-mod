@@ -9,6 +9,7 @@ import com.derpz.nukaisl.enchantment.ModEnchantments;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.entity.client.TestRenderer;
 import com.derpz.nukaisl.item.ModItems;
+import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.recipe.ModRecipes;
 import com.derpz.nukaisl.screen.ModMenuTypes;
 import com.derpz.nukaisl.screen.NukaColaOpenerScreen;
@@ -77,10 +78,9 @@ public class FalloutMod {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        /*event.enqueueWork(() ->{
+        event.enqueueWork(() ->{
             ModMessages.register();
         });
-         */
     }
 
 }

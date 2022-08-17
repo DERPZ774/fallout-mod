@@ -1,6 +1,9 @@
 package com.derpz.nukaisl.item.custom;
 
 import com.derpz.nukaisl.item.ModItems;
+import com.derpz.nukaisl.networking.ModMessages;
+import com.derpz.nukaisl.networking.packet.RadC2SPacket;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -35,6 +38,7 @@ public class NukaColaItem extends Item {
         }
 
         if (player == null  && !pStack.hasTag()|| !player.getAbilities().instabuild  && !pStack.hasTag()) {
+            ModMessages.sendToServer(new RadC2SPacket());
             if (pStack.isEmpty()) {
                 return new ItemStack(ModItems.BOTTLE_CAP.get());
             } else {
