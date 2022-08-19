@@ -3,12 +3,22 @@ package com.derpz.nukaisl.event;
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.command.DevCommand;
 import com.derpz.nukaisl.effect.ModEffects;
+import com.derpz.nukaisl.item.ModItems;
+import com.derpz.nukaisl.item.custom.ModArmorItem;
 import com.derpz.nukaisl.rads.PlayerRads;
 import com.derpz.nukaisl.rads.PlayerRadsProvider;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -75,5 +85,16 @@ public class ModEvents {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void renderPlayerPre(RenderPlayerEvent.Pre event)
+    {
+        if (event.getPlayer().getInventory().getArmor(2).is(ModItems.SCRAP_METAL_CHESTPLATE.get())) {
+        event.getRenderer().getModel().head.visible = false;
+    }
+
+        /// TODO: 8/19/2022 edit statements here for all armor
+    }
+
 }
 /// TODO: 8/13/2022 REMOVE setEntityOnFireWhenHit method
