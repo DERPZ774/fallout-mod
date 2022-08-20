@@ -31,5 +31,3 @@ public class UnderArmorRenderer extends GeoArmorRenderer<UnderArmorItem> {
         return this;
     }
 }
-
-/// TODO: 8/19/2022 Fix armor rendering on legs

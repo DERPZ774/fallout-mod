@@ -89,8 +89,13 @@ public class ModEvents {
     @SubscribeEvent
     public static void renderPlayerPre(RenderPlayerEvent.Pre event)
     {
-        if (event.getPlayer().getInventory().getArmor(2).is(ModItems.SCRAP_METAL_CHESTPLATE.get())) {
-        event.getRenderer().getModel().head.visible = false;
+        if (event.getPlayer().getInventory().getArmor(2).is(ModItems.VAULT_SUIT.get())) {
+        event.getRenderer().getModel().leftSleeve.visible = false;
+            event.getRenderer().getModel().rightSleeve.visible = false;
+            //event.getRenderer().getModel().hat.visible = false;
+            event.getRenderer().getModel().jacket.visible = false;
+            event.getRenderer().getModel().leftPants.visible = false;
+            event.getRenderer().getModel().rightPants.visible = false;
     }
 
         /// TODO: 8/19/2022 edit statements here for all armor
