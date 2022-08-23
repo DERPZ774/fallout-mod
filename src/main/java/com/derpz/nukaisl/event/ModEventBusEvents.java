@@ -47,11 +47,7 @@ public class ModEventBusEvents {
         Registry.register(Registry.RECIPE_TYPE, NukaColaBottleOpenerRecipe.Type.ID, NukaColaBottleOpenerRecipe.Type.INSTANCE);
     }
 
-    @SubscribeEvent
-    public static void registerArmorRenderer(final EntityRenderersEvent.AddLayers event) {
-        GeoArmorRenderer.registerArmorRenderer(UnderArmorItem.class, new UnderArmorRenderer());
-        /// TODO: 8/19/2022 Armor renders here
-    }
+
 
     @SubscribeEvent
     public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
@@ -64,6 +60,9 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.TEST.get(), TestEntity.setAttributes());
         /// TODO: 8/15/2022 REMEMBER TO CHANGE THIS
     }
+
+
+
 
 
     @SubscribeEvent

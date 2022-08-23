@@ -14,16 +14,19 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,7 +49,7 @@ public class ModEvents {
                     event.getOriginal().getPersistentData().getIntArray(FalloutMod.MOD_ID + "dev"));
         }
     }
-
+/*
     @SubscribeEvent
     public static void setEntityOnFireWhenHit(LivingDamageEvent event) {
         //example event code
@@ -59,6 +62,8 @@ public class ModEvents {
             }
         }
     }
+
+ */
 
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent event) {
@@ -86,20 +91,12 @@ public class ModEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void renderPlayerPre(RenderPlayerEvent.Pre event)
-    {
-        if (event.getPlayer().getInventory().getArmor(2).is(ModItems.VAULT_SUIT.get())) {
-        event.getRenderer().getModel().leftSleeve.visible = false;
-            event.getRenderer().getModel().rightSleeve.visible = false;
-            //event.getRenderer().getModel().hat.visible = false;
-            event.getRenderer().getModel().jacket.visible = false;
-            event.getRenderer().getModel().leftPants.visible = false;
-            event.getRenderer().getModel().rightPants.visible = false;
+
+
+    /*@SubscribeEvent
+    public static void onEntityJoin(EntityJoinWorldEvent event) {
+        event.getEntity().setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.NUKA_COLA.get()));
     }
 
-        /// TODO: 8/19/2022 edit statements here for all armor
-    }
-
+     */
 }
-/// TODO: 8/13/2022 REMOVE setEntityOnFireWhenHit method

@@ -85,4 +85,3 @@ public class FalloutMod {
 
 }
 /// TODO: 8/10/2022 Make Cummie Whacker Dev only
-/// TODO: 8/13/2022 Make player spawn in with 1 nuka cola
