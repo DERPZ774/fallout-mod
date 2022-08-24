@@ -64,7 +64,6 @@ public class ModEventBusEvents {
 
 
 
-
     @SubscribeEvent
     public static void modelRegistryEvent(final ModelRegistryEvent event) {
         ModelLoaderRegistry.registerLoader(new ResourceLocation(FalloutMod.MOD_ID, "separate_perspective"), SeparatePerspectiveModel.Loader.INSTANCE);

@@ -11,6 +11,7 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -93,10 +94,13 @@ public class ModEvents {
 
 
 
-    /*@SubscribeEvent
+    @SubscribeEvent
     public static void onEntityJoin(EntityJoinWorldEvent event) {
-        event.getEntity().setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.NUKA_COLA.get()));
+        if(event.getEntity().getPersistentData().isEmpty()) {
+            event.getEntity().getPersistentData().putInt("Tagged", 1);
+            event.getEntity().setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.NUKA_COLA.get()));
+        }
     }
 
-     */
+
 }

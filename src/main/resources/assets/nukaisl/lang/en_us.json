@@ -26,6 +26,7 @@
 "block.nukaisl.scrap_metal_stairs": "Scrap Metal Stairs",
 "block.nukaisl.scrap_metal_slab": "Scrap Metal Slab",
 "block.nukaisl.lamp": "Lamp",
+"block.nukaisl.nuka_cola_opener":"Nuka Cola Opener",
 
   "itemGroup.fallout_tab": "Fallout Mod",
 "itemGroup.nuka_cola_tab": "Nuka Cola",
@@ -39,5 +40,7 @@
 
 
 "sound.nukaisl.lamp_use": "Lamp Used",
-"tooltip.nukaisl.nuka_cola_uncapped.tooltip": "Uncapped"
+"tooltip.nukaisl.nuka_cola_uncapped.tooltip": "Uncapped",
+
+"item.nukaisl.vault_suit": "Vault Suit"
 }
