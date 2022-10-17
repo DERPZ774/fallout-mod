@@ -7,17 +7,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class TestModel extends AnimatedGeoModel<TestEntity> {
     @Override
-    public ResourceLocation getModelLocation(TestEntity object) {
+    public ResourceLocation getModelResource(TestEntity object) {
         return new ResourceLocation(FalloutMod.MOD_ID, "geo/test.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(TestEntity object) {
+    public ResourceLocation getTextureResource(TestEntity object) {
         return new ResourceLocation(FalloutMod.MOD_ID, "textures/entity/test/test.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(TestEntity animatable) {
+    public ResourceLocation getAnimationResource(TestEntity animatable) {
         return new ResourceLocation(FalloutMod.MOD_ID, "animations/test.animation.json");
     }
 }

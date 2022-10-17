@@ -2,6 +2,7 @@ package com.derpz.nukaisl.networking;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.networking.packet.RadC2SPacket;
+import com.derpz.nukaisl.networking.packet.RadsDataSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -32,6 +33,12 @@ public class ModMessages {
             .encoder(RadC2SPacket::toBytes)
             .consumer(RadC2SPacket::handle)
             .add();
+
+        net.messageBuilder(RadsDataSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(RadsDataSyncS2CPacket::new)
+                .encoder(RadsDataSyncS2CPacket::toBytes)
+                .consumer(RadsDataSyncS2CPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {

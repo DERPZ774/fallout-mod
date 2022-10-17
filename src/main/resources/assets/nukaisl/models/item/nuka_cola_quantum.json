@@ -1,6 +1,6 @@
 {
   "parent":"forge:item/default",
-  "loader":"nukaisl:separate_perspective",
+  "loader":"forge:separate_transforms",
   "base": {
     "parent": "nukaisl:item/nuka_cola_in_hand",
     "textures": {

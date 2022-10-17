@@ -3,10 +3,13 @@ package com.derpz.nukaisl.event;
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.item.ModItems;
 
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.resources.SkinManager;
-import net.minecraft.resources.ResourceLocation;
+import com.derpz.nukaisl.util.KeyBinding;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,10 +19,10 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void renderPlayerPre(RenderPlayerEvent.Pre event)
     {
-        if (event.getPlayer().getInventory().getArmor(2).is(ModItems.VAULT_SUIT.get())) {
+        if (event.getEntity().getInventory().getArmor(2).is(ModItems.VAULT_SUIT.get())) {
             event.getRenderer().getModel().leftSleeve.visible = false;
             event.getRenderer().getModel().rightSleeve.visible = false;
-            event.getRenderer().getModel().hat.z = -0.25f;
+            //event.getRenderer().getModel().hat.visible = false;
             event.getRenderer().getModel().jacket.visible = false;
             event.getRenderer().getModel().leftPants.visible = false;
             event.getRenderer().getModel().rightPants.visible = false;
@@ -30,5 +33,11 @@ public class ModClientEvents {
     }
 
 
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+        if (KeyBinding.DRINKING_KEY.consumeClick()) {
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Key pressed"));
+        }
+    }
 
 }

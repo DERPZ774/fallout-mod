@@ -7,17 +7,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class UnderArmorModel extends AnimatedGeoModel<UnderArmorItem> {
     @Override
-    public ResourceLocation getModelLocation(UnderArmorItem object) {
+    public ResourceLocation getModelResource(UnderArmorItem object) {
         return new ResourceLocation(FalloutMod.MOD_ID, "geo/custom_armor.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(UnderArmorItem object) {
+    public ResourceLocation getTextureResource(UnderArmorItem object) {
         return new ResourceLocation(FalloutMod.MOD_ID, "textures/models/armor/vault_suit_full.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(UnderArmorItem animatable) {
+    public ResourceLocation getAnimationResource(UnderArmorItem animatable) {
         return new ResourceLocation(FalloutMod.MOD_ID, "animations/armor_animation.json");
     }
 }

@@ -9,8 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -57,8 +55,7 @@ public class DebugItem extends Item {
             }
 
             if(!foundBlock) {
-                player.sendMessage(new TranslatableComponent("item.nukaisl.debug_item.no_valuables"),
-                        player.getUUID());
+                player.sendSystemMessage(Component.translatable("item.nukaisl.debug_item.no_valuables"));
             }
         }
 
@@ -73,7 +70,7 @@ public class DebugItem extends Item {
                 player.getInventory().getItem(InventoryUtil.getFirstInventoryIndex(player, ModItems.DEBUG_TABLET_ITEM.get()));
 
         CompoundTag nbtData = new CompoundTag();
-        nbtData.putString("nukaisl.last_ore", "Found " + blockBelow.asItem().getRegistryName().toString() + " at (" +
+        nbtData.putString("nukaisl.last_ore", "Found " + blockBelow.getName() + " at (" +
                 pos.getX() + ", "+ pos.getY() + ", "+ pos.getZ() + ")");
 
         dataTablet.setTag(nbtData);
@@ -82,16 +79,16 @@ public class DebugItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
        if(Screen.hasShiftDown()) {
-           pTooltipComponents.add(new TranslatableComponent("tooltip.nukaisl.debug_item.tooltip.shift"));
+           pTooltipComponents.add(Component.translatable("tooltip.nukaisl.debug_item.tooltip.shift"));
        }
        else {
-           pTooltipComponents.add(new TranslatableComponent("tooltip.nukaisl.debug_item.tooltip"));
+           pTooltipComponents.add(Component.translatable("tooltip.nukaisl.debug_item.tooltip"));
        }
     }
 
     private void outputValuableCoordinates(BlockPos blockPos, Player player, Block blockBelow) {
-        player.sendMessage(new TextComponent("Found " + blockBelow.asItem().getRegistryName().toString() + " at " +
-                "(" + blockPos.getX() + ", " + blockPos.getY() + "," + blockPos.getZ() + ")"), player.getUUID());
+        player.sendSystemMessage(Component.literal("Found " + blockBelow.getName() + " at " +
+                "(" + blockPos.getX() + ", " + blockPos.getY() + "," + blockPos.getZ() + ")"));
     }
 
     private boolean isValuableBlock(Block block) {

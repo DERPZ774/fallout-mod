@@ -52,7 +52,7 @@ public class NukaColaOpenerBlock extends BaseEntityBlock {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof NukaColaOpenerBlockEntity) {
-                NetworkHooks.openGui(((ServerPlayer)pPlayer), (NukaColaOpenerBlockEntity)entity, pPos);
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (NukaColaOpenerBlockEntity)entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

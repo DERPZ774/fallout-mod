@@ -1,13 +1,15 @@
 package com.derpz.nukaisl.event.loot;
 
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -29,14 +31,19 @@ public class BottleCapInChestsAdditionModifier extends LootModifier {
 
     @Nonnull
     @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         if (context.getRandom().nextFloat() > 0.05) {
             generatedLoot.add(new ItemStack(addition, 1));
         }
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<BottleCapInChestsAdditionModifier> {
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return null;
+    }
+
+    /*public static class Serializer extends GlobalLootModifierSerializer<BottleCapInChestsAdditionModifier> {
 
         @Override
         public BottleCapInChestsAdditionModifier read(ResourceLocation name, JsonObject object,
@@ -53,4 +60,6 @@ public class BottleCapInChestsAdditionModifier extends LootModifier {
             return json;
         }
     }
+
+     */
 }

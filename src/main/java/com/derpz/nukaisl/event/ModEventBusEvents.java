@@ -17,16 +17,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
-import net.minecraftforge.client.model.SeparatePerspectiveModel;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.client.event.ModelEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 import javax.annotation.Nonnull;
@@ -34,26 +31,15 @@ import javax.annotation.Nonnull;
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
     @SubscribeEvent
-    public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>>
-                                                           event) {
-        event.getRegistry().registerAll(
-                new BottleCapInChestsAdditionModifier.Serializer().setRegistryName
-                        (new ResourceLocation(FalloutMod.MOD_ID,"bottle_cap_from_chests"))
+    public static void registerModifierSerializers(@Nonnull final RegisterEvent event) {
 
-        );
-    }
-    @SubscribeEvent
-    public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
-        Registry.register(Registry.RECIPE_TYPE, NukaColaBottleOpenerRecipe.Type.ID, NukaColaBottleOpenerRecipe.Type.INSTANCE);
+        event.register(ForgeRegistries.Keys.RECIPE_TYPES, recipeTypeRegisterHelper -> {
+            recipeTypeRegisterHelper.register(new ResourceLocation(FalloutMod.MOD_ID,NukaColaBottleOpenerRecipe.Type.ID),  NukaColaBottleOpenerRecipe.Type.INSTANCE);
+        });
     }
 
 
 
-    @SubscribeEvent
-    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
-        Minecraft.getInstance().particleEngine.register(ModParticles.RADIATION_PARTICLES.get(),
-                RadiationParticles.Provider::new);
-    }
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
@@ -63,9 +49,4 @@ public class ModEventBusEvents {
 
 
 
-
-    @SubscribeEvent
-    public static void modelRegistryEvent(final ModelRegistryEvent event) {
-        ModelLoaderRegistry.registerLoader(new ResourceLocation(FalloutMod.MOD_ID, "separate_perspective"), SeparatePerspectiveModel.Loader.INSTANCE);
-    }
 }

@@ -9,7 +9,6 @@ import com.derpz.nukaisl.item.ModCreativeModeTab;
 import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.sound.ModSounds;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -78,7 +77,7 @@ public class ModBlocks {
                 new Item.Properties().tab(tab)){
             @Override
             public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-                pTooltip.add(new TranslatableComponent(tooltipKey));
+                pTooltip.add(Component.translatable(tooltipKey));
             }
         });
     }

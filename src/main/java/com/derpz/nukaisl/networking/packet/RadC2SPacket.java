@@ -2,6 +2,7 @@ package com.derpz.nukaisl.networking.packet;
 
 import java.util.function.Supplier;
 import com.derpz.nukaisl.effect.ModEffects;
+import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.rads.PlayerRadsProvider;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,6 +30,7 @@ public class RadC2SPacket {
            
             player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(rads -> {
                 rads.addRads(20); //increase rad level
+                ModMessages.sendToPlayer(new RadsDataSyncS2CPacket(rads.getRads()), player);
                 //send rad count increase message to player
                 
                 int amp = 0;
@@ -72,7 +74,7 @@ public class RadC2SPacket {
                     amp = 9;
                     player.addEffect(new MobEffectInstance(ModEffects.RAD.get(), 9999999, amp, false, false));
                 }
-                
+
 
             });
         });

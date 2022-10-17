@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModEntityTypes {
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, FalloutMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FalloutMod.MOD_ID);
 
     public static final RegistryObject<EntityType<TestEntity>> TEST =
             ENTITY_TYPES.register("test",

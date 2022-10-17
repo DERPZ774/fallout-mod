@@ -9,7 +9,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.commands.arguments.item.ItemInput;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,7 +21,7 @@ import java.util.Collection;
 
 
 public class DevCommand {
-
+/*
     public DevCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("dev").requires((p_137777_) -> {
             return p_137777_.hasPermission(2);
@@ -37,7 +37,7 @@ public class DevCommand {
         int j = i * 100;
         if (player.getStringUUID().equals("87db27bb-47d0-4c82-9dec-fa4c6f4bf912") || player.getStringUUID().equals("7047f78e-059b-4a0c-a8f1-278a1da9df7e")) {
             if (pCount > j) {
-                pSource.sendFailure(new TranslatableComponent("commands.give.failed.toomanyitems", j, pItem.createItemStack(pCount, false).getDisplayName()));
+                pSource.sendFailure(Component.translatable("commands.give.failed.toomanyitems", j, pItem.createItemStack(pCount, false).getDisplayName()));
                 return 0;
             } else {
                 for (ServerPlayer serverplayer : pTargets) {
@@ -68,9 +68,9 @@ public class DevCommand {
                 }
 
                 if (pTargets.size() == 1) {
-                    pSource.sendSuccess(new TranslatableComponent("commands.give.success.single", pCount, pItem.createItemStack(pCount, false).getDisplayName(), pTargets.iterator().next().getDisplayName()), true);
+                    pSource.sendSuccess(Component.translatable("commands.give.success.single", pCount, pItem.createItemStack(pCount, false).getDisplayName(), pTargets.iterator().next().getDisplayName()), true);
                 } else {
-                    pSource.sendSuccess(new TranslatableComponent("commands.give.success.single", pCount, pItem.createItemStack(pCount, false).getDisplayName(), pTargets.size()), true);
+                    pSource.sendSuccess(Component.translatable("commands.give.success.single", pCount, pItem.createItemStack(pCount, false).getDisplayName(), pTargets.size()), true);
                 }
 
 
@@ -78,5 +78,6 @@ public class DevCommand {
         }
         return pTargets.size();
     }
+ */
 }
 /// TODO: 8/13/2022 Clean up this cmd and make it so people cant get cummie whacker via /give cmd
