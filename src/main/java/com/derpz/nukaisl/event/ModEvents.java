@@ -9,17 +9,20 @@ import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.networking.packet.RadsDataSyncS2CPacket;
 import com.derpz.nukaisl.rads.PlayerRads;
 import com.derpz.nukaisl.rads.PlayerRadsProvider;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -28,11 +31,15 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
@@ -108,10 +115,16 @@ public class ModEvents {
             }
 
              */
+            if(event.player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
+                event.player.getItemInHand(InteractionHand.MAIN_HAND).setCount(0);
+                Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
+                if(event.player.getItemInHand(InteractionHand.OFF_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
+                    event.player.getItemInHand(InteractionHand.OFF_HAND).setCount(0);
+                    Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
+                }
+            }
         }
     }
-
-
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {
@@ -127,6 +140,5 @@ public class ModEvents {
             }
         }
     }
-
 
 }

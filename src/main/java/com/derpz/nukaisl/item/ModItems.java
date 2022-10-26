@@ -55,7 +55,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> CUMMIE_WHACKER = ITEMS.register("cummie_whacker",
             () -> new CommieWhackerItem(ModTiers.SCRAP_METAL, 2, 3f,
-                    new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
+                    new Item.Properties().tab(null)));
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",

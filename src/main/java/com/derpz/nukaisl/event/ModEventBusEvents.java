@@ -19,7 +19,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -39,14 +41,10 @@ public class ModEventBusEvents {
     }
 
 
-
-
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
         event.put(ModEntityTypes.TEST.get(), TestEntity.setAttributes());
         /// TODO: 8/15/2022 REMEMBER TO CHANGE THIS
     }
-
-
 
 }
