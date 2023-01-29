@@ -11,9 +11,11 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, FalloutMod.MOD_ID);
-
+/*
     public static final RegistryObject<MobEffect> FREEZE = MOB_EFFECTS.register("freeze",
             () -> new FreezeEffect(MobEffectCategory.HARMFUL, 3124687));
+
+ */
 
     public static final RegistryObject<MobEffect> RAD = MOB_EFFECTS.register("rad", 
             () -> new RadEffect(MobEffectCategory.HARMFUL, 0xFF0000));

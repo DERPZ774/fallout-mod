@@ -52,9 +52,6 @@ public class ModBlocks {
 
 
     //Special blocks
-    public static final RegistryObject<Block> DEBUG_BLOCK = registerBlock("debug_block",
-            () -> new DebugBlock(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB, "tooltip.block.debug_block");
 
     public static final RegistryObject<Block> NUKA_COLA_BLOCK = registerBlock("nuka_cola_opener",
             () -> new NukaColaOpenerBlock(BlockBehaviour.Properties.of(Material.STONE)

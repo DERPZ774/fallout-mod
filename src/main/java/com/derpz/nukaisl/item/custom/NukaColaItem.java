@@ -35,7 +35,7 @@ public class NukaColaItem extends Item {
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
         Player player = pEntityLiving instanceof Player ? (Player)pEntityLiving : null;
         if (pLevel.isClientSide()) {
-            spawnFoundParticles(pLevel, player);
+           //pawnFoundParticles(pLevel, player);
             /// TODO: 8/17/2022 Use networking so others can see the particles
         }
         if (player != null) {
@@ -75,7 +75,7 @@ public class NukaColaItem extends Item {
             pTooltipComponents.add(Component.translatable("tooltip.nukaisl.nuka_cola_uncapped.tooltip"));
         };
     }
-
+/*
     private void spawnFoundParticles(Level pContext, Player positionClicked) {
         for(int i = 0; i < 360; i++) {
             if(i % 20 == 0) {
@@ -85,7 +85,7 @@ public class NukaColaItem extends Item {
             }
         }
     }
-
+ */
     public NukaColaItem(Properties pProperties) {
         super(pProperties);
     }

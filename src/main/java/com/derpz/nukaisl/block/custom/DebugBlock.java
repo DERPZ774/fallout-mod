@@ -17,7 +17,7 @@ public class DebugBlock extends Block {
     public DebugBlock(Properties properties) {
         super(properties);
     }
-
+/*
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         float chance = 0.35f;
@@ -58,4 +58,6 @@ public class DebugBlock extends Block {
 
         super.stepOn(pLevel, pPos, pState, pEntity);
     }
+
+ */
 }

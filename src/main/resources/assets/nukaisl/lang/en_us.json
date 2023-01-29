@@ -1,13 +1,10 @@
 {
   "item.nukaisl.scrap_metal": "Scrap Metal",
   "item.nukaisl.commie_whacker": "Commie Whacker",
-  "item.nukaisl.cummie_whacker": "Cummie Whacker",
-  "item.nukaisl.debug_item": "Debug Item",
   "item.nukaisl.nuka_cola": "Nuka-Cola",
   "item.nukaisl.nuka_cola_cherry": "Nuka-Cherry",
   "item.nukaisl.bottle_cap": "Bottle Cap",
   "item.nukaisl.nuka_cola_quantum": "Nuka-Cola Quantum",
-  "item.nukaisl.cap_stash": "Cap Stash",
 
   "item.nukaisl.scrap_metal_helmet": "Scrap Metal Helmet",
   "item.nukaisl.scrap_metal_chestplate": "Scrap Metal Chestplate",
@@ -20,9 +17,7 @@
   "item.nukaisl.scrap_metal_shovel": "Scrap Metal Shovel",
   "item.nukaisl.scrap_metal_hoe": "Scrap Metal Hoe",
 
-
   "block.nukaisl.scrap_metal_block": "Scrap Metal Block",
-  "block.nukaisl.debug_block": "Debug Block",
   "block.nukaisl.scrap_metal_stairs": "Scrap Metal Stairs",
   "block.nukaisl.scrap_metal_slab": "Scrap Metal Slab",
   "block.nukaisl.lamp": "Lamp",
@@ -31,13 +26,6 @@
   "itemGroup.fallout_tab": "Fallout Mod",
   "itemGroup.nuka_cola_tab": "Nuka Cola",
   "itemGroup.melee_weapons_tab": "Melee Weapons",
-
-  "item.nukaisl.debug_item.no_valuables": "No Valuables Found",
-
-  "tooltip.nukaisl.debug_item.tooltip.shift": "Debug tool mothafu-",
-  "tooltip.nukaisl.debug_item.tooltip": "Press §l§3Shift§r!",
-  "tooltip.block.debug_block": "Debug Block mothafu-",
-
 
   "sound.nukaisl.lamp_use": "Lamp Used",
   "tooltip.nukaisl.nuka_cola_uncapped.tooltip": "Uncapped",

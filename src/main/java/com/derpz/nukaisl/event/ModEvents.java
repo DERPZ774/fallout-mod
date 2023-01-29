@@ -115,7 +115,7 @@ public class ModEvents {
             }
 
              */
-            if(event.player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
+            /*if(event.player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
                 event.player.getItemInHand(InteractionHand.MAIN_HAND).setCount(0);
                 Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
                 if(event.player.getItemInHand(InteractionHand.OFF_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
@@ -123,14 +123,16 @@ public class ModEvents {
                     Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
                 }
             }
+
+             */
         }
     }
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {
-        if(event.getEntity().getPersistentData().isEmpty()) {
-            event.getEntity().getPersistentData().putInt("Tagged", 1);
-            event.getEntity().setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.NUKA_COLA.get()));
+        if(event.getEntity() instanceof ServerPlayer player && event.getEntity().getPersistentData().isEmpty()) {
+            player.getPersistentData().putByte("PLAYER TAGGED", (byte) 1);
+            player.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.NUKA_COLA.get()));
         }
         if (!event.getLevel().isClientSide()) {
             if(event.getEntity() instanceof ServerPlayer player) {

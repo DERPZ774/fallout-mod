@@ -12,7 +12,6 @@ import com.derpz.nukaisl.recipe.ModRecipes;
 import com.derpz.nukaisl.screen.ModMenuTypes;
 import com.derpz.nukaisl.sound.ModSounds;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -70,4 +69,5 @@ public class FalloutMod {
 
 }
 /// TODO: 8/24/2022 Get started on gun system
-/// TODO: 10/16/2022 Get the crew together for a meeting 
+/// TODO: 10/16/2022 Get the crew together for a meeting
+/// TODO: 1/22/2023 Look into HumanoidArmorLayer class for under armor render solution

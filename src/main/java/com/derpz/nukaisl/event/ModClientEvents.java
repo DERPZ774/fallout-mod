@@ -51,11 +51,12 @@ public class ModClientEvents {
         }
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void onWhackerHit(AttackEntityEvent event) {
        if (event.getEntity().getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get()) && event.getEntity().getStringUUID().matches(DevUtil.derpz)) {
            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Oni Chan!"));
         }
     }
+     */
 
 }

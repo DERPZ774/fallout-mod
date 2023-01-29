@@ -25,14 +25,6 @@ public class ModItems {
     public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
-    public static final RegistryObject<Item> CAP_STASH = ITEMS.register("cap_stash",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
-
-    public static final RegistryObject<Item> DEBUG_ITEM = ITEMS.register("debug_item",
-            () -> new DebugItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
-
-    public static final RegistryObject<Item> DEBUG_TABLET_ITEM = ITEMS.register("debug_tablet_item",
-            () -> new DebugTabletItem(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> TEST_SPAWN_EGG = ITEMS.register("test_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.TEST, 0X23243, 0X34543,
@@ -52,10 +44,6 @@ public class ModItems {
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",
             () ->   new CommieWhackerItem(ModTiers.SCRAP_METAL, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
-
-    public static final RegistryObject<Item> CUMMIE_WHACKER = ITEMS.register("cummie_whacker",
-            () -> new CommieWhackerItem(ModTiers.SCRAP_METAL, 2, 3f,
-                    new Item.Properties().tab(null)));
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",

@@ -1,24 +1,15 @@
 {
-  "parent":"forge:item/default",
-  "loader":"forge:separate_transforms",
-  "base": {
-    "parent": "nukaisl:item/nuka_cola_in_hand",
-    "textures": {
-      "3": "nukaisl:item/nuka_quantum"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
   },
-  "perspectives": {
-    "gui": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
-      }
-    },
-    "fixed": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
-      }
+  "overrides": [
+    {
+      "predicate": {
+        "nukaisl:cap": 1
+      },
+      "model": "nukaisl:item/bottle_full_uncapped",
+      "texture": "nukaisl:item/nuka_cola_quantum_bottle_uncapped"
     }
-  }
+  ]
 }

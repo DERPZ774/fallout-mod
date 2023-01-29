@@ -122,4 +122,6 @@ public class LampBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING, CLICKED);
     }
+
+    ///ToDo : Custom shader
 }

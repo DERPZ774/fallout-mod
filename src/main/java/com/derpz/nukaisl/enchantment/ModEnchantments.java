@@ -13,10 +13,12 @@ public class ModEnchantments {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS
             = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, FalloutMod.MOD_ID);
 
-    public static RegistryObject<Enchantment> LIGHTNING_STRIKER =
+    /*public static RegistryObject<Enchantment> LIGHTNING_STRIKER =
             ENCHANTMENTS.register("lightning_striker",
                     () -> new LightningStrikerEnchantment(Enchantment.Rarity.COMMON,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+
+     */
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

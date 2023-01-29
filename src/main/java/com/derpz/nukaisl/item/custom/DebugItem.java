@@ -27,7 +27,7 @@ public class DebugItem extends Item {
     public DebugItem(Properties pProperties) {
         super(pProperties);
     }
-
+/*
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if(pContext.getLevel().isClientSide()) {

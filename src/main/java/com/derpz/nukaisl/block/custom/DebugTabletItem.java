@@ -17,7 +17,7 @@ public class DebugTabletItem extends Item {
     public DebugTabletItem(Properties pProperties) {
         super(pProperties);
     }
-
+/*
     //Using the item will erase data on it with method below
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
@@ -43,5 +43,7 @@ public class DebugTabletItem extends Item {
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
+
+ */
 }
 

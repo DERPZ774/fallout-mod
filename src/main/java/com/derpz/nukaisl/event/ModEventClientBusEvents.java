@@ -37,7 +37,7 @@ public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMP.get(), RenderType.cutout());
-        ModItemProperties.addCustomItemProperties();
+        //ModItemProperties.addCustomItemProperties();
         MenuScreens.register(ModMenuTypes.NUKA_COLA_OPENER_MENU.get(), NukaColaOpenerScreen::new);
         EntityRenderers.register(ModEntityTypes.TEST.get(), TestRenderer::new);
     }
@@ -59,8 +59,10 @@ public class ModEventClientBusEvents {
         event.register(KeyBinding.DRINKING_KEY);
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void  registerGuiOverlays(RegisterGuiOverlaysEvent event) {
         event.registerAboveAll("rads", RadHudOverlay.HUD_RADS);
     }
+     */
+    /// ToDo : Re-add hud when fixed
 }
