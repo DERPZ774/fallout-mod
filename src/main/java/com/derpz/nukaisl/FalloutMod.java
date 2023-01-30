@@ -6,6 +6,7 @@ import com.derpz.nukaisl.effect.ModEffects;
 import com.derpz.nukaisl.enchantment.ModEnchantments;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.item.ModItems;
+import com.derpz.nukaisl.loot.ModLootModifiers;
 import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.recipe.ModRecipes;
@@ -43,6 +44,7 @@ public class FalloutMod {
         ModParticles.register(eventBus);
         ModEffects.register(eventBus);
         ModEntityTypes.register(eventBus);
+        ModLootModifiers.register(eventBus);
 
         eventBus.addListener(this::setup);
 

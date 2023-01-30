@@ -9,6 +9,7 @@ import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.networking.packet.RadsDataSyncS2CPacket;
 import com.derpz.nukaisl.rads.PlayerRads;
 import com.derpz.nukaisl.rads.PlayerRadsProvider;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -22,10 +23,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -39,11 +43,14 @@ import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID)
 public class ModEvents {
@@ -141,6 +148,39 @@ public class ModEvents {
                 });
             }
         }
+    }
+    @SubscribeEvent
+    public static void customTrades(VillagerTradesEvent event) {
+        Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+        int villagerLevel = 1;
+
+        if (event.getType() == VillagerProfession.ARMORER || event.getType() == VillagerProfession.BUTCHER ||
+                event.getType() == VillagerProfession.CARTOGRAPHER || event.getType() == VillagerProfession.CLERIC ||
+                event.getType() == VillagerProfession.LEATHERWORKER || event.getType() == VillagerProfession.FARMER ||
+                event.getType() == VillagerProfession.FARMER || event.getType() == VillagerProfession.FLETCHER ||
+                event.getType() == VillagerProfession.LIBRARIAN || event.getType() == VillagerProfession.MASON ||
+                event.getType() == VillagerProfession.NITWIT || event.getType() == VillagerProfession.SHEPHERD ||
+                event.getType() == VillagerProfession.TOOLSMITH || event.getType() == VillagerProfession.WEAPONSMITH) {
+
+            ItemStack stack = new ItemStack(ModItems.NUKA_COLA.get(), 1);
+
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(ModItems.BOTTLE_CAP.get(), 2),
+                    stack, 10, 8, 0.02F));
+        }
+
+        if(event.getType() == VillagerProfession.ARMORER || event.getType() == VillagerProfession.WEAPONSMITH ||
+                event.getType() == VillagerProfession.TOOLSMITH) {
+            ItemStack stack = new ItemStack(ModItems.SCRAP_METAL.get(), 1);
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(ModItems.BOTTLE_CAP.get(), 2),
+                    stack, 10, 8, 0.02F));
+
+        }
+
+        /// ToDo : Balance prices && add diff level rewards and prices using a formula
     }
 
 }

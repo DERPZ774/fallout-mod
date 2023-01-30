@@ -1,6 +1,11 @@
 {
   "replace": false,
   "entries": [
-    "nukaisl:bottle_cap_from_chests"
+    "nukaisl:bottle_cap_from_mineshaft",
+    "nukaisl:bottle_cap_from_village_armorer",
+    "nukaisl:scrap_metal_from_mineshaft",
+    "nukaisl:scrap_metal_from_village_armorer",
+    "nukaisl:nuka_cola_from_village_armorer",
+    "nukaisl:nuka_cola_cherry_from_village_armorer"
   ]
 }

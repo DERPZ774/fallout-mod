@@ -1,10 +1,10 @@
 {
+  "type": "nukaisl:add_item",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/abandoned_mineshaft"
     }
   ],
-  "addition": "nukaisl:bottle_cap",
-  "type": "nukaisl:bottle_cap_from_chests"
+  "item": "nukaisl:bottle_cap"
 }
