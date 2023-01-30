@@ -9,20 +9,17 @@
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "nukaisl:nukaisl",
+  "parent": "nukaisl:nuka_isle",
   "criteria": {
     "nuka_cola": {
-      "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
           "items": [
             "nukaisl:nuka_cola"
           ]
         }
-      }
+      },
+      "trigger": "minecraft:consume_item"
     }
-  },
-  "requirements": [
-    ["nuka_cola"]
-  ]
+  }
 }
