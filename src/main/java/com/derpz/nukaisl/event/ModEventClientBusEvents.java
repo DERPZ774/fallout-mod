@@ -10,6 +10,7 @@ import com.derpz.nukaisl.item.custom.UnderArmorItem;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.particle.custom.RadiationParticles;
 import com.derpz.nukaisl.screen.ModMenuTypes;
+import com.derpz.nukaisl.screen.NukaColaMachineScreen;
 import com.derpz.nukaisl.screen.NukaColaOpenerScreen;
 import com.derpz.nukaisl.util.KeyBinding;
 import com.derpz.nukaisl.util.ModItemProperties;
@@ -39,6 +40,7 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMP.get(), RenderType.cutout());
         //ModItemProperties.addCustomItemProperties();
         MenuScreens.register(ModMenuTypes.NUKA_COLA_OPENER_MENU.get(), NukaColaOpenerScreen::new);
+        MenuScreens.register(ModMenuTypes.NUKA_COLA_MACHINE_MENU.get(), NukaColaMachineScreen::new);
         EntityRenderers.register(ModEntityTypes.TEST.get(), TestRenderer::new);
     }
 

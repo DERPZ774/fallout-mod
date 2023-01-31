@@ -3,6 +3,7 @@ package com.derpz.nukaisl.block;
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.block.custom.DebugBlock;
 import com.derpz.nukaisl.block.custom.LampBlock;
+import com.derpz.nukaisl.block.custom.NukaColaMachineBlock;
 import com.derpz.nukaisl.block.custom.NukaColaOpenerBlock;
 import com.derpz.nukaisl.block.entity.NukaColaOpenerBlockEntity;
 import com.derpz.nukaisl.item.ModCreativeModeTab;
@@ -56,11 +57,16 @@ public class ModBlocks {
     public static final RegistryObject<Block> NUKA_COLA_BLOCK = registerBlock("nuka_cola_opener",
             () -> new NukaColaOpenerBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
+                    
     public static final RegistryObject<Block> LAMP = registerBlock("lamp",
             () -> new LampBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL).
                     lightLevel((state) -> state.getValue(LampBlock.CLICKED) ? 15 : 0)),
             ModCreativeModeTab.FALLOUT_TAB);
+
+        public static final RegistryObject<Block> NUKA_COLA_MACHINE = registerBlock("nuka_cola_machine",
+                () -> new NukaColaMachineBlock(BlockBehaviour.Properties.of(Material.METAL)
+                        .strength(5f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.FALLOUT_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab, String tooltipKey) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

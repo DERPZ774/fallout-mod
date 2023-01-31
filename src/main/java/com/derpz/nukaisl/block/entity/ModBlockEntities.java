@@ -15,7 +15,12 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<NukaColaOpenerBlockEntity>> NUKA_COLA_OPENER =
             BLOCK_ENTITIES.register("nuka_cola_opener", () ->
                     BlockEntityType.Builder.of(NukaColaOpenerBlockEntity::new,
-                            ModBlocks.NUKA_COLA_BLOCK.get()).build(null));
+                            ModBlocks.NUKA_COLA_MACHINE.get()).build(null));
+
+        public static final RegistryObject<BlockEntityType<NukaColaMachineBlockEntity>> NUKA_COLA_MACHINE =
+                BLOCK_ENTITIES.register("nuka_cola_machine", () ->
+                        BlockEntityType.Builder.of(NukaColaMachineBlockEntity::new,
+                        ModBlocks.NUKA_COLA_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
