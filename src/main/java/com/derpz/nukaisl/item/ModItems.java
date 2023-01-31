@@ -42,7 +42,7 @@ public class ModItems {
 
     //weapon
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",
-            () ->   new CommieWhackerItem(ModTiers.SCRAP_METAL, 2, 3f,
+            () ->   new CommieWhackerItem(ModTiers.CUSHION, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
 
     //tools
