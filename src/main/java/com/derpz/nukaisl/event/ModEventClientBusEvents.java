@@ -5,7 +5,6 @@ import com.derpz.nukaisl.block.ModBlocks;
 import com.derpz.nukaisl.client.RadHudOverlay;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.entity.client.TestRenderer;
-import com.derpz.nukaisl.entity.client.armor.UnderArmorRenderer;
 import com.derpz.nukaisl.item.custom.UnderArmorItem;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.particle.custom.RadiationParticles;
@@ -43,12 +42,14 @@ public class ModEventClientBusEvents {
         MenuScreens.register(ModMenuTypes.NUKA_COLA_MACHINE_MENU.get(), NukaColaMachineScreen::new);
         EntityRenderers.register(ModEntityTypes.TEST.get(), TestRenderer::new);
     }
-
+/*
     @SubscribeEvent
     public static void registerArmorRenderer(final EntityRenderersEvent.AddLayers event) {
         GeoArmorRenderer.registerArmorRenderer(UnderArmorItem.class, new UnderArmorRenderer());
         /// TODO: 8/19/2022 Armor renders here
     }
+
+ */
 
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {

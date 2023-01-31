@@ -2,7 +2,6 @@ package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.entity.ModEntityTypes;
-import com.derpz.nukaisl.entity.client.armor.UnderArmorRenderer;
 import com.derpz.nukaisl.entity.custom.TestEntity;
 import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.item.custom.UnderArmorItem;

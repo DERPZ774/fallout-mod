@@ -71,5 +71,4 @@ public class FalloutMod {
 
 }
 /// TODO: 8/24/2022 Get started on gun system
-/// TODO: 10/16/2022 Get the crew together for a meeting
 /// TODO: 1/22/2023 Look into HumanoidArmorLayer class for under armor render solution

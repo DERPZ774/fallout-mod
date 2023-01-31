@@ -1,6 +1,7 @@
 package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
+import com.derpz.nukaisl.client.models.UnderArmorModel;
 import com.derpz.nukaisl.item.ModItems;
 
 import com.derpz.nukaisl.util.DevUtil;
@@ -16,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -41,6 +43,10 @@ public class ModClientEvents {
 
         /// TODO: 8/23/2022 "Flatten" the hat layer
         /// TODO: 8/19/2022 edit statements here for all armor
+    }
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(UnderArmorModel.LAYER_LOCATION, UnderArmorModel::createBodyLayer);
     }
 
 
