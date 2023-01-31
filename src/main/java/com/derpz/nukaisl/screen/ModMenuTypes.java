@@ -17,6 +17,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<NukaColaOpenerMenu>> NUKA_COLA_OPENER_MENU =
             registerMenuType(NukaColaOpenerMenu::new, "nuka_cola_opener_menu");
 
+    public static final RegistryObject<MenuType<NukaColaMachineMenu>> NUKA_COLA_MACHINE_MENU =
+            registerMenuType(NukaColaMachineMenu::new, "nuka_cola_machine_menu");
+
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                                   String name) {
