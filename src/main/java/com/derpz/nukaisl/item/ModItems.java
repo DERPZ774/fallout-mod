@@ -32,13 +32,13 @@ public class ModItems {
 
     //Cola
     public static final RegistryObject<Item> NUKA_COLA = ITEMS.register("nuka_cola",
-            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA)));
 
     public static final RegistryObject<Item> NUKA_COLA_CHERRY = ITEMS.register("nuka_cola_cherry",
-            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_CHERRY)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_CHERRY)));
 
     public static final RegistryObject<Item> NUKA_COLA_QUANTUM = ITEMS.register("nuka_cola_quantum",
-            () -> new NukaColaItem(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_QUANTUM)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_QUANTUM)));
 
     //weapon
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",

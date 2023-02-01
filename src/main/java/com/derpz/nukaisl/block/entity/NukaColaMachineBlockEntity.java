@@ -2,6 +2,7 @@ package com.derpz.nukaisl.block.entity;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisl.item.ModItems;
@@ -29,7 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider{
+public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider {
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
         @Override
@@ -50,25 +51,18 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         this.data = new ContainerData() {
             @Override
             public int get(int index) {
-                switch (index) {
-                    case 0:
-                        return progress;
-                    case 1:
-                        return maxProgress;
-                    default:
-                        return 0;
-                }
+                return switch (index) {
+                    case 0 -> progress;
+                    case 1 -> maxProgress;
+                    default -> 0;
+                };
             }
 
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0:
-                        progress = value;
-                        break;
-                    case 1:
-                        maxProgress = value;
-                        break;
+                    case 0 -> progress = value;
+                    case 1 -> maxProgress = value;
                 }
             }
 
@@ -134,15 +128,15 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, NukaColaMachineBlockEntity pEntity) {
-        if(pLevel.isClientSide) {
+        if (pLevel.isClientSide) {
             return;
         }
 
-        if(hasRecipe(pEntity)) {
+        if (hasRecipe(pEntity)) {
             pEntity.progress++;
             setChanged(pLevel, pPos, pState);
 
-            if(pEntity.progress >= pEntity.maxProgress) {
+            if (pEntity.progress >= pEntity.maxProgress) {
                 pEntity.resetProgress();
                 craft(pEntity);
             }
@@ -157,7 +151,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private static void craft(NukaColaMachineBlockEntity pEntity) {
-        if(hasRecipe(pEntity)) {
+        if (hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(currentSlot, 1, false);
             pEntity.itemHandler.insertItem(currentSlot, ModItems.NUKA_COLA_CHERRY.get().getDefaultInstance(), false);
 
@@ -171,33 +165,14 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasBottle1 = pEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.NUKA_COLA.get();
-        boolean hasBottle2 = pEntity.itemHandler.getStackInSlot(2).getItem() == ModItems.NUKA_COLA.get();
-        boolean hasBottle3 = pEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.NUKA_COLA.get();
-        boolean hasBottle4 = pEntity.itemHandler.getStackInSlot(4).getItem() == ModItems.NUKA_COLA.get();
-        boolean hasBottle5 = pEntity.itemHandler.getStackInSlot(5).getItem() == ModItems.NUKA_COLA.get();
-        boolean hasBottle6 = pEntity.itemHandler.getStackInSlot(6).getItem() == ModItems.NUKA_COLA.get();
-        if(hasBottle1) {
-            currentSlot = 1;
-            return true;
-        } else if(hasBottle2) {
-            currentSlot = 2;
-            return true;
-        } else if(hasBottle3) {
-            currentSlot = 3;
-            return true;
-        } else if(hasBottle4) {
-            currentSlot = 4;
-            return true;
-        } else if(hasBottle5) {
-            currentSlot = 5;
-            return true;
-        } else if(hasBottle6) {
-            currentSlot = 6;
-            return true;
-        } else {
-            return false;
+        for (int i = 1; i <= 6; ++i) {
+            ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
+            if (stack.getItem() == ModItems.NUKA_COLA.get()) {
+                currentSlot = i;
+                return true;
+            }
         }
+        return false;
+
     }
-    
 }
