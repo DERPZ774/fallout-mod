@@ -42,7 +42,7 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
         super(properties);
     }
 
-    private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 128, 16);
+    private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 32, 16);
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pBlock, BlockPos pPos, CollisionContext pContext) {
