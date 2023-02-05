@@ -23,6 +23,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import static com.derpz.nukaisl.client.models.UnderArmorModel.LAYER_LOCATION;
+
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventClientBusEvents {
 
@@ -43,7 +45,8 @@ public class ModEventClientBusEvents {
 
  */
 @SubscribeEvent
-public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
+{
     event.registerLayerDefinition(UnderArmorModel.LAYER_LOCATION, UnderArmorModel::createBodyLayer);
 }
     @SubscribeEvent

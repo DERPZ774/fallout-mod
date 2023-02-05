@@ -2,6 +2,7 @@ package com.derpz.nukaisl.block.custom;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.core.Direction;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisl.block.entity.ModBlockEntities;
@@ -119,5 +120,6 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pType) {
         return createTickerHelper(pType, ModBlockEntities.NUKA_COLA_MACHINE.get(), NukaColaMachineBlockEntity::tick);
     }
+
 
 }

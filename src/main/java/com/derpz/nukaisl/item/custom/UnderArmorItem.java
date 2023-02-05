@@ -1,6 +1,7 @@
 package com.derpz.nukaisl.item.custom;
 
 import com.derpz.nukaisl.client.models.UnderArmorModel;
+import com.derpz.nukaisl.event.ModEventClientBusEvents;
 import com.derpz.nukaisl.item.ModArmorMaterials;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.Minecraft;
@@ -53,13 +54,12 @@ public class UnderArmorItem extends ArmorItem {
                 armorModel.crouching = living.isShiftKeyDown();
                 armorModel.riding = defaultModel.riding;
                 armorModel.young = living.isBaby();
+
                 return armorModel;
             }
         });
     }
 
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-        return "nukaisl:textures/models/vault_suit_full.png";
-    }
+
 
 }

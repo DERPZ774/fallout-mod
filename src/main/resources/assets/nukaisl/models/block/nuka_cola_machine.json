@@ -5,6 +5,7 @@
 		"2": "nukaisl:block/nuka_cola_machine",
 		"particle": "nukaisl:block/nuka_cola_machine"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [1, 0, 3],

@@ -13,9 +13,12 @@ import com.derpz.nukaisl.recipe.ModRecipes;
 import com.derpz.nukaisl.screen.ModMenuTypes;
 import com.derpz.nukaisl.sound.ModSounds;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -46,7 +49,10 @@ public class FalloutMod {
         ModEntityTypes.register(eventBus);
         ModLootModifiers.register(eventBus);
 
+
+
         eventBus.addListener(this::setup);
+        eventBus.addListener(this::clientSetup);
 
 
         GeckoLib.initialize();
@@ -59,7 +65,9 @@ public class FalloutMod {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-
+    private void clientSetup(final FMLClientSetupEvent event) {
+       // ItemBlockRenderTypes.setRenderLayer(ModBlocks.NUKA_COLA_MACHINE.get(), RenderType.cutout());
+    }
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
