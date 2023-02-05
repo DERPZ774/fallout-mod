@@ -44,10 +44,6 @@ public class ModClientEvents {
         /// TODO: 8/23/2022 "Flatten" the hat layer
         /// TODO: 8/19/2022 edit statements here for all armor
     }
-    @SubscribeEvent
-    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(UnderArmorModel.LAYER_LOCATION, UnderArmorModel::createBodyLayer);
-    }
 
 
     @SubscribeEvent

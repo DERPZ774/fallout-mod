@@ -43,7 +43,7 @@ public class UnderArmorItem extends ArmorItem {
             public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
                 HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
                         Map.of("head",
-                                new UnderArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(UnderArmorModel.LAYER_LOCATION)).Head,
+                                new UnderArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(UnderArmorModel.LAYER_LOCATION)).Body,
                                 "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
                                 new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm",
                                 new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",

@@ -18,11 +18,11 @@ public class UnderArmorModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(FalloutMod.MOD_ID, "underarmormodel"), "main");
 	public final ModelPart Head;
-	private final ModelPart Body;
-	private final ModelPart RightArm;
-	private final ModelPart LeftArm;
-	private final ModelPart RightLeg;
-	private final ModelPart LeftLeg;
+	public final ModelPart Body;
+	public final ModelPart RightArm;
+	public final ModelPart LeftArm;
+	public final ModelPart RightLeg;
+	public final ModelPart LeftLeg;
 
 	public UnderArmorModel(ModelPart root) {
 		this.Head = root.getChild("Head");

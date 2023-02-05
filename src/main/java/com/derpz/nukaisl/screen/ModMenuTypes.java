@@ -14,8 +14,6 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, FalloutMod.MOD_ID);
 
-    public static final RegistryObject<MenuType<NukaColaOpenerMenu>> NUKA_COLA_OPENER_MENU =
-            registerMenuType(NukaColaOpenerMenu::new, "nuka_cola_opener_menu");
 
     public static final RegistryObject<MenuType<NukaColaMachineMenu>> NUKA_COLA_MACHINE_MENU =
             registerMenuType(NukaColaMachineMenu::new, "nuka_cola_machine_menu");

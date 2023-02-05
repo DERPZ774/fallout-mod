@@ -45,6 +45,9 @@ public class ModItems {
             () ->   new CommieWhackerItem(ModTiers.CUSHION, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
 
+    public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
+            () ->   new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
+
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",
             () -> new SwordItem(ModTiers.SCRAP_METAL, 2, 3f,

@@ -12,11 +12,6 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, FalloutMod.MOD_ID);
 
-    public static final RegistryObject<BlockEntityType<NukaColaOpenerBlockEntity>> NUKA_COLA_OPENER =
-            BLOCK_ENTITIES.register("nuka_cola_opener", () ->
-                    BlockEntityType.Builder.of(NukaColaOpenerBlockEntity::new,
-                            ModBlocks.NUKA_COLA_BLOCK.get()).build(null));
-
         public static final RegistryObject<BlockEntityType<NukaColaMachineBlockEntity>> NUKA_COLA_MACHINE =
                 BLOCK_ENTITIES.register("nuka_cola_machine", () ->
                         BlockEntityType.Builder.of(NukaColaMachineBlockEntity::new,

@@ -33,5 +33,7 @@
   "key.category.nukaisl" : "Nuka Isle",
   "key.nukaisl.drink_cola": "Drink Cola",
 
-  "item.nukaisl.vault_suit": "Vault Suit"
+  "item.nukaisl.vault_suit": "Vault Suit",
+
+  "item.nukaisl.thirst_zapper": "Thirst Zapper"
 }

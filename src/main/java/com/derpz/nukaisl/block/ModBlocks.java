@@ -1,14 +1,10 @@
 package com.derpz.nukaisl.block;
 
 import com.derpz.nukaisl.FalloutMod;
-import com.derpz.nukaisl.block.custom.DebugBlock;
 import com.derpz.nukaisl.block.custom.LampBlock;
 import com.derpz.nukaisl.block.custom.NukaColaMachineBlock;
-import com.derpz.nukaisl.block.custom.NukaColaOpenerBlock;
-import com.derpz.nukaisl.block.entity.NukaColaOpenerBlockEntity;
 import com.derpz.nukaisl.item.ModCreativeModeTab;
 import com.derpz.nukaisl.item.ModItems;
-import com.derpz.nukaisl.sound.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -54,9 +50,6 @@ public class ModBlocks {
 
     //Special blocks
 
-    public static final RegistryObject<Block> NUKA_COLA_BLOCK = registerBlock("nuka_cola_opener",
-            () -> new NukaColaOpenerBlock(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.FALLOUT_TAB);
                     
     public static final RegistryObject<Block> LAMP = registerBlock("lamp",
             () -> new LampBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()
