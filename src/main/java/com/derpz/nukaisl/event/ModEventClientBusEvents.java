@@ -2,7 +2,7 @@ package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.block.ModBlocks;
-import com.derpz.nukaisl.client.models.UnderArmorModel;
+import com.derpz.nukaisl.client.renderer.UnderArmorLayer;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.entity.client.TestRenderer;
 import com.derpz.nukaisl.particle.ModParticles;
@@ -23,7 +23,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import static com.derpz.nukaisl.client.models.UnderArmorModel.LAYER_LOCATION;
+//import static com.derpz.nukaisl.client.models.UnderArmorModel.LAYER_LOCATION;
+
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventClientBusEvents {
@@ -47,8 +48,12 @@ public class ModEventClientBusEvents {
 @SubscribeEvent
 public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
 {
-    event.registerLayerDefinition(UnderArmorModel.LAYER_LOCATION, UnderArmorModel::createBodyLayer);
+   event.registerLayerDefinition(UnderArmorLayer.UnderArmorModel.LAYER_LOCATION, UnderArmorLayer.UnderArmorModel::createBodyLayer);
+    //event.registerLayerDefinition(VAULT_SUIT, UnderArmorModel::createBodyLayer);
 }
+
+
+
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.RADIATION_PARTICLES.get(),

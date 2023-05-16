@@ -87,7 +87,7 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",
-            () -> new UnderArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.CHEST,
+            () -> new UnderArmorItem(ModArmorMaterials.UNDER_ARMOR, EquipmentSlot.CHEST,
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
 

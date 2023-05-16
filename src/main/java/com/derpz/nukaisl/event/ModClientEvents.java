@@ -1,29 +1,14 @@
 package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
-import com.derpz.nukaisl.client.models.UnderArmorModel;
 import com.derpz.nukaisl.item.ModItems;
 
-import com.derpz.nukaisl.util.DevUtil;
 import com.derpz.nukaisl.util.KeyBinding;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.ParseResults;
-import net.minecraft.CrashReport;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.GiveCommand;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.vehicle.Minecart;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.event.CommandEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
