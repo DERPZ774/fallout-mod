@@ -19,8 +19,7 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'maven-publish'
-//    id 'net.minecraftforge.gradle' version '5.1.+'
-//    id 'org.spongepowered:mixingradle' version '0.7.+'
+  //  id 'org.spongepowered.mixin' version '0.7.+'
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
@@ -87,6 +86,7 @@ minecraft {
             parent runs.client
 
             args '--username', 'DERPZ774', '--uuid', '87db27bb-47d0-4c82-9dec-fa4c6f4bf912'
+            args "-mixin.config=nukaisl.mixins.json"
         }
 
         server {
@@ -214,11 +214,9 @@ dependencies {
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'mixins.mymod.refmap.json'
-    config 'mixins.mymod.json'
+    add sourceSets.main, 'nukaisl.refmap.json'
+    config 'nukaisl.mixins.json'
 
-    debug.verbose = true
-    debug.export = true
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
