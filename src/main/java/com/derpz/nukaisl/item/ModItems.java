@@ -40,17 +40,20 @@ public class ModItems {
     public static final RegistryObject<Item> NUKA_COLA_QUANTUM = ITEMS.register("nuka_cola_quantum",
             () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_QUANTUM)));
 
-    //weapon
+    //weapons
+
+    //melees
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",
             () ->   new CommieWhackerItem(ModTiers.CUSHION, 2, 3f,
                     new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
 
+    //ranged
     public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
             () ->   new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",
-            () -> new SwordItem(ModTiers.SCRAP_METAL, 2, 3f,
+            () -> new SwordItem(ModTiers.SCRAP_METAL, 2, 1f,
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     public static final RegistryObject<Item> SCRAP_METAL_PICKAXE = ITEMS.register("scrap_metal_pickaxe",
@@ -80,10 +83,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> SCRAP_METAL_LEGGINGS = ITEMS.register("scrap_metal_leggings",
             () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.LEGS,
-                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
-
-    public static final RegistryObject<Item> SCRAP_METAL_BOOTS = ITEMS.register("scrap_metal_boots",
-            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",

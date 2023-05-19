@@ -15,4 +15,4 @@ public class ModTiers {
 
 }
 
-/// TODO: 8/10/2022 Balance "CUSHION" tier, only knockback based doesn't need high dmg, speed, etc. (Dom can do this)
+/// TODO: 8/10/2022 Balance "CUSHION" tier, only knock-back based doesn't need high dmg, speed, etc. (Dom can do this)
