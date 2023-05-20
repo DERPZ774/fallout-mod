@@ -8,22 +8,24 @@ buildscript {
             content { includeGroup "org.spongepowered" }
         }
         mavenCentral()
+        //gradlePluginPortal()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'gradle.plugin.com.github.johnrengelman', name: 'shadow', version: '7.1.0'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 plugins {
     id 'eclipse'
     id 'maven-publish'
-  //  id 'org.spongepowered.mixin' version '0.7.+'
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 
 version = '0.0.1-1.18.2'
@@ -179,6 +181,11 @@ repositories {
     }
 }
 
+configurations {
+    shade // <- Create a 'shade' configuration
+    implementation.extendsFrom(shade) // <- Add the shade configuration to implementation
+}
+
 dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
@@ -208,8 +215,24 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.18')
+    //implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.18')
+    shade fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.18')
 
+}
+
+shadowJar {
+    configurations = [project.configurations.shade] // <- Tell shadowJar to shade dependencies from 'shade'
+
+    // Skip unnecessary assets and duplicated java files GeckoLib comes with
+    exclude 'software/bernie/example/**'
+    exclude 'assets/geckolib3/**'
+    exclude '**/*.java'
+    relocate 'software.bernie.shadowed', 'com.derpz.nukaisl.shadowed' // <- Move the shadowed geckolib shadowed packages. This prevents classpath conflicts in runtime
+    relocate 'software.bernie.geckolib', 'com.derpz.nukaisl.geckolib' // <- Move the shadowed geckolib package. This prevents classpath conflicts in runtime
+
+    classifier ''
+
+    finalizedBy 'reobfShadowJar' // <- Finish shading with reobfuscation
 }
 
 mixin {
@@ -217,6 +240,14 @@ mixin {
     add sourceSets.main, 'nukaisl.refmap.json'
     config 'nukaisl.mixins.json'
 
+}
+
+artifacts {
+    archives tasks.shadowJar // <- Add the shadowJar task to the archives configuration
+}
+
+reobf { // <- Add the output of shadowJar to reobfuscation, so shadowed content is reobfuscated
+    shadowJar {}
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
