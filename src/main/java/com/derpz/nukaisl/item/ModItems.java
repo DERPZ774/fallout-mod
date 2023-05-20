@@ -24,11 +24,6 @@ public class ModItems {
     public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
-
-    public static final RegistryObject<Item> TEST_SPAWN_EGG = ITEMS.register("test_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.TEST, 0X23243, 0X34543,
-                    new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
-
     //Cola
     public static final RegistryObject<Item> EMPTY_NUKA_COLA = ITEMS.register("empty_nuka_cola",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB)));

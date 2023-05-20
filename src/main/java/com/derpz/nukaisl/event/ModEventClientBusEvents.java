@@ -4,7 +4,6 @@ import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.block.ModBlocks;
 import com.derpz.nukaisl.client.renderer.UnderArmorLayer;
 import com.derpz.nukaisl.entity.ModEntityTypes;
-import com.derpz.nukaisl.entity.client.TestRenderer;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.particle.custom.RadiationParticles;
 import com.derpz.nukaisl.screen.ModMenuTypes;

@@ -1,27 +1,6 @@
 package com.derpz.nukaisl.item.custom;
 
-import com.derpz.nukaisl.item.ModItems;
-import com.derpz.nukaisl.sound.ModSounds;
-import com.derpz.nukaisl.util.InventoryUtil;
-import com.derpz.nukaisl.util.ModTags;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class DebugItem extends Item {
     public DebugItem(Properties pProperties) {
