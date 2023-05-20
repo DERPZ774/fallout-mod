@@ -1,6 +1,5 @@
 package com.derpz.nukaisl.item.custom;
 
-import com.derpz.nukaisl.client.renderer.UnderArmorLayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;

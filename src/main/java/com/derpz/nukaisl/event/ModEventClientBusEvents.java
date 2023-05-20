@@ -2,7 +2,6 @@ package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.block.ModBlocks;
-import com.derpz.nukaisl.client.renderer.UnderArmorLayer;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.particle.custom.RadiationParticles;
@@ -34,7 +33,6 @@ public class ModEventClientBusEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMP.get(), RenderType.cutout());
         //ModItemProperties.addCustomItemProperties();
         MenuScreens.register(ModMenuTypes.NUKA_COLA_MACHINE_MENU.get(), NukaColaMachineScreen::new);
-        EntityRenderers.register(ModEntityTypes.TEST.get(), TestRenderer::new);
     }
 /*
     @SubscribeEvent
@@ -47,7 +45,6 @@ public class ModEventClientBusEvents {
 @SubscribeEvent
 public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
 {
-   event.registerLayerDefinition(UnderArmorLayer.UnderArmorModel.LAYER_LOCATION, UnderArmorLayer.UnderArmorModel::createBodyLayer);
     //event.registerLayerDefinition(VAULT_SUIT, UnderArmorModel::createBodyLayer);
 }
 
