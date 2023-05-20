@@ -30,6 +30,8 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.FALLOUT_TAB)));
 
     //Cola
+    public static final RegistryObject<Item> EMPTY_NUKA_COLA = ITEMS.register("empty_nuka_cola",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.NUKA_COLA_TAB)));
     public static final RegistryObject<Item> NUKA_COLA = ITEMS.register("nuka_cola",
             () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA)));
 
