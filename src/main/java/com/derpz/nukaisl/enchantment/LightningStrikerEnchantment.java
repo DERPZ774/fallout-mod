@@ -43,4 +43,3 @@ public class LightningStrikerEnchantment extends Enchantment {
         return 2;
     }
 }
-/// TODO: 8/12/2022 Change entire class to fit a diff enchantment

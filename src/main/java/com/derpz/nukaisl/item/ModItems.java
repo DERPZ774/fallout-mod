@@ -1,7 +1,6 @@
 package com.derpz.nukaisl.item;
 
 import com.derpz.nukaisl.FalloutMod;
-import com.derpz.nukaisl.block.custom.DebugTabletItem;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.item.custom.*;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -44,7 +43,7 @@ public class ModItems {
 
     //melees
     public static final RegistryObject<Item> COMMIE_WHACKER = ITEMS.register("commie_whacker",
-            () ->   new CommieWhackerItem(ModTiers.CUSHION, 2, 3f,
+            () ->   new CommieWhackerItem(ModTiers.CUSHION, 0, 0f,
                     new Item.Properties().tab(ModCreativeModeTab.MELEE_WEAPONS)));
 
     //ranged

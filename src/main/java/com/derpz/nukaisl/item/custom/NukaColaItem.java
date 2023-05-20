@@ -73,7 +73,7 @@ public class NukaColaItem extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(pStack.hasTag()) {
             pTooltipComponents.add(Component.translatable("tooltip.nukaisl.nuka_cola_uncapped.tooltip"));
-        };
+        }
     }
 /*
     private void spawnFoundParticles(Level pContext, Player positionClicked) {

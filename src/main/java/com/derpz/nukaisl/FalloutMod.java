@@ -42,14 +42,11 @@ public class FalloutMod {
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
 
-
         ModRecipes.register(eventBus);
         ModParticles.register(eventBus);
         ModEffects.register(eventBus);
         ModEntityTypes.register(eventBus);
         ModLootModifiers.register(eventBus);
-
-
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
@@ -71,11 +68,10 @@ public class FalloutMod {
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
+        LOGGER.info("War, war never changes");
 
         event.enqueueWork(ModMessages::register);
     }
-
 
 }
 /// TODO: 8/24/2022 Get started on gun system

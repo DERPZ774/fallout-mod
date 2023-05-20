@@ -80,7 +80,7 @@ public class LampBlock extends Block {
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return switch ((Direction) pState.getValue(FACING)) {
+        return switch (pState.getValue(FACING)) {
             case SOUTH -> SHAPE_S;
             case EAST -> SHAPE_E;
             case WEST -> SHAPE_W;
@@ -112,7 +112,7 @@ public class LampBlock extends Block {
             pLevel.setBlock(pPos, pState.setValue(CLICKED, !currentState), 3);
 
             float f = pState.getValue(CLICKED) ? 0.6F : 0.5F;
-            pLevel.playSound((Player)null, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
+            pLevel.playSound(null, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
 
         }
         return InteractionResult.SUCCESS;
@@ -123,5 +123,4 @@ public class LampBlock extends Block {
         pBuilder.add(FACING, CLICKED);
     }
 
-    ///ToDo : Custom shader
 }

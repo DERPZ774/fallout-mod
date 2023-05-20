@@ -94,11 +94,9 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof NukaColaMachineBlockEntity) {
+            if (blockEntity instanceof NukaColaMachineBlockEntity NukaColaMachineBlockEntity) {
 
                 ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
-
-                NukaColaMachineBlockEntity NukaColaMachineBlockEntity = (NukaColaMachineBlockEntity)blockEntity;
 
                 NetworkHooks.openScreen(serverPlayer, NukaColaMachineBlockEntity, pPos);
 

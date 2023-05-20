@@ -27,7 +27,6 @@ public class ModClientEvents {
         }
 
         /// TODO: 8/23/2022 "Flatten" the hat layer
-        /// TODO: 8/19/2022 edit statements here for all armor
     }
 
 
