@@ -78,7 +78,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.literal("Nuka-Cola Machine");
     }
 
@@ -110,7 +110,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     @Override
-    public void load(CompoundTag pCompound) {
+    public void load(@NotNull CompoundTag pCompound) {
         super.load(pCompound);
         itemHandler.deserializeNBT(pCompound.getCompound("inventory"));
     }
@@ -121,6 +121,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
+        assert this.level != null;
         Containers.dropContents(this.level, this.worldPosition, inventory);
 
     }
@@ -151,7 +152,9 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     private static void craft(NukaColaMachineBlockEntity pEntity) {
         if (hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(currentSlot, 1, false);
-            pEntity.itemHandler.insertItem(currentSlot, ModItems.NUKA_COLA_CHERRY.get().getDefaultInstance(), false);
+
+            pEntity.itemHandler.insertItem(currentSlot, ModItems.NUKA_COLA_COLD.get().getDefaultInstance(), false);
+
 
             pEntity.resetProgress();
         }
