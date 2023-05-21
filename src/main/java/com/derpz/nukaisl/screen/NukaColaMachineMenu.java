@@ -14,7 +14,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class NukaColaMachineMenu extends AbstractContainerMenu {
@@ -36,14 +36,14 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-            this.addSlot(new SlotItemHandler(h, 0, 20, 15));
-            this.addSlot(new SlotItemHandler(h, 1, 80, 35));
-            this.addSlot(new SlotItemHandler(h, 2, 100, 35));
-            this.addSlot(new SlotItemHandler(h, 3, 120, 35));
-            this.addSlot(new SlotItemHandler(h, 4, 80, 55));
-            this.addSlot(new SlotItemHandler(h, 5, 100, 55));
-            this.addSlot(new SlotItemHandler(h, 6, 120, 55));
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(h -> {
+            this.addSlot(new SlotItemHandler(h, 0, 38, 18));
+            this.addSlot(new SlotItemHandler(h, 1, 62, 37));
+            this.addSlot(new SlotItemHandler(h, 2, 80, 37));
+            this.addSlot(new SlotItemHandler(h, 3, 98, 37));
+            this.addSlot(new SlotItemHandler(h, 4, 62, 55));
+            this.addSlot(new SlotItemHandler(h, 5, 80, 55));
+            this.addSlot(new SlotItemHandler(h, 6, 98, 55));
         });
 
         addDataSlots(data);
@@ -85,7 +85,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 

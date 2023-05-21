@@ -3,11 +3,11 @@ package com.derpz.nukaisl.block.entity;
 import javax.annotation.Nullable;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.screen.NukaColaMachineMenu;
-import com.mojang.serialization.Decoder.Simple;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,11 +22,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -86,7 +84,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
 
@@ -176,3 +174,4 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     }
 }
+/// TODO: 5/20/2023 Add storage functionality & json serializers
