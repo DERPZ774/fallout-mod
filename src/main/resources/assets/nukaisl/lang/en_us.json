@@ -6,9 +6,9 @@
   "item.nukaisl.bottle_cap": "Bottle Cap",
   "item.nukaisl.nuka_cola_quantum": "Nuka-Cola Quantum",
   "item.nukaisl.empty_nuka_cola": "Empty Nuka-Cola Bottle",
-  "item.nukaisl.ice_cold_nuka_cola_quantum": "Ice-Cold Nuka-Cola Quantum",
-  "item.nukaisl.ice_cold_nuka_cola_cherry": "Ice-Cold Nuka-Cherry",
-  "item.nukaisl.ice_cold_nuka_cola": "Ice-Cold Nuka-Cola",
+  "item.nukaisl.ice_cold_nuka_cola_quantum": "Nuka-Cola Quantum",
+  "item.nukaisl.ice_cold_nuka_cola_cherry": "Nuka-Cherry",
+  "item.nukaisl.ice_cold_nuka_cola": "Nuka-Cola",
 
 
   "item.nukaisl.scrap_metal_helmet": "Scrap Metal Helmet",
@@ -35,6 +35,7 @@
 
   "sound.nukaisl.lamp_use": "Lamp Used",
   "tooltip.nukaisl.nuka_cola_uncapped.tooltip": "Uncapped",
+  "tooltip.nukaisl.nuka_cola_cold.tooltip": "Ice-Cold",
   "key.category.nukaisl" : "Nuka Isle",
   "key.nukaisl.drink_cola": "Drink Cola",
 

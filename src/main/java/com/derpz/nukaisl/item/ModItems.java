@@ -100,4 +100,3 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 }
-/// TODO: 8/10/2022 Balance tool modifiers

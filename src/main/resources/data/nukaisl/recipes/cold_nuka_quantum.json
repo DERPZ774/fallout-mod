@@ -1,0 +1,9 @@
+{
+  "type": "nukaisl:cola_cooling",
+  "ingredient" : {
+    "item": "nukaisl:nuka_cola_quantum"
+  },
+  "output": {
+    "item": "nukaisl:ice_cold_nuka_cola_quantum"
+  }
+}

@@ -1,11 +1,12 @@
 package com.derpz.nukaisl.rads;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 
 public class PlayerRads {
     private int rads;
-    private final int MIN_RADS = 0;
-    private final int MAX_RADS = 1000;
+    private static final int MIN_RADS = 0;
+    private static final int MAX_RADS = 1000;
 
     public int getRads() {
         return rads;
@@ -20,7 +21,7 @@ public class PlayerRads {
     }
 
     public void setRads(int set) {
-        this.rads = set;
+        this.rads = Mth.clamp(set, MIN_RADS, MAX_RADS);
     }
 
     public void copyFrom(PlayerRads source) {

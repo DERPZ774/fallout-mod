@@ -1,7 +1,7 @@
 package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
-import com.derpz.nukaisl.recipe.NukaColaBottleOpenerRecipe;
+import com.derpz.nukaisl.recipe.NukaColaMachineRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +16,7 @@ public class ModEventBusEvents {
     public static void registerModifierSerializers(@Nonnull final RegisterEvent event) {
 
         event.register(ForgeRegistries.Keys.RECIPE_TYPES, recipeTypeRegisterHelper -> {
-            recipeTypeRegisterHelper.register(new ResourceLocation(FalloutMod.MOD_ID,NukaColaBottleOpenerRecipe.Type.ID),  NukaColaBottleOpenerRecipe.Type.INSTANCE);
+            recipeTypeRegisterHelper.register(new ResourceLocation(FalloutMod.MOD_ID, NukaColaMachineRecipe.Type.ID),  NukaColaMachineRecipe.Type.INSTANCE);
         });
     }
 

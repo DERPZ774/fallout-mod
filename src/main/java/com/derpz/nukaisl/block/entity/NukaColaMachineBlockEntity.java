@@ -2,6 +2,7 @@ package com.derpz.nukaisl.block.entity;
 
 import javax.annotation.Nullable;
 
+import com.derpz.nukaisl.recipe.NukaColaMachineRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.jetbrains.annotations.NotNull;
@@ -28,6 +29,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import java.util.Optional;
+
 public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider {
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
@@ -42,7 +45,6 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
-    private static int currentSlot = 1;
 
     public NukaColaMachineBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.NUKA_COLA_MACHINE.get(), pWorldPosition, pBlockState);
@@ -106,6 +108,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     @Override
     protected void saveAdditional(CompoundTag pCompound) {
         pCompound.put("inventory", itemHandler.serializeNBT());
+        pCompound.putInt("nuka_cola_machine.progress", this.progress);
         super.saveAdditional(pCompound);
     }
 
@@ -113,6 +116,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     public void load(@NotNull CompoundTag pCompound) {
         super.load(pCompound);
         itemHandler.deserializeNBT(pCompound.getCompound("inventory"));
+        progress = serializeNBT().getInt("nuka_cola_machine.progress");
     }
 
     public void drops() {
@@ -131,7 +135,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             return;
         }
 
-        if (hasRecipe(pEntity)) {
+        if (getRecipe(pEntity) != null) {
             pEntity.progress++;
             setChanged(pLevel, pPos, pState);
 
@@ -150,31 +154,25 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private static void craft(NukaColaMachineBlockEntity pEntity) {
-        if (hasRecipe(pEntity)) {
-            pEntity.itemHandler.extractItem(currentSlot, 1, false);
+        NukaColaMachineRecipe recipe = getRecipe(pEntity);
 
-            pEntity.itemHandler.insertItem(currentSlot, ModItems.NUKA_COLA_COLD.get().getDefaultInstance(), false);
+        if(recipe != null) {
+            pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
 
+            pEntity.itemHandler.insertItem(recipe.getSlot(), recipe.getResultItem(), false);
 
             pEntity.resetProgress();
         }
+
     }
 
-    private static boolean hasRecipe(NukaColaMachineBlockEntity pEntity) {
+    private static NukaColaMachineRecipe getRecipe(NukaColaMachineBlockEntity pEntity) {
+        Level level = pEntity.level;
         SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
         for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
         }
-
-        for (int i = 1; i <= 6; ++i) {
-            ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-            if (stack.getItem() == ModItems.NUKA_COLA.get()) {
-                currentSlot = i;
-                return true;
-            }
-        }
-        return false;
-
+        return level.getRecipeManager().getRecipeFor(NukaColaMachineRecipe.Type.INSTANCE, inventory, level).orElse(null);
     }
 }
 /// TODO: 5/20/2023 Add storage functionality & json serializers

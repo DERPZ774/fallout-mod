@@ -100,7 +100,6 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
 
                 NetworkHooks.openScreen(serverPlayer, NukaColaMachineBlockEntity, pPos);
 
-                //pPlayer.openMenu((NukaColaMachineBlockEntity) blockEntity);
             }
             return InteractionResult.CONSUME;
         }

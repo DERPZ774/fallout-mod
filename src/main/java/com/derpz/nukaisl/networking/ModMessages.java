@@ -31,13 +31,13 @@ public class ModMessages {
         net.messageBuilder(RadC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
             .decoder(RadC2SPacket::new)
             .encoder(RadC2SPacket::toBytes)
-            .consumer(RadC2SPacket::handle)
+            .consumerMainThread(RadC2SPacket::handle)
             .add();
 
         net.messageBuilder(RadsDataSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(RadsDataSyncS2CPacket::new)
                 .encoder(RadsDataSyncS2CPacket::toBytes)
-                .consumer(RadsDataSyncS2CPacket::handle)
+                .consumerMainThread(RadsDataSyncS2CPacket::handle)
                 .add();
     }
 
