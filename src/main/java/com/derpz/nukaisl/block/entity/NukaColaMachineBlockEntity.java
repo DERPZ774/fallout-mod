@@ -155,7 +155,6 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     private static void craft(NukaColaMachineBlockEntity pEntity) {
         NukaColaMachineRecipe recipe = getRecipe(pEntity);
-
         if(recipe != null) {
             pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
 
@@ -175,4 +174,3 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         return level.getRecipeManager().getRecipeFor(NukaColaMachineRecipe.Type.INSTANCE, inventory, level).orElse(null);
     }
 }
-/// TODO: 5/20/2023 Add storage functionality & json serializers

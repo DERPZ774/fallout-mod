@@ -1,7 +1,6 @@
 package com.derpz.nukaisl.recipe;
 
 import com.derpz.nukaisl.FalloutMod;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
@@ -43,6 +42,11 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
             }
         }
        return false;
+    }
+
+
+    public Ingredient getIngredient() {
+        return input;
     }
 
     @Override
