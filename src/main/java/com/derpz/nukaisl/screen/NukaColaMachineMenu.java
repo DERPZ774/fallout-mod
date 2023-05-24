@@ -3,6 +3,7 @@ package com.derpz.nukaisl.screen;
 import com.derpz.nukaisl.block.ModBlocks;
 import com.derpz.nukaisl.block.entity.NukaColaMachineBlockEntity;
 
+import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class NukaColaMachineMenu extends AbstractContainerMenu {
     public final NukaColaMachineBlockEntity blockEntity;
@@ -53,12 +55,28 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
+    public boolean hasStorage() {
+        return this.blockEntity.getEnergyStorage().getEnergyStored() > 0;
+    }
+
+    public NukaColaMachineBlockEntity getBlockEntity() {
+        return this.blockEntity;
+    }
+
     public int getProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);
         int progressArrowSize = 24;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getStorage () {
+        int storage = this.blockEntity.getEnergyStorage().getEnergyStored();
+        int maxStorage = this.blockEntity.getEnergyStorage().getMaxEnergyStored();
+        int progressSize = 52;
+
+        return maxStorage != 0 && storage != 0 ? storage * progressSize / maxStorage : 0;
     }
 
     
@@ -83,7 +101,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
 
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int index) {
+    public @NotNull ItemStack quickMoveStack(Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
         if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
@@ -115,6 +133,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
@@ -134,6 +153,4 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
     }
-
-    
 }

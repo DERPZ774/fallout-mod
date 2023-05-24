@@ -2,9 +2,15 @@ package com.derpz.nukaisl.block.entity;
 
 import javax.annotation.Nullable;
 
+import com.derpz.nukaisl.networking.ModMessages;
+import com.derpz.nukaisl.networking.packet.EnergySyncS2CPacket;
 import com.derpz.nukaisl.recipe.NukaColaMachineRecipe;
+import com.derpz.nukaisl.util.ModEnergyStorage;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisl.item.ModItems;
@@ -45,6 +51,17 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(60000, 256) {
+        @Override
+        public void onEnergyChanged() {
+            setChanged();
+            ModMessages.sendToClients(new EnergySyncS2CPacket(this.energy, getBlockPos()));
+        }
+    };
+    private static final int ENERGY_REQ = 32;
+    private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+
+    //ToDo Edit fuel numbers
 
     public NukaColaMachineBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.NUKA_COLA_MACHINE.get(), pWorldPosition, pBlockState);
@@ -79,6 +96,14 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         return new NukaColaMachineMenu(id, pInventory, this, this.data);
     }
 
+    public IEnergyStorage getEnergyStorage() {
+        return ENERGY_STORAGE;
+    }
+
+    public void setEnergyLevel(int energy) {
+        this.ENERGY_STORAGE.setEnergy(energy);
+    }
+
     @Override
     public @NotNull Component getDisplayName() {
         return Component.literal("Nuka-Cola Machine");
@@ -86,6 +111,10 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == ForgeCapabilities.ENERGY) {
+            return lazyEnergyHandler.cast();
+        }
+
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
@@ -97,18 +126,22 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyEnergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        lazyEnergyHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag pCompound) {
         pCompound.put("inventory", itemHandler.serializeNBT());
         pCompound.putInt("nuka_cola_machine.progress", this.progress);
+        pCompound.putInt("nuka_cola_machine.energy", ENERGY_STORAGE.getEnergyStored());
+
         super.saveAdditional(pCompound);
     }
 
@@ -117,6 +150,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         super.load(pCompound);
         itemHandler.deserializeNBT(pCompound.getCompound("inventory"));
         progress = serializeNBT().getInt("nuka_cola_machine.progress");
+        ENERGY_STORAGE.setEnergy(pCompound.getInt("nuka_cola_machine.energy"));
     }
 
     public void drops() {
@@ -135,8 +169,13 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             return;
         }
 
-        if (getRecipe(pEntity) != null) {
+        if(hasEnergyInFirstSlot(pEntity)) {
+            pEntity.ENERGY_STORAGE.receiveEnergy(64, false);
+        }
+
+        if (getRecipe(pEntity) != null && hasEnoughEnergy(pEntity)) {
             pEntity.progress++;
+            extractEnergy(pEntity);
             setChanged(pLevel, pPos, pState);
 
             if (pEntity.progress >= pEntity.maxProgress) {
@@ -147,6 +186,19 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             pEntity.resetProgress();
             setChanged(pLevel, pPos, pState);
         }
+    }
+
+    private static void extractEnergy(NukaColaMachineBlockEntity pEntity) {
+        pEntity.ENERGY_STORAGE.extractEnergy(ENERGY_REQ, false);
+    }
+
+    private static boolean hasEnoughEnergy(NukaColaMachineBlockEntity pEntity) {
+        return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ * pEntity.maxProgress;
+    }
+
+    private static boolean hasEnergyInFirstSlot(NukaColaMachineBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(0).getItem() == Items.ICE;
+        /// TODO: 5/24/2023 Change this method to accept more items for fuel
     }
 
     private void resetProgress() {
@@ -173,4 +225,5 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         }
         return level.getRecipeManager().getRecipeFor(NukaColaMachineRecipe.Type.INSTANCE, inventory, level).orElse(null);
     }
+
 }
