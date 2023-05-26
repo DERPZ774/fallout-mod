@@ -7,14 +7,17 @@ import com.derpz.nukaisl.networking.packet.EnergySyncS2CPacket;
 import com.derpz.nukaisl.networking.packet.ItemStackSyncS2CPacket;
 import com.derpz.nukaisl.recipe.NukaColaMachineRecipe;
 import com.derpz.nukaisl.util.ModEnergyStorage;
+import com.google.common.collect.Maps;
+import net.minecraft.SharedConstants;
+import net.minecraft.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
 
-import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.screen.NukaColaMachineMenu;
 
 import net.minecraft.core.BlockPos;
@@ -36,7 +39,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.Optional;
+import java.util.Map;
 
 public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -56,7 +59,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(60000, 256) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(25000, 256) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -65,8 +68,6 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     };
     private static final int ENERGY_REQ = 32;
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
-
-    //ToDo Edit fuel numbers
 
     public NukaColaMachineBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.NUKA_COLA_MACHINE.get(), pWorldPosition, pBlockState);
@@ -197,8 +198,8 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
             return;
         }
 
-        if(hasEnergyInFirstSlot(pEntity)) {
-            pEntity.ENERGY_STORAGE.receiveEnergy(64, false);
+        if (hasEnergyInFirstSlot(pEntity)) {
+            // MADNESS HAPPENS SHUT YO BITCH ASS UP HAL BUT IM NOT HAL IM JOHN, BUT IM CLAY HAHA
         }
 
         if (getRecipe(pEntity) != null && hasEnoughEnergy(pEntity)) {
@@ -225,8 +226,33 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private static boolean hasEnergyInFirstSlot(NukaColaMachineBlockEntity pEntity) {
-        return pEntity.itemHandler.getStackInSlot(0).getItem() == Items.ICE;
-        /// TODO: 5/24/2023 Change this method to accept more items for fuel
+        Map<Item, Integer> fuelMap = getFuel();
+        ItemStack stack = pEntity.itemHandler.getStackInSlot(0);
+        Item item = stack.getItem();
+
+        return fuelMap.containsKey(item);
+
+    }
+
+    public static Map<Item, Integer> getFuel() {
+        Map<Item, Integer> map = Maps.newLinkedHashMap();
+        add(map, Items.SNOWBALL, 500);
+        add(map, Items.POWDER_SNOW_BUCKET, 750); //TODO CREATE A SYSTEM THAT WHEN POWDERED SNOW BUCKET IS TAKEN, RETURNS BUCKET IN ITEM SLOT
+        add(map, Items.SNOW_BLOCK, 1250);
+        add(map, Items.ICE, 1750);
+        add(map, Items.PACKED_ICE, 2250);
+        add(map, Items.BLUE_ICE, 2750);
+        return map;
+    }
+
+
+    private static void add(Map<Item, Integer> pMap, ItemLike pItem, int pCoolantTime) {
+        Item item = pItem.asItem();
+        if (SharedConstants.IS_RUNNING_IN_IDE) {
+            throw Util.pauseInIde(new IllegalStateException("Creating an item that is immune to Candy's magnificent power"));
+        } else {
+            pMap.put(item, pCoolantTime);
+        }
     }
 
     private void resetProgress() {
@@ -236,6 +262,12 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     private static void craft(NukaColaMachineBlockEntity pEntity) {
         NukaColaMachineRecipe recipe = getRecipe(pEntity);
         if(recipe != null) {
+            pEntity.itemHandler.extractItem(recipe.getSlot(), 0, false);
+
+            if (recipe.getSlot() == 0 && pEntity.itemHandler.getStackInSlot(0).is(Items.POWDER_SNOW_BUCKET)) {
+                pEntity.itemHandler.insertItem(0, Items.BUCKET.getDefaultInstance(), false);
+            }
+
             pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
 
             pEntity.itemHandler.insertItem(recipe.getSlot(), recipe.getResultItem(), false);
