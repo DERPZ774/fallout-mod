@@ -1,12 +1,15 @@
 package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
+import com.derpz.nukaisl.block.entity.ModBlockEntities;
+import com.derpz.nukaisl.block.entity.renderer.NukaColaMachineBlockEntityRenderer;
 import com.derpz.nukaisl.item.ModItems;
 
 import com.derpz.nukaisl.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,6 +36,7 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
         if (KeyBinding.DRINKING_KEY.consumeClick()) {
+            assert Minecraft.getInstance().player != null;
             Minecraft.getInstance().player.sendSystemMessage(Component.literal("Key pressed"));
         }
     }

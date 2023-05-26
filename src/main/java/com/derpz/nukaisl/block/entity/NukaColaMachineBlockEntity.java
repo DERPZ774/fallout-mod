@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.derpz.nukaisl.networking.ModMessages;
 import com.derpz.nukaisl.networking.packet.EnergySyncS2CPacket;
+import com.derpz.nukaisl.networking.packet.ItemStackSyncS2CPacket;
 import com.derpz.nukaisl.recipe.NukaColaMachineRecipe;
 import com.derpz.nukaisl.util.ModEnergyStorage;
 import net.minecraft.world.item.Item;
@@ -43,6 +44,10 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+            assert level != null;
+            if (!level.isClientSide()) {
+                ModMessages.sendToClients(new ItemStackSyncS2CPacket(this, worldPosition));
+            }
         }
     };
 
@@ -92,7 +97,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     @Override
     @Nullable
-    public AbstractContainerMenu createMenu(int id, Inventory pInventory, Player pPlayer) {
+    public AbstractContainerMenu createMenu(int id, @NotNull Inventory pInventory, @NotNull Player pPlayer) {
         return new NukaColaMachineMenu(id, pInventory, this, this.data);
     }
 
@@ -102,6 +107,29 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
     public void setEnergyLevel(int energy) {
         this.ENERGY_STORAGE.setEnergy(energy);
+    }
+
+    public ItemStack getRenderStack() {
+        int stackWithItem = 0;
+
+        for (int i = 1; i < itemHandler.getSlots(); i++) {
+            if (!itemHandler.getStackInSlot(i).isEmpty()) {
+                stackWithItem = i;
+            }
+        }
+
+        if (!itemHandler.getStackInSlot(stackWithItem).isEmpty() && stackWithItem != 0) {
+            return itemHandler.getStackInSlot(stackWithItem);
+        }
+        else {
+            return itemHandler.getStackInSlot(1);
+        }
+    }
+
+    public void setHandler(ItemStackHandler itemStackHandler) {
+        for(int i = 0; i < itemStackHandler.getSlots(); i++) {
+            itemHandler.setStackInSlot(i, itemStackHandler.getStackInSlot(i));
+        }
     }
 
     @Override
@@ -226,4 +254,5 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         return level.getRecipeManager().getRecipeFor(NukaColaMachineRecipe.Type.INSTANCE, inventory, level).orElse(null);
     }
 
+//ToDo make the fuel get taken out adding (amount) to fuel
 }

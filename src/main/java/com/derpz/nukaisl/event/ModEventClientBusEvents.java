@@ -2,6 +2,8 @@ package com.derpz.nukaisl.event;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.block.ModBlocks;
+import com.derpz.nukaisl.block.entity.ModBlockEntities;
+import com.derpz.nukaisl.block.entity.renderer.NukaColaMachineBlockEntityRenderer;
 import com.derpz.nukaisl.entity.ModEntityTypes;
 import com.derpz.nukaisl.particle.ModParticles;
 import com.derpz.nukaisl.particle.custom.RadiationParticles;
@@ -21,7 +23,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-//import static com.derpz.nukaisl.client.models.UnderArmorModel.LAYER_LOCATION;
 
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -34,7 +35,13 @@ public class ModEventClientBusEvents {
         //ModItemProperties.addCustomItemProperties();
         MenuScreens.register(ModMenuTypes.NUKA_COLA_MACHINE_MENU.get(), NukaColaMachineScreen::new);
     }
-/*
+
+    @SubscribeEvent
+    public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(ModBlockEntities.NUKA_COLA_MACHINE.get(), NukaColaMachineBlockEntityRenderer::new);
+    }
+
+    /*
     @SubscribeEvent
     public static void registerArmorRenderer(final EntityRenderersEvent.AddLayers event) {
         GeoArmorRenderer.registerArmorRenderer(UnderArmorItem.class, new UnderArmorRenderer());

@@ -2,6 +2,7 @@ package com.derpz.nukaisl.networking;
 
 import com.derpz.nukaisl.FalloutMod;
 import com.derpz.nukaisl.networking.packet.EnergySyncS2CPacket;
+import com.derpz.nukaisl.networking.packet.ItemStackSyncS2CPacket;
 import com.derpz.nukaisl.networking.packet.RadC2SPacket;
 import com.derpz.nukaisl.networking.packet.RadsDataSyncS2CPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +46,12 @@ public class ModMessages {
                 .decoder(EnergySyncS2CPacket::new)
                 .encoder(EnergySyncS2CPacket::toBytes)
                 .consumerMainThread(EnergySyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(ItemStackSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ItemStackSyncS2CPacket::new)
+                .encoder(ItemStackSyncS2CPacket::toBytes)
+                .consumerMainThread(ItemStackSyncS2CPacket::handle)
                 .add();
     }
 
