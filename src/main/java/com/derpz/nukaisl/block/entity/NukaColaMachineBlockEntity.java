@@ -59,7 +59,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
-    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(25000, 256) {
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(3500, 256) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -199,13 +199,15 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         }
 
         if (hasEnergyInFirstSlot(pEntity)) {
-            // MADNESS HAPPENS SHUT YO BITCH ASS UP HAL BUT IM NOT HAL IM JOHN, BUT IM CLAY HAHA
+            setChanged(pLevel, pPos, pState);
+            return;
         }
 
         if (getRecipe(pEntity) != null && hasEnoughEnergy(pEntity)) {
             pEntity.progress++;
             extractEnergy(pEntity);
             setChanged(pLevel, pPos, pState);
+
 
             if (pEntity.progress >= pEntity.maxProgress) {
                 pEntity.resetProgress();
@@ -230,14 +232,27 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         ItemStack stack = pEntity.itemHandler.getStackInSlot(0);
         Item item = stack.getItem();
 
-        return fuelMap.containsKey(item);
+        if (fuelMap.containsKey(item) && pEntity.ENERGY_STORAGE.getEnergyStored() != pEntity.ENERGY_STORAGE.getMaxEnergyStored()) {
+            int energy = fuelMap.get(item);
+            pEntity.ENERGY_STORAGE.receiveEnergy(energy, false);
+            if (pEntity.itemHandler.getStackInSlot(0).getItem() == Items.POWDER_SNOW_BUCKET) {
+                pEntity.itemHandler.extractItem(0, 1, false);
+                pEntity.itemHandler.insertItem(0, new ItemStack(Items.BUCKET), false);
+            }
+            else {
+                pEntity.itemHandler.extractItem(0, 1, false);
+            }
+            return true;
+        }
+        /// TODO: 5/30/2023 make fuel get taken out less fast
 
+        return false;
     }
 
     public static Map<Item, Integer> getFuel() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
         add(map, Items.SNOWBALL, 500);
-        add(map, Items.POWDER_SNOW_BUCKET, 750); //TODO CREATE A SYSTEM THAT WHEN POWDERED SNOW BUCKET IS TAKEN, RETURNS BUCKET IN ITEM SLOT
+        add(map, Items.POWDER_SNOW_BUCKET, 750);
         add(map, Items.SNOW_BLOCK, 1250);
         add(map, Items.ICE, 1750);
         add(map, Items.PACKED_ICE, 2250);
@@ -264,10 +279,6 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         if(recipe != null) {
             pEntity.itemHandler.extractItem(recipe.getSlot(), 0, false);
 
-            if (recipe.getSlot() == 0 && pEntity.itemHandler.getStackInSlot(0).is(Items.POWDER_SNOW_BUCKET)) {
-                pEntity.itemHandler.insertItem(0, Items.BUCKET.getDefaultInstance(), false);
-            }
-
             pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
 
             pEntity.itemHandler.insertItem(recipe.getSlot(), recipe.getResultItem(), false);
@@ -283,8 +294,8 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
         for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
         }
+        assert level != null;
         return level.getRecipeManager().getRecipeFor(NukaColaMachineRecipe.Type.INSTANCE, inventory, level).orElse(null);
     }
 
-//ToDo make the fuel get taken out adding (amount) to fuel
 }

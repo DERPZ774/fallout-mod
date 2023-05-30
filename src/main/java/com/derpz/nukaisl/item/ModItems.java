@@ -38,12 +38,12 @@ public class ModItems {
 
     //ice-cold colas
     public static final RegistryObject<Item> NUKA_COLA_QUANTUM_COLD = ITEMS.register("ice_cold_nuka_cola_quantum",
-            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_QUANTUM)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_QUANTUM_COLD)));
 
     public static final RegistryObject<Item> NUKA_COLA_CHERRY_COLD = ITEMS.register("ice_cold_nuka_cola_cherry",
-            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_CHERRY)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_CHERRY_COLD)));
     public static final RegistryObject<Item> NUKA_COLA_COLD = ITEMS.register("ice_cold_nuka_cola",
-            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA)));
+            () -> new NukaColaItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.NUKA_COLA_TAB).food(ModFoods.NUKA_COLA_COLD)));
 
 
     //weapons

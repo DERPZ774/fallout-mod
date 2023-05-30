@@ -21,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
@@ -28,9 +29,8 @@ import java.util.List;
 
 public class NukaColaItem extends Item {
 
-
-    public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
-        if(pEntityLiving instanceof ServerPlayer player) {
+    public @NotNull ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
+        if (pEntityLiving instanceof ServerPlayer player) {
             player.awardStat(Stats.ITEM_USED.get(this));
             if (!player.getAbilities().instabuild) {
                 RadHelper.addRads(player, 20);
@@ -66,6 +66,10 @@ public class NukaColaItem extends Item {
         if(pStack.is(ModItems.NUKA_COLA_COLD.get()) || pStack.is(ModItems.NUKA_COLA_CHERRY_COLD.get()) || pStack.is(ModItems.NUKA_COLA_QUANTUM_COLD.get())) {
             pTooltipComponents.add(Component.translatable("tooltip.nukaisl.nuka_cola_cold.tooltip").withStyle(ChatFormatting.AQUA));
         }
+        assert pStack.getTag() != null;
+        if(pStack.hasTag()) {
+            pTooltipComponents.add(Component.translatable("tooltip.nukaisl.nuka_cola_uncapped.tooltip").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+        }
     }
 
 
@@ -80,3 +84,4 @@ public class NukaColaItem extends Item {
 
 }
 
+/// TODO: 5/30/2023 Crouch right click fix for decap

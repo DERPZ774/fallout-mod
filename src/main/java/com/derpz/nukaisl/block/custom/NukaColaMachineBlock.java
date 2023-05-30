@@ -2,7 +2,11 @@ package com.derpz.nukaisl.block.custom;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.core.Direction;
+import com.derpz.nukaisl.item.ModItems;
+import com.derpz.nukaisl.item.custom.NukaColaItem;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisl.block.entity.ModBlockEntities;
@@ -63,7 +67,7 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
 
     //mirror
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -74,7 +78,7 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
 
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    public @NotNull RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
 
