@@ -1,31 +1,27 @@
 package com.derpz.nukaisl.item.custom;
 
-import com.derpz.nukaisl.effect.ModEffects;
+import com.derpz.nukaisl.block.custom.NukaColaMachineBlock;
 import com.derpz.nukaisl.item.ModItems;
-import com.derpz.nukaisl.networking.ModMessages;
-import com.derpz.nukaisl.networking.packet.RadC2SPacket;
-
-import com.derpz.nukaisl.networking.packet.RadsDataSyncS2CPacket;
-import com.derpz.nukaisl.rads.PlayerRadsProvider;
 import com.derpz.nukaisl.util.RadHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.List;
+import java.util.Objects;
 
 public class NukaColaItem extends Item {
 
@@ -45,7 +41,6 @@ public class NukaColaItem extends Item {
                 player.getInventory().add(new ItemStack(ModItems.EMPTY_NUKA_COLA.get()));
             }
         }
-
 
         pLevel.gameEvent(pEntityLiving, GameEvent.DRINK, pEntityLiving.getEyePosition());
         return this.isEdible() ? pEntityLiving.eat(pLevel, pStack) : pStack;

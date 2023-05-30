@@ -14,7 +14,6 @@ import com.derpz.nukaisl.block.entity.NukaColaMachineBlockEntity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +22,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
@@ -99,11 +97,14 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
         if (!pLevel.isClientSide) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof NukaColaMachineBlockEntity NukaColaMachineBlockEntity) {
-
                 ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
-
                 NetworkHooks.openScreen(serverPlayer, NukaColaMachineBlockEntity, pPos);
-
+            }
+            if (pPlayer.isCrouching() && pPlayer.getMainHandItem().getItem() instanceof NukaColaItem)  {
+                System.out.println("test");
+                pPlayer.getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+                pPlayer.getInventory().removeItem(pPlayer.getInventory().selected, 1);
+                pPlayer.getInventory().getItem(pPlayer.getInventory().selected).addTagElement("de-capped", new CompoundTag());
             }
             return InteractionResult.CONSUME;
         }
