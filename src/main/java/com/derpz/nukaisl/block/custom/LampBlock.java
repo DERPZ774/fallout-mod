@@ -112,7 +112,7 @@ public class LampBlock extends Block {
             pLevel.setBlock(pPos, pState.setValue(CLICKED, !currentState), 3);
 
             float f = pState.getValue(CLICKED) ? 0.6F : 0.5F;
-            pLevel.playSound(null, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
+            //pLevel.playSound(null, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
 
         }
         return InteractionResult.SUCCESS;

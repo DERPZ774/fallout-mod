@@ -1,3 +1,4 @@
+/*
 package com.derpz.nukaisl.integration;
 
 import com.derpz.nukaisl.FalloutMod;
@@ -37,3 +38,4 @@ public class JEINukaislPlugin implements IModPlugin {
     }
 
 }
+*/

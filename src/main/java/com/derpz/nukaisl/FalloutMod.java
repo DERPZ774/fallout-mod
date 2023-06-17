@@ -5,6 +5,7 @@ import com.derpz.nukaisl.block.entity.ModBlockEntities;
 import com.derpz.nukaisl.effect.ModEffects;
 import com.derpz.nukaisl.enchantment.ModEnchantments;
 import com.derpz.nukaisl.entity.ModEntityTypes;
+import com.derpz.nukaisl.item.ModCreativeModeTab;
 import com.derpz.nukaisl.item.ModItems;
 import com.derpz.nukaisl.loot.ModLootModifiers;
 import com.derpz.nukaisl.networking.ModMessages;
@@ -15,14 +16,17 @@ import com.derpz.nukaisl.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
+import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(FalloutMod.MOD_ID)
@@ -38,7 +42,7 @@ public class FalloutMod {
         ModBlocks.register(eventBus);
 
         ModEnchantments.register(eventBus);
-        ModSounds.register(eventBus);
+       // ModSounds.register(eventBus);
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
 
@@ -51,7 +55,6 @@ public class FalloutMod {
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
 
-
         GeckoLib.initialize();
 
         //ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, FalloutModClientConfigs.SPEC, "nukaisl-client.toml");
@@ -60,6 +63,7 @@ public class FalloutMod {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        eventBus.addListener(this::addCreative);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -71,6 +75,24 @@ public class FalloutMod {
         LOGGER.info("War, war never changes");
 
         event.enqueueWork(ModMessages::register);
+    }
+
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+        if(event.getTab() == ModCreativeModeTab.FALLOUT_TAB) {
+            event.accept(ModItems.SCRAP_METAL);
+        }
+
+        if(event.getTab() == ModCreativeModeTab.COLA_TAB) {
+
+        }
+
+        if(event.getTab() == ModCreativeModeTab.MELEE_TAB) {
+
+        }
+        /// TODO: 6/16/2023 Add all the items to their perspective tabs
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SCRAP_METAL);
+        }
     }
 
 }

@@ -41,5 +41,8 @@
 
   "item.nukaisl.vault_suit": "Vault Suit",
 
-  "item.nukaisl.thirst_zapper": "Thirst Zapper"
+  "item.nukaisl.thirst_zapper": "Thirst Zapper",
+  "tab.nukaisl.fallout": "Fallout",
+  "tab.nukaisl.cola": "Colas",
+  "tab.nukaisl.melee": "Melee Weapons"
 }

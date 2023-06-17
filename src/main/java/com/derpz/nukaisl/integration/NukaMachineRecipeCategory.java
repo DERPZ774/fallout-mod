@@ -1,3 +1,4 @@
+/*
 package com.derpz.nukaisl.integration;
 
 import com.derpz.nukaisl.FalloutMod;
@@ -53,4 +54,4 @@ public class NukaMachineRecipeCategory implements IRecipeCategory<NukaColaMachin
         builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 37).addItemStack(recipe.getResultItem());
     }
 }
-/// TODO: 5/21/2023 Fix the JEI integration to change the item after a short amount of time
+/// TODO: 5/21/2023 Fix the JEI integration to change the item after a short amount of time*/

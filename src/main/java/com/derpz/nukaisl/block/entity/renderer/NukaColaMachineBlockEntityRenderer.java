@@ -3,7 +3,7 @@ package com.derpz.nukaisl.block.entity.renderer;
 import com.derpz.nukaisl.block.custom.NukaColaMachineBlock;
 import com.derpz.nukaisl.block.entity.NukaColaMachineBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 import java.util.Objects;
 
@@ -32,14 +33,14 @@ public class NukaColaMachineBlockEntityRenderer implements BlockEntityRenderer<N
         pPoseStack.pushPose();
         pPoseStack.translate(0.0f, 0.73f, 0.8f);
         pPoseStack.scale(0.24f, 0.24f, 0.24f);
-        pPoseStack.mulPose(Vector3f.XP.rotationDegrees(90));
-        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(90));
+        pPoseStack.mulPose(Axis.XP.rotationDegrees(90));
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(90));
 
         switch (pBlockEntity.getBlockState().getValue(NukaColaMachineBlock.FACING)) {
-            case NORTH -> pPoseStack.mulPose(Vector3f.ZP.rotationDegrees(0));
-            case EAST -> pPoseStack.mulPose(Vector3f.ZP.rotationDegrees(90));
-            case SOUTH -> pPoseStack.mulPose(Vector3f.ZP.rotationDegrees(180));
-            case WEST -> pPoseStack.mulPose(Vector3f.ZP.rotationDegrees(270));
+            case NORTH -> pPoseStack.mulPose(Axis.ZP.rotationDegrees(0));
+            case EAST -> pPoseStack.mulPose(Axis.ZP.rotationDegrees(90));
+            case SOUTH -> pPoseStack.mulPose(Axis.ZP.rotationDegrees(180));
+            case WEST -> pPoseStack.mulPose(Axis.ZP.rotationDegrees(270));
         }
 
         itemRenderer.renderStatic(itemStack, ItemTransforms.TransformType.GUI, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()),
