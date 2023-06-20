@@ -3,6 +3,7 @@ package com.derpz.nukaisl.recipe;
 import com.derpz.nukaisl.FalloutMod;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -18,6 +19,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final Ingredient input;
+
     private int slot;
 
     public NukaColaMachineRecipe(ResourceLocation id, ItemStack output, Ingredient input) {
@@ -50,7 +52,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public @NotNull ItemStack assemble(SimpleContainer pContainer) {
+    public @NotNull ItemStack assemble(SimpleContainer pContainer, RegistryAccess p_267165_) {
         return output;
     }
 
@@ -60,7 +62,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public @NotNull ItemStack getResultItem() {
+    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess p_267052_) {
         return output.copy();
     }
 
@@ -106,7 +108,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, NukaColaMachineRecipe recipe) {
-            buf.writeItemStack(recipe.getResultItem(), false);
+            buf.writeItemStack(recipe.getResultItem(buf.readRegistryId()), false);
             recipe.input.toNetwork(buf);
         }
         }

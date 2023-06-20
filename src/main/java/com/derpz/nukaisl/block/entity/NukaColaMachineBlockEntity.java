@@ -10,6 +10,7 @@ import com.derpz.nukaisl.util.ModEnergyStorage;
 import com.google.common.collect.Maps;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -40,6 +41,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -281,7 +283,7 @@ public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvi
 
             pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
 
-            pEntity.itemHandler.insertItem(recipe.getSlot(), recipe.getResultItem(), false);
+            pEntity.itemHandler.insertItem(recipe.getSlot(), recipe.getResultItem(Objects.requireNonNull(pEntity.getLevel()).m_9598_()), false);
 
             pEntity.resetProgress();
         }

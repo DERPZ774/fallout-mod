@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
@@ -43,9 +45,9 @@ public class NukaColaMachineBlockEntityRenderer implements BlockEntityRenderer<N
             case WEST -> pPoseStack.mulPose(Axis.ZP.rotationDegrees(270));
         }
 
-        itemRenderer.renderStatic(itemStack, ItemTransforms.TransformType.GUI, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()),
+        itemRenderer.m_269128_(itemStack, ItemDisplayContext.GUI, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()),
                         pBlockEntity.getBlockPos()),
-                OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, 1);
+                OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
         pPoseStack.popPose();
         /// TODO: 5/25/2023 Rendering all bottles
     }
@@ -55,3 +57,4 @@ public class NukaColaMachineBlockEntityRenderer implements BlockEntityRenderer<N
         return LightTexture.pack(bLight, sLight);
     }
 }
+//renderstack, gui, light level, blockpos, overlaytexture, poststack, buffersource,combined overlay

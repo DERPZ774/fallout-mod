@@ -17,7 +17,7 @@ import java.util.Map;
 public class UnderArmorItem extends ArmorItem {
 
 
-    public UnderArmorItem(ArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties) {
+    public UnderArmorItem(ArmorMaterial pMaterial, ArmorItem.Type pSlot, Properties pProperties) {
         super(pMaterial, pSlot, pProperties);
     }
 

@@ -4,6 +4,7 @@ import com.derpz.nukaisl.FalloutMod;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.util.Lazy;
@@ -40,12 +41,14 @@ public enum ModArmorMaterials implements ArmorMaterial {
         this.repairIngredient = Lazy.of(repairIngredient);
     }
 
-    public int getDurabilityForSlot(EquipmentSlot pSlot) {
-        return HEALTH_PER_SLOT[pSlot.getIndex()] * this.durabilityMultiplier;
+    @Override
+    public int m_266425_(ArmorItem.Type pSlot) {
+        return HEALTH_PER_SLOT[pSlot.m_266308_().getIndex()] * this.durabilityMultiplier;
     }
 
-    public int getDefenseForSlot(EquipmentSlot pSlot) {
-        return this.slotProtections[pSlot.getIndex()];
+    @Override
+    public int getDurabilityForSlot(ArmorItem.Type pSlot) {
+        return this.slotProtections[pSlot.m_266308_().getIndex()];
     }
 
     public int getEnchantmentValue() {

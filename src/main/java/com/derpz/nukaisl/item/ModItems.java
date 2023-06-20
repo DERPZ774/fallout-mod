@@ -80,19 +80,19 @@ public class ModItems {
 
     //Armor
     public static final RegistryObject<Item> SCRAP_METAL_HELMET = ITEMS.register("scrap_metal_helmet",
-            () -> new ModArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.HEAD,
+            () -> new ModArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.HELMET,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> SCRAP_METAL_CHESTPLATE = ITEMS.register("scrap_metal_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.CHEST,
+            () -> new ModArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> SCRAP_METAL_LEGGINGS = ITEMS.register("scrap_metal_leggings",
-            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, EquipmentSlot.LEGS,
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.LEGGINGS,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",
-            () -> new UnderArmorItem(ModArmorMaterials.UNDER_ARMOR, EquipmentSlot.CHEST,
+            () -> new UnderArmorItem(ModArmorMaterials.UNDER_ARMOR, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties()));
 
 

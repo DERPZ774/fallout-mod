@@ -6,7 +6,7 @@ import net.minecraft.world.item.ArmorMaterial;
 
 
 public class ModArmorItem extends ArmorItem {
-    public ModArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
+    public ModArmorItem(ArmorMaterial material, ArmorItem.Type slot, Properties settings) {
         super(material, slot, settings);
     }
 }
