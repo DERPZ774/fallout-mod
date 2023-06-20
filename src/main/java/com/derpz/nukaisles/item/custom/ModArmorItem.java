@@ -1,6 +1,5 @@
 package com.derpz.nukaisles.item.custom;
 
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 

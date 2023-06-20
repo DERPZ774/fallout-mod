@@ -3,6 +3,7 @@ package com.derpz.nukaisles.effect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 public class RadEffect extends MobEffect {
     public RadEffect(MobEffectCategory mobEffectCategory, int color) {
@@ -10,7 +11,7 @@ public class RadEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public void applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
         super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 

@@ -1,10 +1,8 @@
 package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
-import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
 import com.derpz.nukaisles.block.entity.renderer.NukaColaMachineBlockEntityRenderer;
-import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.particle.custom.RadiationParticles;
 import com.derpz.nukaisles.screen.ModMenuTypes;
@@ -12,9 +10,6 @@ import com.derpz.nukaisles.screen.NukaColaMachineScreen;
 import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -58,7 +53,7 @@ public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions e
 
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
-        Minecraft.getInstance().particleEngine.register(ModParticles.RADIATION_PARTICLES.get(),
+        event.registerSpriteSet(ModParticles.RADIATION_PARTICLES.get(),
                 RadiationParticles.Provider::new);
     }
 

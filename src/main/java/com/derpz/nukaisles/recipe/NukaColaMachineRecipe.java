@@ -2,7 +2,6 @@ package com.derpz.nukaisles.recipe;
 
 import com.derpz.nukaisles.FalloutMod;
 import com.google.gson.JsonObject;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +32,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
+    public boolean matches(@NotNull SimpleContainer pContainer, Level pLevel) {
         if (pLevel.isClientSide()) {
             return false;
         }
@@ -52,7 +51,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public @NotNull ItemStack assemble(SimpleContainer pContainer, RegistryAccess p_267165_) {
+    public @NotNull ItemStack assemble(@NotNull SimpleContainer pContainer, @NotNull RegistryAccess p_267165_) {
         return output;
     }
 
@@ -77,7 +76,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return Type.INSTANCE;
     }
 
@@ -92,7 +91,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(FalloutMod.MOD_ID, "cola_cooling");
 
         @Override
-        public NukaColaMachineRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+        public @NotNull NukaColaMachineRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "ingredient"));
             return new NukaColaMachineRecipe(pRecipeId, output, ingredient);
@@ -100,7 +99,7 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
 
 
         @Override
-        public @Nullable NukaColaMachineRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @Nullable NukaColaMachineRecipe fromNetwork(@NotNull ResourceLocation id, FriendlyByteBuf buf) {
             ItemStack output = buf.readItem();
             Ingredient ingredient = Ingredient.fromNetwork(buf);
             return new NukaColaMachineRecipe(id, output, ingredient);

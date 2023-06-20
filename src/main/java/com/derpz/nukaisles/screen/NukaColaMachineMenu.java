@@ -3,7 +3,6 @@ package com.derpz.nukaisles.screen;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.NukaColaMachineBlockEntity;
 
-import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -101,7 +100,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
 
     @Override
-    public @NotNull ItemStack quickMoveStack(Player playerIn, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
         if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
@@ -135,7 +134,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
 
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
                 player, ModBlocks.NUKA_COLA_MACHINE.get());
     }

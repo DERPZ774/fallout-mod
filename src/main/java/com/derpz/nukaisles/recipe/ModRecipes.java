@@ -1,7 +1,6 @@
 package com.derpz.nukaisles.recipe;
 
 import com.derpz.nukaisles.FalloutMod;
-import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

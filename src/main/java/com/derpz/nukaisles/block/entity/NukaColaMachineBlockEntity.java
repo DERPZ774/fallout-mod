@@ -10,7 +10,6 @@ import com.derpz.nukaisles.util.ModEnergyStorage;
 import com.google.common.collect.Maps;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

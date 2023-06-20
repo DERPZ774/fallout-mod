@@ -1,12 +1,12 @@
 package com.derpz.nukaisles.enchantment;
 
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import org.jetbrains.annotations.NotNull;
 
 //cntrl + h on enchantment to see base enchantments
 public class LightningStrikerEnchantment extends Enchantment {
@@ -15,7 +15,7 @@ public class LightningStrikerEnchantment extends Enchantment {
     }
 
     @Override
-    public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
+    public void doPostAttack(LivingEntity pAttacker, @NotNull Entity pTarget, int pLevel) {
         if(!pAttacker.level.isClientSide()) {
             ServerLevel world = ((ServerLevel) pAttacker.level);
             ServerPlayer player = ((ServerPlayer) pAttacker);

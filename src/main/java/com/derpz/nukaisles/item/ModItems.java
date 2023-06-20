@@ -1,11 +1,8 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.FalloutMod;
-import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.item.custom.*;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
