@@ -16,19 +16,18 @@ public class RadHudOverlay {
 
     public static final IGuiOverlay HUD_RADS = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
         int x = screenWidth / 2;
-        int y = screenHeight;
 
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, EMPTY_RADS);
         for(int i = 0; i < 10; i++) {
-            GuiComponent.blit(poseStack, x - 94 + (i * 9), y - 54, 0, 0, 12, 12,
+            GuiComponent.blit(poseStack, x - 94 + (i * 9), screenHeight - 54, 0, 0, 12, 12,
                     12, 12);
         }
         RenderSystem.setShaderTexture(0, FILLED_RADS);
         for(int i = 0; i < 10; i ++) {
            if(ClientRadData.getPlayerRads () > i) {
-                GuiComponent.blit(poseStack, x - 94 + (i * 9), y - 54, 0, 0, 12, 12,
+                GuiComponent.blit(poseStack, x - 94 + (i * 9), screenHeight - 54, 0, 0, 12, 12,
                         12, 12);
             } else {
                 break;

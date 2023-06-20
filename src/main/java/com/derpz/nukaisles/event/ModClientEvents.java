@@ -1,15 +1,12 @@
 package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
-import com.derpz.nukaisles.block.entity.ModBlockEntities;
-import com.derpz.nukaisles.block.entity.renderer.NukaColaMachineBlockEntityRenderer;
 import com.derpz.nukaisles.item.ModItems;
 
 import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

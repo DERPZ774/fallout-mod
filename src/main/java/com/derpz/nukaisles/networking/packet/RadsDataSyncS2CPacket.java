@@ -1,11 +1,7 @@
 package com.derpz.nukaisles.networking.packet;
 
 import com.derpz.nukaisles.client.ClientRadData;
-import com.derpz.nukaisles.effect.ModEffects;
-import com.derpz.nukaisles.rads.PlayerRadsProvider;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

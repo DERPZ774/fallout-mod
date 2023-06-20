@@ -3,7 +3,6 @@ package com.derpz.nukaisles.block;
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.custom.LampBlock;
 import com.derpz.nukaisles.block.custom.NukaColaMachineBlock;
-import com.derpz.nukaisles.item.ModCreativeModeTab;
 import com.derpz.nukaisles.item.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -18,6 +17,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -70,7 +70,7 @@ public class ModBlocks {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties()){
             @Override
-            public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+            public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
                 pTooltip.add(Component.translatable(tooltipKey));
             }
         });

@@ -8,10 +8,11 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
 
 public class PlayerRadsProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    public static Capability<PlayerRads> PLAYER_RADS = CapabilityManager.get(new CapabilityToken<PlayerRads>() { });
+    public static final Capability<PlayerRads> PLAYER_RADS = CapabilityManager.get(new CapabilityToken<PlayerRads>() { });
 
     private PlayerRads rads = null;
     private final LazyOptional<PlayerRads> optional = LazyOptional.of(this::createPlayerRads);
@@ -25,7 +26,7 @@ public class PlayerRadsProvider implements ICapabilityProvider, INBTSerializable
     }
         
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
         if(cap == PLAYER_RADS) {
             return optional.cast();
         }

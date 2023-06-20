@@ -3,11 +3,11 @@ package com.derpz.nukaisles.item;
 import com.derpz.nukaisles.FalloutMod;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.util.Lazy;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -55,15 +55,15 @@ public enum ModArmorMaterials implements ArmorMaterial {
         return this.enchantmentValue;
     }
 
-    public SoundEvent getEquipSound() {
+    public @NotNull SoundEvent getEquipSound() {
         return this.sound;
     }
 
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
-    public String getName() {
+    public @NotNull String getName() {
         return FalloutMod.MOD_ID + ":" + this.name;
     }
 
