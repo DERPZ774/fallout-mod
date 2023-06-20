@@ -1,10 +1,10 @@
 {
-  "type": "nukaisl:add_item",
+  "type": "nukaisles:add_item",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/village/village_weaponsmith"
     }
   ],
-  "item": "nukaisl:nuka_cola_cherry"
+  "item": "nukaisles:nuka_cola_cherry"
 }

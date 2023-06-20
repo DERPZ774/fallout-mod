@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nukaisl:item/bottle_full_uncapped"
+    "layer0": "nukaisles:item/bottle_full_uncapped"
   }
 }

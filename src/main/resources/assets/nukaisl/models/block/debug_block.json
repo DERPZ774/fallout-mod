@@ -1,6 +1,6 @@
 {
   "parent" : "block/cube_all",
   "textures": {
-    "all": "nukaisl:block/debug_block"
+    "all": "nukaisles:block/debug_block"
   }
 }

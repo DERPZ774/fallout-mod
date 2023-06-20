@@ -2,10 +2,11 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"2": "nukaisl:block/lamp",
-		"1": "nukaisl:block/lamp_light_off",
-		"particle": "nukaisl:block/lamp"
+		"2": "nukaisles:block/lamp",
+		"1": "nukaisles:block/lamp_light_off",
+		"particle": "nukaisles:block/lamp"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [10, 2.7, 8.5],

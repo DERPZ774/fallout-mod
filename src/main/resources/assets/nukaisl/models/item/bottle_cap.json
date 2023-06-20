@@ -1,7 +1,7 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "nukaisl:item/bottle_cap"
+		"layer0": "nukaisles:item/bottle_cap"
 	},
 	"display": {
 		"thirdperson_righthand": {

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "nukaisl:item/scrap_metal_shovel"
+    "layer0": "nukaisles:item/scrap_metal_shovel"
   }
 }

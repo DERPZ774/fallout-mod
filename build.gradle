@@ -29,8 +29,8 @@ apply plugin: 'org.spongepowered.mixin'
 
 
 version = '0.0.1-1.19.4'
-group = 'com.derpz.nukaisl' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'nukaisl'
+group = 'com.derpz.nukaisles' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'nukaisles'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -74,10 +74,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'nukaisl'
+            property 'forge.enabledGameTestNamespaces', 'nukaisles'
 
             mods {
-                nukaisl {
+                nukaisles {
                     source sourceSets.main
                 }
             }
@@ -88,7 +88,7 @@ minecraft {
             parent runs.client
 
             args '--username', 'DERPZ774', '--uuid', '87db27bb-47d0-4c82-9dec-fa4c6f4bf912'
-            args "-mixin.config=nukaisl.mixins.json"
+            args "-mixin.config=nukaisles.mixins.json"
         }
 
         server {
@@ -99,10 +99,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'nukaisl'
+            property 'forge.enabledGameTestNamespaces', 'nukaisles'
 
             mods {
-                nukaisl {
+                nukaisles {
                     source sourceSets.main
                 }
             }
@@ -127,10 +127,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'nukaisl'
+            property 'forge.enabledGameTestNamespaces', 'nukaisles'
 
             mods {
-                nukaisl {
+                nukaisles {
                     source sourceSets.main
                 }
             }
@@ -144,10 +144,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'nukaisl', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'nukaisles', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                nukaisl {
+                nukaisles {
                     source sourceSets.main
                 }
             }
@@ -223,8 +223,8 @@ dependencies {
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'nukaisl.refmap.json'
-    config 'nukaisl.mixins.json'
+    add sourceSets.main, 'nukaisles.refmap.json'
+    config 'nukaisles.mixins.json'
 
 }
 
@@ -234,12 +234,12 @@ mixin {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "nukaisl",
-                "Specification-Vendor"    : "nukaislsareus",
+                "Specification-Title"     : "nukaisles",
+                "Specification-Vendor"    : "nukaislessareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "nukaislsareus",
+                "Implementation-Vendor"   : "nukaislessareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

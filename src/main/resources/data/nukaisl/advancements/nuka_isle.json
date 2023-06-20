@@ -1,14 +1,14 @@
 {
   "display": {
     "icon": {
-      "item": "nukaisl:nuka_cola_quantum"
+      "item": "nukaisles:nuka_cola_quantum"
     },
     "title": "Nuka Isles Mod",
     "description": "Yes its real!",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "background": "nukaisl:textures/block/scrap_metal_block.png"
+    "background": "nukaisles:textures/block/scrap_metal_block.png"
   },
   "criteria": {
     "requirement": {
@@ -17,7 +17,7 @@
         "items": [
           {
             "items": [
-              "nukaisl:nuka_cola_quantum"
+              "nukaisles:nuka_cola_quantum"
             ]
           }
         ]

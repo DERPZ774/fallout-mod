@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "nukaisl:nuka_cola"
+      "item": "nukaisles:nuka_cola"
     },
     "title": "Nuka Cola",
     "description": "That tasted funny...",
@@ -9,13 +9,13 @@
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "nukaisl:nuka_isle",
+  "parent": "nukaisles:nuka_isle",
   "criteria": {
     "nuka_cola": {
       "conditions": {
         "item": {
           "items": [
-            "nukaisl:nuka_cola"
+            "nukaisles:nuka_cola"
           ]
         }
       },

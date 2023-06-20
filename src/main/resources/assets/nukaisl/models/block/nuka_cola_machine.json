@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"2": "nukaisl:block/nuka_cola_machine",
-		"particle": "nukaisl:block/nuka_cola_machine"
+		"2": "nukaisles:block/nuka_cola_machine",
+		"particle": "nukaisles:block/nuka_cola_machine"
 	},
 	"render_type": "cutout_mipped",
 	"elements": [

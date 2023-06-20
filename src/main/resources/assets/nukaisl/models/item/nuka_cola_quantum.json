@@ -1,15 +1,15 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nukaisl:item/nuka_cola_quantum_bottle"
+    "layer0": "nukaisles:item/nuka_cola_quantum_bottle"
   },
   "overrides": [
     {
       "predicate": {
-        "nukaisl:cap": 1
+        "nukaisles:cap": 1
       },
-      "model": "nukaisl:item/bottle_full_uncapped",
-      "texture": "nukaisl:item/nuka_cola_quantum_bottle_uncapped"
+      "model": "nukaisles:item/bottle_full_uncapped",
+      "texture": "nukaisles:item/nuka_cola_quantum_bottle_uncapped"
     }
   ]
 }

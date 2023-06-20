@@ -1,6 +1,6 @@
 {
-  "parent": "nukaisl:block/lamp_off",
+  "parent": "nukaisles:block/lamp_off",
   "textures": {
-    "1": "nukaisl:block/lamp_light_on"
+    "1": "nukaisles:block/lamp_light_on"
   }
 }

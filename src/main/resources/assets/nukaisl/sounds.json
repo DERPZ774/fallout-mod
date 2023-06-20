@@ -1,14 +1,14 @@
 {
   "debug_item_found_ore": {
-    "subtitle": "sounds.nukaisl.debut_item_found_ore",
+    "subtitle": "sounds.nukaisles.debut_item_found_ore",
     "sounds": [
-      "nukaisl:debug_item_found_ore"
+      "nukaisles:debug_item_found_ore"
     ]
   },
   "lamp_use": {
-    "subtitle": "sound.nukaisl.lamp_use",
+    "subtitle": "sound.nukaisles.lamp_use",
     "sounds": [
-      "nukaisl:lamp_use"
+      "nukaisles:lamp_use"
     ]
   }
 }

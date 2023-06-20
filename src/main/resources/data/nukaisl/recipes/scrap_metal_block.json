@@ -7,10 +7,10 @@
     ],
     "key":{
         "#":{
-            "item": "nukaisl:scrap_metal"
+            "item": "nukaisles:scrap_metal"
         }
     },
     "result":{
-        "item": "nukaisl:scrap_metal_block"
+        "item": "nukaisles:scrap_metal_block"
     }
 }

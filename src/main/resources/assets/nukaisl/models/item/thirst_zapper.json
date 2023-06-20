@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "nukaisl:item/thirst_zapper",
-		"particle": "nukaisl:item/thirst_zapper"
+		"0": "nukaisles:item/thirst_zapper",
+		"particle": "nukaisles:item/thirst_zapper"
 	},
 	"elements": [
 		{
