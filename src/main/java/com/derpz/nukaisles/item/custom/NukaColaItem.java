@@ -29,8 +29,8 @@ public class NukaColaItem extends Item {
         if (pEntityLiving instanceof ServerPlayer player) {
             player.awardStat(Stats.ITEM_USED.get(this));
             if (!player.getAbilities().instabuild) {
-                RadHelper.addRads(player, 20);
-                RadHelper.addEffect(player);
+               // RadHelper.addRads(player, 20); /ToDo Re-add Rad system here at some point
+              //  RadHelper.addEffect(player);
                 if (pStack.isEmpty()) {
                     return new ItemStack(ModItems.BOTTLE_CAP.get());
                 } else {

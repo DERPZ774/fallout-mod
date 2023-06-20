@@ -3,6 +3,7 @@ package com.derpz.nukaisles.event;
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
 import com.derpz.nukaisles.block.entity.renderer.NukaColaMachineBlockEntityRenderer;
+import com.derpz.nukaisles.item.ModItems;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.particle.custom.RadiationParticles;
 import com.derpz.nukaisles.screen.ModMenuTypes;
@@ -10,14 +11,20 @@ import com.derpz.nukaisles.screen.NukaColaMachineScreen;
 import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
+import net.minecraftforge.registries.RegistryObject;
 
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

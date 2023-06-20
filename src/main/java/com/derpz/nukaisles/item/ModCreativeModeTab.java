@@ -31,13 +31,14 @@ public class ModCreativeModeTab {
         }
     };*/
 
-    public static CreativeModeTab FALLOUT_TAB;
-    public static CreativeModeTab COLA_TAB;
-    public static CreativeModeTab MELEE_TAB;
+    public static CreativeModeTab FALLOUT_TAB, COLA_TAB, MELEE_TAB;
    @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
-        FALLOUT_TAB = event.registerCreativeModeTab(new ResourceLocation(FalloutMod.MOD_ID, "fallout_tab"),
-             builder ->   builder.icon(() -> new ItemStack(ModItems.SCRAP_METAL.get())).title(Component.translatable("tab.nukaisles.fallout")).build());
+        FALLOUT_TAB = event.registerCreativeModeTab(new ResourceLocation(FalloutMod.MOD_ID, "fallout"), builder -> builder.icon(ModItems.SCRAP_METAL.get()::getDefaultInstance).title(Component.translatable("tab.nukaisles.fallout")).displayItems((featureFlags, tab) -> {
+            for (RegistryObject<Item> registryObject : ModItems.ITEMS.getEntries()) {
+                tab.accept(registryObject.get());
+            }
+        }));
 
         COLA_TAB = event.registerCreativeModeTab(new ResourceLocation(FalloutMod.MOD_ID, "cola_tab"),
                 builder ->   builder.icon(() -> new ItemStack(ModItems.NUKA_COLA.get())).title(Component.translatable("tab.nukaisles.cola")).build());

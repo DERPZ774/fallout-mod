@@ -1,4 +1,4 @@
-/*
+
 package com.derpz.nukaisles.integration;
 
 import com.derpz.nukaisles.FalloutMod;
@@ -29,7 +29,7 @@ public class NukaMachineRecipeCategory implements IRecipeCategory<NukaColaMachin
     }
     @Override
     public @NotNull RecipeType<NukaColaMachineRecipe> getRecipeType() {
-        return JEInukaislesPlugin.COLA_TYPE;
+        return JEINukaislesPlugin.COLA_TYPE;
     }
 
     @Override
@@ -51,7 +51,8 @@ public class NukaMachineRecipeCategory implements IRecipeCategory<NukaColaMachin
     public void setRecipe(IRecipeLayoutBuilder builder, NukaColaMachineRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.setShapeless();
         builder.addSlot(RecipeIngredientRole.INPUT, 62, 37).addIngredients(recipe.getIngredient());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 37).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 37).addItemStack(recipe.getResultItem(null));
     }
+    //Objects.requireNonNull(pEntity.getLevel()).m_9598_()
 }
-/// TODO: 5/21/2023 Fix the JEI integration to change the item after a short amount of time*/
+/// TODO: 5/21/2023 Fix the JEI integration to change the item after a short amount of time

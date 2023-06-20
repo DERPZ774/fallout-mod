@@ -54,7 +54,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> LAMP = registerBlock("lamp",
             () -> new LampBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL).
-                    lightLevel((state) -> state.getValue(LampBlock.CLICKED) ? 15 : 0)));
+                    lightLevel((state) -> state.getValue(LampBlock.CLICKED) ? 8 : 0)));
 
         public static final RegistryObject<Block> NUKA_COLA_MACHINE = registerBlock("nuka_cola_machine",
                 () -> new NukaColaMachineBlock(BlockBehaviour.Properties.of(Material.METAL)

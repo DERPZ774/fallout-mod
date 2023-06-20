@@ -181,10 +181,6 @@ repositories {
     }
 }
 
-configurations {
-    shade // <- Create a 'shade' configuration
-    implementation.extendsFrom(shade) // <- Add the shade configuration to implementation
-}
 
 dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
@@ -197,11 +193,13 @@ dependencies {
     // Apply Mixin AP
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
+
+    //remember the $mc_version & $jei_version is in the gradle.properties file
     // compile against the JEI API but do not include it at runtime
-  /*  compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+   compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
-    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))*/
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

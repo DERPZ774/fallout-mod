@@ -24,6 +24,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
@@ -105,15 +106,13 @@ public class LampBlock extends Block {
 
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public @NotNull InteractionResult use(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
+        float f = pState.getValue(CLICKED) ? 0.6F : 0.5F;
+        pLevel.playSound(pPlayer, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
 
         if(!pLevel.isClientSide() && pHand == InteractionHand.MAIN_HAND) {
             boolean currentState = pState.getValue(CLICKED);
             pLevel.setBlock(pPos, pState.setValue(CLICKED, !currentState), 3);
-
-            float f = pState.getValue(CLICKED) ? 0.6F : 0.5F;
-            //pLevel.playSound(null, pPos, ModSounds.LAMP_USE.get(), SoundSource.BLOCKS, 0.3F, f);
-
         }
         return InteractionResult.SUCCESS;
     }

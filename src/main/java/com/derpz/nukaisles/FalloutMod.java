@@ -12,8 +12,10 @@ import com.derpz.nukaisles.networking.ModMessages;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.recipe.ModRecipes;
 import com.derpz.nukaisles.screen.ModMenuTypes;
+import com.derpz.nukaisles.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -38,7 +41,7 @@ public class FalloutMod {
         ModBlocks.register(eventBus);
 
         ModEnchantments.register(eventBus);
-       // ModSounds.register(eventBus);
+        ModSounds.register(eventBus);
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
 
@@ -74,17 +77,6 @@ public class FalloutMod {
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
-        if(event.getTab() == ModCreativeModeTab.FALLOUT_TAB) {
-            event.accept(ModItems.SCRAP_METAL);
-        }
-
-        if(event.getTab() == ModCreativeModeTab.COLA_TAB) {
-
-        }
-
-        if(event.getTab() == ModCreativeModeTab.MELEE_TAB) {
-
-        }
         /// TODO: 6/16/2023 Add all the items to their perspective tabs
         if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SCRAP_METAL);
@@ -93,4 +85,3 @@ public class FalloutMod {
 
 }
 /// TODO: 8/24/2022 Get started on gun system
-/// TODO: 1/22/2023 Look into HumanoidArmorLayer class for under armor render solution

@@ -1,4 +1,4 @@
-/*
+
 package com.derpz.nukaisles.integration;
 
 import com.derpz.nukaisles.FalloutMod;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 @JeiPlugin
-public class JEInukaislesPlugin implements IModPlugin {
+public class JEINukaislesPlugin implements IModPlugin {
     public static mezz.jei.api.recipe.RecipeType<NukaColaMachineRecipe> COLA_TYPE = new RecipeType<>(NukaMachineRecipeCategory.UID, NukaColaMachineRecipe.class);
     @Override
     public @NotNull ResourceLocation getPluginUid() {
@@ -38,4 +38,4 @@ public class JEInukaislesPlugin implements IModPlugin {
     }
 
 }
-*/
+
