@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m  ",
+    "mm ",
+    "mmm"
+  ],
+  "key":{
+    "m":{
+      "item": "nukaisles:scrap_metal_block"
+    }
+  },
+  "result":{
+    "item": "nukaisles:scrap_metal_stairs",
+    "count": 4
+  }
+}

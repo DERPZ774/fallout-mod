@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mm ",
+    "ms ",
+    " s "
+  ],
+  "key":{
+    "m":{
+      "item": "nukaisles:scrap_metal"
+    },
+    "s":{
+      "item": "minecraft:stick"
+    }
+  },
+  "result":{
+    "item": "nukaisles:scrap_metal_axe"
+  }
+}

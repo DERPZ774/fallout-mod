@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " m ",
+    " s ",
+    " s "
+  ],
+  "key":{
+    "m":{
+      "item": "nukaisles:scrap_metal"
+    },
+    "s":{
+      "item": "minecraft:stick"
+    }
+  },
+  "result":{
+    "item": "nukaisles:scrap_metal_shovel"
+  }
+}

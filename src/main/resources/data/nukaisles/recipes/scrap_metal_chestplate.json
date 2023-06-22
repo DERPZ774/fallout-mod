@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "mmm",
+    "mmm"
+  ],
+  "key":{
+    "m":{
+      "item": "nukaisles:scrap_metal"
+    }
+  },
+  "result":{
+    "item": "nukaisles:scrap_metal_chestplate"
+  }
+}

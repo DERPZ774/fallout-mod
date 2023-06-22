@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " r ",
+    "wbw",
+    " s "
+  ],
+  "key":{
+    "r":{
+      "item": "minecraft:red_wool"
+    },
+    "w":{
+      "item": "minecraft:white_wool"
+    },
+    "b":{
+      "item": "minecraft:blue_wool"
+    },
+    "s":{
+      "item": "minecraft:stick"
+    }
+  },
+  "result":{
+    "item": "nukaisles:commie_whacker"
+  }
+}

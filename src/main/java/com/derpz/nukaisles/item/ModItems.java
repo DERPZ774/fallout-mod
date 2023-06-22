@@ -18,6 +18,9 @@ public class ModItems {
     public static final RegistryObject<Item> SCRAP_METAL = ITEMS.register("scrap_metal",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> LIGHTBULB = ITEMS.register("lightbulb",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
             () -> new Item(new Item.Properties()));
 
@@ -51,8 +54,8 @@ public class ModItems {
                     new Item.Properties()));
 
     //ranged
-    public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
-            () ->   new Item(new Item.Properties()));
+   /* public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
+            () ->   new Item(new Item.Properties()));*/
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",
@@ -88,9 +91,10 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.LEGGINGS,
                     new Item.Properties()));
 
-    public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",
+    /*public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",
             () -> new UnderArmorItem(ModArmorMaterials.UNDER_ARMOR, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties()));
+                    new Item.Properties()));*/
+
 
 
     public static void register(IEventBus eventBus) {

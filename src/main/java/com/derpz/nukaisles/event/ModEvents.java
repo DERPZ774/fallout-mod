@@ -141,15 +141,20 @@ public class ModEvents {
                 event.getType() == VillagerProfession.LEATHERWORKER || event.getType() == VillagerProfession.FARMER ||
                 event.getType() == VillagerProfession.FARMER || event.getType() == VillagerProfession.FLETCHER ||
                 event.getType() == VillagerProfession.LIBRARIAN || event.getType() == VillagerProfession.MASON ||
-                event.getType() == VillagerProfession.NITWIT || event.getType() == VillagerProfession.SHEPHERD ||
+                event.getType() == VillagerProfession.SHEPHERD ||
                 event.getType() == VillagerProfession.TOOLSMITH || event.getType() == VillagerProfession.WEAPONSMITH) {
 
-            ItemStack stack = new ItemStack(ModItems.NUKA_COLA.get(), 1);
+            ItemStack cola = new ItemStack(ModItems.NUKA_COLA.get(), 1);
+            ItemStack cap = new ItemStack(ModItems.BOTTLE_CAP.get(), 3);
 
 
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(ModItems.BOTTLE_CAP.get(), 2),
-                    stack, 10, 8, 0.02F));
+                    cola, 10, 8, 0.02F));
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    cap, 10, 8, 0.02F));
         }
 
         if(event.getType() == VillagerProfession.ARMORER || event.getType() == VillagerProfession.WEAPONSMITH ||

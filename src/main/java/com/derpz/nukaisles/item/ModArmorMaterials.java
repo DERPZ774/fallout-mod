@@ -13,10 +13,11 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
     SCRAP_METAL("scrap_metal", 8, new int[]{1, 4, 5, 1}, 6,
-            SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ModItems.SCRAP_METAL.get())),
+            SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ModItems.SCRAP_METAL.get())),;
+    /*
     UNDER_ARMOR("under_armor", 8, new int[]{1, 4, 5, 1}, 6,
-            SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ModItems.VAULT_SUIT.get())),;
-
+            SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.of(ModItems.VAULT_SUIT.get()));*/
+//ToDo add back after first release
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

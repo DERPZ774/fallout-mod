@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " n ",
+    "nln",
+    "isi"
+  ],
+  "key":{
+    "l":{
+      "item": "nukaisles:lightbulb"
+    },
+    "s":{
+      "item": "minecraft:lever"
+    },
+    "n":{
+      "item": "minecraft:iron_nugget"
+    },
+    "i":{
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result":{
+    "item": "nukaisles:lamp"
+  }
+}

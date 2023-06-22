@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nukaisles:scrap_metal",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nukaisles:bottle_cap",
+          "weight": 15
+        }
+
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

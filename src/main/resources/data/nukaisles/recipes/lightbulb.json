@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " p ",
+    "pdp",
+    " i "
+  ],
+  "key":{
+    "p":{
+      "item": "minecraft:glass_pane"
+    },
+    "d":{
+      "item": "minecraft:glowstone_dust"
+    },
+    "i":{
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result":{
+    "item": "nukaisles:lightbulb"
+  }
+}
