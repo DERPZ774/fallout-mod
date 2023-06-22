@@ -1,14 +1,18 @@
 package com.derpz.nukaisles.item.custom;
 
+import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.item.ModItems;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.util.RadHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -17,33 +21,45 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NukaColaItem extends Item {
 
     public @NotNull ItemStack finishUsingItem(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving) {
-        pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(),pEntityLiving.getX() + 0.5,pEntityLiving.getY() + 1,pEntityLiving.getZ() + 0.5, 1, 1, 1 );
+      //  pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(),pEntityLiving.getX() + 0.5,pEntityLiving.getY() + 1,pEntityLiving.getZ() + 0.5, 1, 1, 1 );
         if (pEntityLiving instanceof ServerPlayer player) {
             player.awardStat(Stats.ITEM_USED.get(this));
             if (!player.getAbilities().instabuild) {
-               // RadHelper.addRads(player, 20); /ToDo Re-add Rad system here at some point
-              //  RadHelper.addEffect(player);
+                // RadHelper.addRads(player, 20); /ToDo Re-add Rad system here at some point
+                //  RadHelper.addEffect(player);
                 if (pStack.isEmpty()) {
                     return new ItemStack(ModItems.BOTTLE_CAP.get());
                 } else {
                     pStack.shrink(0);
                 }
-
-                player.getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+                if(!pEntityLiving.getItemInHand(InteractionHand.MAIN_HAND).hasTag()) {
+                    player.getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+                }
                 player.getInventory().add(new ItemStack(ModItems.EMPTY_NUKA_COLA.get()));
             }
         }
 
         pLevel.gameEvent(pEntityLiving, GameEvent.DRINK, pEntityLiving.getEyePosition());
         return this.isEdible() ? pEntityLiving.eat(pLevel, pStack) : pStack;
+    }
+
+    @Override
+    public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
+        if(pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) && !pContext.getLevel().isClientSide && !pContext.getItemInHand().hasTag()) {
+            pContext.getItemInHand().getOrCreateTag().putInt("cap", 1);
+            Objects.requireNonNull(pContext.getPlayer()).getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+        }
+        return pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }
 
     @Override
@@ -62,7 +78,7 @@ public class NukaColaItem extends Item {
             pTooltipComponents.add(Component.translatable("tooltip.nukaisles.nuka_cola_cold.tooltip").withStyle(ChatFormatting.AQUA));
         }
         assert pStack.getTag() != null;
-        if(pStack.hasTag()) {
+        if(pStack.getOrCreateTag().contains("cap")) {
             pTooltipComponents.add(Component.translatable("tooltip.nukaisles.nuka_cola_uncapped.tooltip").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
         }
     }
@@ -76,9 +92,4 @@ public class NukaColaItem extends Item {
     public NukaColaItem(Properties pProperties) {
         super(pProperties);
     }
-
-   //pEntityLiving.getX() + 0.5,pEntityLiving.getY() + 1,pEntityLiving.getZ() + 0.5,
-
 }
-
-/// TODO: 5/30/2023 Crouch right click fix for decap

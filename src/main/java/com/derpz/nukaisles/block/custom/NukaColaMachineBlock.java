@@ -99,12 +99,6 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
                 ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
                 NetworkHooks.openScreen(serverPlayer, NukaColaMachineBlockEntity, pPos);
             }
-            if (pPlayer.isCrouching() && pPlayer.getMainHandItem().getItem() instanceof NukaColaItem)  {
-                System.out.println("test");
-                pPlayer.getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
-                pPlayer.getInventory().removeItem(pPlayer.getInventory().selected, 1);
-                pPlayer.getInventory().getItem(pPlayer.getInventory().selected).addTagElement("de-capped", new CompoundTag());
-            }
             return InteractionResult.CONSUME;
         }
         return InteractionResult.SUCCESS;

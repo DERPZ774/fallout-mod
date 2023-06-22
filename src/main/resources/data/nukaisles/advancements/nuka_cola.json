@@ -9,7 +9,7 @@
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "nukaisles:nuka_isle",
+  "parent": "nukaisles:nuka_isles",
   "criteria": {
     "nuka_cola": {
       "conditions": {
