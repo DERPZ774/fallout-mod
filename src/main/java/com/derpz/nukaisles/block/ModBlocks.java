@@ -56,7 +56,7 @@ public class ModBlocks {
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL).
                     lightLevel((state) -> state.getValue(LampBlock.CLICKED) ? 8 : 0)));
 
-        public static final RegistryObject<Block> NUKA_COLA_MACHINE = registerBlock("nuka_cola_machine",
+        public static final RegistryObject<Block> NUKA_COLA_MACHINE = BLOCKS.register("nuka_cola_machine",
                 () -> new NukaColaMachineBlock(BlockBehaviour.Properties.of(Material.METAL)
                         .strength(5f).requiresCorrectToolForDrops().noOcclusion()));
 

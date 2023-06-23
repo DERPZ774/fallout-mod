@@ -1,6 +1,7 @@
 package com.derpz.nukaisles.item;
 
 import com.derpz.nukaisles.FalloutMod;
+import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.item.custom.*;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +21,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> LIGHTBULB = ITEMS.register("lightbulb",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NUKA_COLA_MACHINE_BLOCK_ITEM = ITEMS.register("nuka_cola_machine",
+            () -> new NukaColaMachineBlockItem(ModBlocks.NUKA_COLA_MACHINE.get() ,new Item.Properties()));
 
     public static final RegistryObject<Item> BOTTLE_CAP = ITEMS.register("bottle_cap",
             () -> new Item(new Item.Properties()));

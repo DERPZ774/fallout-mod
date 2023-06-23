@@ -16,6 +16,8 @@ import com.derpz.nukaisles.screen.ModMenuTypes;
 import com.derpz.nukaisles.sound.ModSounds;
 import com.derpz.nukaisles.util.ItemStackUtil;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
