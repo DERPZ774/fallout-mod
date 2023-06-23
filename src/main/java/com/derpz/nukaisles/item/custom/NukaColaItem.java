@@ -1,13 +1,12 @@
 package com.derpz.nukaisles.item.custom;
 
+import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.item.ModItems;
-import com.derpz.nukaisles.particle.ModParticles;
-import com.derpz.nukaisles.util.RadHelper;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stats;
@@ -21,7 +20,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -57,6 +56,7 @@ public class NukaColaItem extends Item {
     public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
         if(pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) && !pContext.getLevel().isClientSide && !pContext.getItemInHand().hasTag()) {
             pContext.getItemInHand().getOrCreateTag().putInt("cap", 1);
+            System.out.println(pContext.getItemInHand().getTag());
             Objects.requireNonNull(pContext.getPlayer()).getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
         }
         return pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
@@ -83,7 +83,6 @@ public class NukaColaItem extends Item {
         }
     }
 
-
     @Override
     public boolean isFoil(ItemStack pStack) {
         return pStack.is(ModItems.NUKA_COLA_COLD.get()) || pStack.is(ModItems.NUKA_COLA_CHERRY_COLD.get()) || pStack.is(ModItems.NUKA_COLA_QUANTUM_COLD.get());
@@ -92,4 +91,5 @@ public class NukaColaItem extends Item {
     public NukaColaItem(Properties pProperties) {
         super(pProperties);
     }
+
 }

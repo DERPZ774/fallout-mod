@@ -4,6 +4,11 @@
     "layer0": "nukaisles:item/nuka_cherry_bottle"
   },
   "overrides": [
-    { "predicate": { "nukaisles:cap": 1 }, "model": "nukaisles:item/bottle_full_uncapped"}
+    {
+      "predicate": {
+        "nukaisles:cap": 1
+      },
+      "model": "nukaisles:item/cherry_bottle_full_uncapped"
+    }
   ]
 }

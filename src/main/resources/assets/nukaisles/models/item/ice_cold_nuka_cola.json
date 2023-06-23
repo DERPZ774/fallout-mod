@@ -1,3 +1,11 @@
 {
-  "parent": "nukaisles:item/nuka_cola"
+  "parent": "nukaisles:item/nuka_cola",
+  "overrides": [
+    {
+      "predicate": {
+        "nukaisles:cap": 1
+      },
+      "model": "nukaisles:item/bottle_full_uncapped"
+    }
+  ]
 }

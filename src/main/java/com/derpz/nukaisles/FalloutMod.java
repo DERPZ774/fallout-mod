@@ -7,13 +7,17 @@ import com.derpz.nukaisles.enchantment.ModEnchantments;
 import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.item.ModCreativeModeTab;
 import com.derpz.nukaisles.item.ModItems;
+import com.derpz.nukaisles.item.custom.NukaColaItem;
 import com.derpz.nukaisles.loot.ModLootModifiers;
 import com.derpz.nukaisles.networking.ModMessages;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.recipe.ModRecipes;
 import com.derpz.nukaisles.screen.ModMenuTypes;
 import com.derpz.nukaisles.sound.ModSounds;
+import com.derpz.nukaisles.util.ItemStackUtil;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -67,13 +71,16 @@ public class FalloutMod {
 
     private void clientSetup(final FMLClientSetupEvent event) {
        // ItemBlockRenderTypes.setRenderLayer(ModBlocks.NUKA_COLA_MACHINE.get(), RenderType.cutout());
+        //pPlayer.isCrouching() && pPlayer.getMainHandItem().getItem() instanceof NukaColaItem
+        event.enqueueWork(this::addColaPredicate);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
-        LOGGER.info("War, war never changes");
+        LOGGER.info("War, war never changes.");
 
         event.enqueueWork(ModMessages::register);
+
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
@@ -81,6 +88,17 @@ public class FalloutMod {
         if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SCRAP_METAL);
         }
+    }
+
+    private void addColaPredicate() {
+        ResourceLocation capLocation = new ResourceLocation(FalloutMod.MOD_ID, "cap");
+
+        ItemProperties.register(ModItems.NUKA_COLA.get(), capLocation, ItemStackUtil::getTagPropertyValue);
+        ItemProperties.register(ModItems.NUKA_COLA_CHERRY.get(), capLocation, ItemStackUtil::getTagPropertyValue);
+        ItemProperties.register(ModItems.NUKA_COLA_QUANTUM.get(), capLocation, ItemStackUtil::getTagPropertyValue);
+        ItemProperties.register(ModItems.NUKA_COLA_COLD.get(), capLocation, ItemStackUtil::getTagPropertyValue);
+        ItemProperties.register(ModItems.NUKA_COLA_CHERRY_COLD.get(), capLocation, ItemStackUtil::getTagPropertyValue);
+        ItemProperties.register(ModItems.NUKA_COLA_QUANTUM_COLD.get(), capLocation, ItemStackUtil::getTagPropertyValue);
     }
 
 }

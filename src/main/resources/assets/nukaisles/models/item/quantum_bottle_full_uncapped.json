@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nukaisles:item/nuka_cola_quantum_bottle_uncapped"
+  }
+}

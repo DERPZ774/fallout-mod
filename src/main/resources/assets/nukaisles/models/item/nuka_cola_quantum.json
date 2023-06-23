@@ -8,8 +8,7 @@
       "predicate": {
         "nukaisles:cap": 1
       },
-      "model": "nukaisles:item/bottle_full_uncapped",
-      "texture": "nukaisles:item/nuka_cola_quantum_bottle_uncapped"
+      "model": "nukaisles:item/quantum_bottle_full_uncapped"
     }
   ]
 }
