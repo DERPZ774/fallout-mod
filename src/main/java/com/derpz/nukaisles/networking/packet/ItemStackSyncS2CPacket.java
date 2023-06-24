@@ -42,7 +42,7 @@ public class ItemStackSyncS2CPacket {
         buf.writeBlockPos(pos);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+    public void handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             assert Minecraft.getInstance().level != null;
@@ -50,6 +50,5 @@ public class ItemStackSyncS2CPacket {
                 blockEntity.setHandler(this.itemStackHandler);
             }
         });
-        return true;
     }
 }

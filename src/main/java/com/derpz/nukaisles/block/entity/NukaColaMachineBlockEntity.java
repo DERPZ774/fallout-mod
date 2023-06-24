@@ -51,7 +51,7 @@ import java.util.Objects;
 
 public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider, GeoBlockEntity {
 private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(7) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -74,7 +74,7 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
             ModMessages.sendToClients(new EnergySyncS2CPacket(this.energy, getBlockPos()));
         }
     };
-    private static final int ENERGY_REQ = 32;
+    private static final int ENERGY_REQ = 10;
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
 
     public NukaColaMachineBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
@@ -215,7 +215,6 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
             pEntity.progress++;
             extractEnergy(pEntity);
             setChanged(pLevel, pPos, pState);
-
 
             if (pEntity.progress >= pEntity.maxProgress) {
                 pEntity.resetProgress();
