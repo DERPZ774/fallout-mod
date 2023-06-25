@@ -70,26 +70,96 @@ public class NukaColaMachineBlockEntityRenderer extends GeoBlockRenderer<NukaCol
                             pPoseStack.translate(0.18f, 0.74f, 0.91f);
                             pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
                         } else if (facing == Direction.EAST){
-                            pPoseStack.translate(0.18f, 0.74f, 0.91f);
+                            pPoseStack.translate(0.82f, 0.74f, 0.08f);
                             pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.09f, 0.74f, 0.19f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.92f, 0.74f, 0.82f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
                         }
-//                            pPoseStack.translate(0.13f, 0.74f, 0.75f);
-//                        }
-                            pPoseStack.scale(0.24f, 0.24f, 0.24f);
-
-                            // Add more cases as needed
-                        }
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
                     }
 
-                    itemRenderer.m_269128_(stack, ItemDisplayContext.FIXED, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), pBlockEntity.getRenderStack(i).getCount());
-                    pPoseStack.popPose();
+                    case 3 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.08f, 0.74f, 0.81f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.EAST){
+                            pPoseStack.translate(0.90f, 0.74f, 0.18f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.19f, 0.74f, 0.10f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.82f, 0.74f, 0.92f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        }
+
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+
+                    case 4 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.18f, 0.96f, 0.71f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
+                        } else if (facing == Direction.EAST) {
+                            pPoseStack.translate(0.82f, 0.96f, 0.29f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.29f, 0.96f, 0.16f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.71f, 0.96f, 0.82f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
+                        }
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+                    case 5 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.18f, 0.96f, 0.91f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
+                        } else if (facing == Direction.EAST){
+                            pPoseStack.translate(0.82f, 0.96f, 0.08f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.09f, 0.96f, 0.19f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.92f, 0.96f, 0.82f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
+                        }
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+
+                    case 6 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.08f, 0.96f, 0.81f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.EAST){
+                            pPoseStack.translate(0.90f, 0.96f, 0.18f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.19f, 0.96f, 0.10f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.82f, 0.96f, 0.92f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        }
+
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
                 }
-                /// TODO: 5/25/2023 Rendering all bottles
+
+                itemRenderer.m_269128_(stack, ItemDisplayContext.FIXED, getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), pBlockEntity.getRenderStack(i).getCount());
+                pPoseStack.popPose();
             }
         }
-        private int getLightLevel(Level level, BlockPos pos) {
-            int bLight = level.getBrightness(LightLayer.BLOCK, pos);
-            int sLight = level.getBrightness(LightLayer.SKY, pos);
-            return LightTexture.pack(bLight, sLight);
-        }
     }
+    private int getLightLevel(Level level, BlockPos pos) {
+        int bLight = level.getBrightness(LightLayer.BLOCK, pos);
+        int sLight = level.getBrightness(LightLayer.SKY, pos);
+        return LightTexture.pack(bLight, sLight);
+    }
+}
