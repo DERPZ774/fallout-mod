@@ -10,6 +10,7 @@ import com.derpz.nukaisles.util.ModEnergyStorage;
 import com.google.common.collect.Maps;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -118,21 +119,8 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
         this.ENERGY_STORAGE.setEnergy(energy);
     }
 
-    public ItemStack getRenderStack() {
-        int stackWithItem = 0;
-
-        for (int i = 1; i < itemHandler.getSlots(); i++) {
-            if (!itemHandler.getStackInSlot(i).isEmpty()) {
-                stackWithItem = i;
-            }
-        }
-
-        if (!itemHandler.getStackInSlot(stackWithItem).isEmpty() && stackWithItem != 0) {
-            return itemHandler.getStackInSlot(stackWithItem);
-        }
-        else {
-            return itemHandler.getStackInSlot(1);
-        }
+    public ItemStack getRenderStack(int slot) {
+        return itemHandler.getStackInSlot(slot);
     }
 
     public void setHandler(ItemStackHandler itemStackHandler) {
