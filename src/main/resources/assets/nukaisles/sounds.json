@@ -4,5 +4,11 @@
     "sounds": [
       "nukaisles:lamp_use"
     ]
+  },
+  "cola_decap": {
+    "subtitle": "sound.nukaisles.cola_decap",
+    "sounds": [
+      "nukaisles:decap"
+    ]
   }
 }

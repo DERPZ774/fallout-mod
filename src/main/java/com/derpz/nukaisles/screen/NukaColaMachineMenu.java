@@ -3,6 +3,8 @@ package com.derpz.nukaisles.screen;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.block.entity.NukaColaMachineBlockEntity;
 
+import com.derpz.nukaisles.item.custom.NukaColaItem;
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -11,12 +13,17 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 public class NukaColaMachineMenu extends AbstractContainerMenu {
     public final NukaColaMachineBlockEntity blockEntity;
@@ -38,13 +45,13 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(h -> {
-            this.addSlot(new SlotItemHandler(h, 0, 38, 18));
-            this.addSlot(new SlotItemHandler(h, 1, 62, 37));
-            this.addSlot(new SlotItemHandler(h, 2, 80, 37));
-            this.addSlot(new SlotItemHandler(h, 3, 98, 37));
-            this.addSlot(new SlotItemHandler(h, 4, 62, 55));
-            this.addSlot(new SlotItemHandler(h, 5, 80, 55));
-            this.addSlot(new SlotItemHandler(h, 6, 98, 55));
+            this.addSlot(new RestrictedSlotItemHandler(h, 0, 38, 18));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 1, 62, 37));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 2, 80, 37));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 3, 98, 37));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 4, 62, 55));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 5, 80, 55));
+            this.addSlot(new RestrictedSlotItemHandlerCola(h, 6, 98, 55));
         });
 
         addDataSlots(data);
@@ -78,10 +85,7 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         return maxStorage != 0 && storage != 0 ? storage * progressSize / maxStorage : 0;
     }
 
-    
-
-
-        // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
+    // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
     // For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
     // Each time we add a Slot to the container, it automatically increases the slotIndex, which means
@@ -95,6 +99,10 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
+    private static final Set<Item> ALLOWED_ITEMS = ImmutableSet.of(
+            Items.ICE, Items.SNOWBALL, Items.POWDER_SNOW_BUCKET,
+            Items.SNOW_BLOCK, Items.PACKED_ICE, Items.BLUE_ICE
+    );
 
     // THIS YOU HAVE TO DEFINE!
     private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
@@ -132,7 +140,6 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
-
     @Override
     public boolean stillValid(@NotNull Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
@@ -151,5 +158,35 @@ public class NukaColaMachineMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
+    }
+
+    private static class RestrictedSlotItemHandler extends SlotItemHandler {
+        public RestrictedSlotItemHandler(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            // Define the logic for allowing only certain items to be placed in this slot
+            // For example, to allow only items of type "ItemA" and "ItemB":
+
+            return ALLOWED_ITEMS.contains(stack.getItem());
+        }
+
+    }
+
+    private static class RestrictedSlotItemHandlerCola extends SlotItemHandler {
+        public RestrictedSlotItemHandlerCola(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            // Define the logic for allowing only certain items to be placed in this slot
+            // For example, to allow only items of type "ItemA" and "ItemB":
+
+            return stack.getItem() instanceof NukaColaItem;
+        }
+
     }
 }

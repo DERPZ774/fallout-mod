@@ -3,12 +3,14 @@ package com.derpz.nukaisles.item.custom;
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.item.ModItems;
+import com.derpz.nukaisles.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -54,10 +56,12 @@ public class NukaColaItem extends Item {
 
     @Override
     public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
-        if(pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) && !pContext.getLevel().isClientSide && !pContext.getItemInHand().hasTag()) {
-            pContext.getItemInHand().getOrCreateTag().putInt("cap", 1);
-            System.out.println(pContext.getItemInHand().getTag());
-            Objects.requireNonNull(pContext.getPlayer()).getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+        if (pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) && !pContext.getItemInHand().hasTag()) {
+            pContext.getLevel().playSound(pContext.getPlayer(), pContext.getClickedPos(), ModSounds.COLA_DECAP.get(), SoundSource.BLOCKS, 4.0f, 1.0f);
+            if (!pContext.getLevel().isClientSide) {
+                pContext.getItemInHand().getOrCreateTag().putInt("cap", 1);
+                Objects.requireNonNull(pContext.getPlayer()).getInventory().add(new ItemStack(ModItems.BOTTLE_CAP.get()));
+            }
         }
         return pContext.getLevel().getBlockState(pContext.getClickedPos()).getBlock().equals(ModBlocks.NUKA_COLA_MACHINE.get()) ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }

@@ -14,6 +14,7 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, FalloutMod.MOD_ID);
 
     public static RegistryObject<SoundEvent> LAMP_USE = registerSoundEvents("lamp_use");
+    public static RegistryObject<SoundEvent> COLA_DECAP = registerSoundEvents("cola_decap");
 
 
   /*  public static final ForgeSoundType LAMP_SOUNDS = new ForgeSoundType(1f, 1f,

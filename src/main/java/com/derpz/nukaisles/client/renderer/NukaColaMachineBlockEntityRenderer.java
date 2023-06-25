@@ -11,19 +11,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoBlockRenderer;
 
@@ -51,6 +47,57 @@ public class NukaColaMachineBlockEntityRenderer extends GeoBlockRenderer<NukaCol
                 switch (i) {
                     case 1 -> {
                         if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.18f, 0.96f, 0.71f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
+                        } else if (facing == Direction.EAST) {
+                            pPoseStack.translate(0.82f, 0.96f, 0.29f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.29f, 0.96f, 0.16f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.71f, 0.96f, 0.82f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
+                        }
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+                    case 2 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.08f, 0.96f, 0.81f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.EAST){
+                            pPoseStack.translate(0.90f, 0.96f, 0.18f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.19f, 0.96f, 0.10f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.82f, 0.96f, 0.92f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                        }
+
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+
+                    case 3 -> {
+                        if (facing == Direction.WEST) {
+                            pPoseStack.translate(0.18f, 0.96f, 0.91f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
+                        } else if (facing == Direction.EAST){
+                            pPoseStack.translate(0.82f, 0.96f, 0.08f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
+                        } else if (facing == Direction.NORTH) {
+                            pPoseStack.translate(0.09f, 0.96f, 0.19f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
+                        } else if (facing == Direction.SOUTH) {
+                            pPoseStack.translate(0.92f, 0.96f, 0.82f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
+                        }
+                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
+                    }
+
+                    case 4 -> {
+                        if (facing == Direction.WEST) {
                             pPoseStack.translate(0.18f, 0.74f, 0.71f);
                             pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
                         } else if (facing == Direction.EAST) {
@@ -65,24 +112,7 @@ public class NukaColaMachineBlockEntityRenderer extends GeoBlockRenderer<NukaCol
                         }
                         pPoseStack.scale(0.24f, 0.24f, 0.24f);
                     }
-                    case 2 -> {
-                        if (facing == Direction.WEST) {
-                            pPoseStack.translate(0.18f, 0.74f, 0.91f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
-                        } else if (facing == Direction.EAST){
-                            pPoseStack.translate(0.82f, 0.74f, 0.08f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
-                        } else if (facing == Direction.NORTH) {
-                            pPoseStack.translate(0.09f, 0.74f, 0.19f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
-                        } else if (facing == Direction.SOUTH) {
-                            pPoseStack.translate(0.92f, 0.74f, 0.82f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
-                        }
-                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
-                    }
-
-                    case 3 -> {
+                    case 5 -> {
                         if (facing == Direction.WEST) {
                             pPoseStack.translate(0.08f, 0.74f, 0.81f);
                             pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
@@ -100,54 +130,20 @@ public class NukaColaMachineBlockEntityRenderer extends GeoBlockRenderer<NukaCol
                         pPoseStack.scale(0.24f, 0.24f, 0.24f);
                     }
 
-                    case 4 -> {
-                        if (facing == Direction.WEST) {
-                            pPoseStack.translate(0.18f, 0.96f, 0.71f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
-                        } else if (facing == Direction.EAST) {
-                            pPoseStack.translate(0.82f, 0.96f, 0.29f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(25));
-                        } else if (facing == Direction.NORTH) {
-                            pPoseStack.translate(0.29f, 0.96f, 0.16f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
-                        } else if (facing == Direction.SOUTH) {
-                            pPoseStack.translate(0.71f, 0.96f, 0.82f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(65));
-                        }
-                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
-                    }
-                    case 5 -> {
-                        if (facing == Direction.WEST) {
-                            pPoseStack.translate(0.18f, 0.96f, 0.91f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
-                        } else if (facing == Direction.EAST){
-                            pPoseStack.translate(0.82f, 0.96f, 0.08f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
-                        } else if (facing == Direction.NORTH) {
-                            pPoseStack.translate(0.09f, 0.96f, 0.19f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
-                        } else if (facing == Direction.SOUTH) {
-                            pPoseStack.translate(0.92f, 0.96f, 0.82f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
-                        }
-                        pPoseStack.scale(0.24f, 0.24f, 0.24f);
-                    }
-
                     case 6 -> {
                         if (facing == Direction.WEST) {
-                            pPoseStack.translate(0.08f, 0.96f, 0.81f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                            pPoseStack.translate(0.18f, 0.74f, 0.91f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
                         } else if (facing == Direction.EAST){
-                            pPoseStack.translate(0.90f, 0.96f, 0.18f);
-                            pPoseStack.mulPose(Axis.YP.rotationDegrees(92));
+                            pPoseStack.translate(0.82f, 0.74f, 0.08f);
+                            pPoseStack.mulPose(Axis.YP.rotationDegrees(27));
                         } else if (facing == Direction.NORTH) {
-                            pPoseStack.translate(0.19f, 0.96f, 0.10f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                            pPoseStack.translate(0.09f, 0.74f, 0.19f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
                         } else if (facing == Direction.SOUTH) {
-                            pPoseStack.translate(0.82f, 0.96f, 0.92f);
-                            pPoseStack.mulPose(Axis.YN.rotationDegrees(2));
+                            pPoseStack.translate(0.92f, 0.74f, 0.82f);
+                            pPoseStack.mulPose(Axis.YN.rotationDegrees(67));
                         }
-
                         pPoseStack.scale(0.24f, 0.24f, 0.24f);
                     }
                 }
