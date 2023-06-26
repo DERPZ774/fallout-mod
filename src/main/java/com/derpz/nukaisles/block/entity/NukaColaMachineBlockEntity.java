@@ -68,6 +68,8 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
+    private int extractionTickCounter = 0;
+    private static final int EXTRACTION_TICK_INTERVAL = 20; // Adjust this value to change the extraction interval (20 ticks = 1 second)
     private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(3500, 256) {
         @Override
         public void onEnergyChanged() {
@@ -229,20 +231,29 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
 
         if (fuelMap.containsKey(item) && pEntity.ENERGY_STORAGE.getEnergyStored() != pEntity.ENERGY_STORAGE.getMaxEnergyStored()) {
             int energy = fuelMap.get(item);
-            pEntity.ENERGY_STORAGE.receiveEnergy(energy, false);
-            if (pEntity.itemHandler.getStackInSlot(0).getItem() == Items.POWDER_SNOW_BUCKET) {
-                pEntity.itemHandler.extractItem(0, 1, false);
-                pEntity.itemHandler.insertItem(0, new ItemStack(Items.BUCKET), false);
+
+            // Check if the extraction tick counter has reached the interval
+            if (pEntity.extractionTickCounter >= EXTRACTION_TICK_INTERVAL) {
+                pEntity.extractionTickCounter = 0; // Reset the tick counter
+
+                pEntity.ENERGY_STORAGE.receiveEnergy(energy, false);
+
+                if (pEntity.itemHandler.getStackInSlot(0).getItem() == Items.POWDER_SNOW_BUCKET) {
+                    pEntity.itemHandler.extractItem(0, 1, false);
+                    pEntity.itemHandler.insertItem(0, new ItemStack(Items.BUCKET), false);
+                } else {
+                    pEntity.itemHandler.extractItem(0, 1, false);
+                }
+
+                return true;
+            } else {
+                pEntity.extractionTickCounter++; // Increment the tick counter
             }
-            else {
-                pEntity.itemHandler.extractItem(0, 1, false);
-            }
-            return true;
         }
-        /// TODO: 5/30/2023 make fuel get taken out less fast
 
         return false;
     }
+
 
     public static Map<Item, Integer> getFuel() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
