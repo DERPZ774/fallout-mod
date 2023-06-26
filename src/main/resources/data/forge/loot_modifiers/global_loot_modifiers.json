@@ -52,7 +52,6 @@
     "nukaisles:nuka_cola_from_village_weaponsmith",
     "nukaisles:bottle_cap_from_village_fletcher",
     "nukaisles:scrap_metal_from_mineshaft",
-    "nukaisles:scrap_metal_from_village_armorer",
-    "nukaisles:zombie"
+    "nukaisles:scrap_metal_from_village_armorer"
   ]
 }

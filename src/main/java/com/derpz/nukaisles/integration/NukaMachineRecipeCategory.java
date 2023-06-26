@@ -3,7 +3,6 @@ package com.derpz.nukaisles.integration;
 
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.ModBlocks;
-import com.derpz.nukaisles.block.entity.NukaColaMachineBlockEntity;
 import com.derpz.nukaisles.recipe.NukaColaMachineRecipe;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
