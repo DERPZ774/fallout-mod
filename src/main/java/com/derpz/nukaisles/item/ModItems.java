@@ -94,6 +94,9 @@ public class ModItems {
     public static final RegistryObject<Item> SCRAP_METAL_LEGGINGS = ITEMS.register("scrap_metal_leggings",
             () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.LEGGINGS,
                     new Item.Properties()));
+    public static final RegistryObject<Item> SCRAP_METAL_BOOTS = ITEMS.register("scrap_metal_boots",
+            () -> new ArmorItem(ModArmorMaterials.SCRAP_METAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties()));
 
     /*public static final RegistryObject<Item> VAULT_SUIT = ITEMS.register("vault_suit",
             () -> new UnderArmorItem(ModArmorMaterials.UNDER_ARMOR, ArmorItem.Type.CHESTPLATE,

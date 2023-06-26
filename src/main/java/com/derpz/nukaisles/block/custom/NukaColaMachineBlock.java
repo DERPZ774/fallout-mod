@@ -116,5 +116,5 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
         return createTickerHelper(pType, ModBlockEntities.NUKA_COLA_MACHINE.get(), NukaColaMachineBlockEntity::tick);
     }
 
-
+//ToDO Make this render like door bc blocks can be placed inside of it.
 }
