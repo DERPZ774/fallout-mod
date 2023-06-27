@@ -2,10 +2,6 @@ package com.derpz.nukaisles.block.custom;
 
 import javax.annotation.Nullable;
 
-import com.derpz.nukaisles.item.ModItems;
-import com.derpz.nukaisles.item.custom.NukaColaItem;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisles.block.entity.ModBlockEntities;

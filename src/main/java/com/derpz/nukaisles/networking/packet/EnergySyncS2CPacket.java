@@ -28,7 +28,7 @@ public class EnergySyncS2CPacket {
         buf.writeBlockPos(pos);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+    public void handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             assert Minecraft.getInstance().level != null;
@@ -41,6 +41,5 @@ public class EnergySyncS2CPacket {
                 }
             }
         });
-        return true;
     }
 }

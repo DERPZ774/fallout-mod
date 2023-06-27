@@ -8,7 +8,6 @@ import com.derpz.nukaisles.networking.packet.RadsDataSyncS2CPacket;
 import com.derpz.nukaisles.rads.PlayerRads;
 import com.derpz.nukaisles.rads.PlayerRadsProvider;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,21 +15,17 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 
@@ -104,16 +99,6 @@ public class ModEvents {
             }
 
              */
-            /*if(event.player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
-                event.player.getItemInHand(InteractionHand.MAIN_HAND).setCount(0);
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
-                if(event.player.getItemInHand(InteractionHand.OFF_HAND).is(ModItems.CUMMIE_WHACKER.get())) {
-                    event.player.getItemInHand(InteractionHand.OFF_HAND).setCount(0);
-                    Minecraft.getInstance().player.sendSystemMessage(Component.literal("no no no"));
-                }
-            }
-
-             */
         }
     }
 
@@ -125,9 +110,7 @@ public class ModEvents {
         }
         if (!event.getLevel().isClientSide()) {
             if(event.getEntity() instanceof ServerPlayer player) {
-                player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(playerRads -> {
-                    ModMessages.sendToPlayer(new RadsDataSyncS2CPacket(playerRads.getRads()), player);
-                });
+                player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(playerRads -> ModMessages.sendToPlayer(new RadsDataSyncS2CPacket(playerRads.getRads()), player));
             }
         }
     }

@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "nukaisles.refmap.json",
   "mixins": [
+    "ModMixin"
   ],
   "client": [
   ],

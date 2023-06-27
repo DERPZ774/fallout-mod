@@ -21,11 +21,8 @@ public class RadsDataSyncS2CPacket {
         buf.writeInt(rads);
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+    public void handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
-        context.enqueueWork(() -> {
-            ClientRadData.set(rads);
-        });
-        return true;
+        context.enqueueWork(() -> ClientRadData.set(rads));
     }
 }

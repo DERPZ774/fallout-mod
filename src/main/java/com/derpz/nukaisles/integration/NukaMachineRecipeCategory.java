@@ -72,7 +72,5 @@ public class NukaMachineRecipeCategory implements IRecipeCategory<NukaColaMachin
         builder.setShapeless();
         builder.addSlot(RecipeIngredientRole.INPUT, 25, 20).addIngredients(recipe.getIngredient());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 29).addItemStack(recipe.getResultItem(null));
-
     }
 }
-/// TODO: 5/21/2023 Fix the JEI integration to change the item after a short amount of time

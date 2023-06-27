@@ -23,11 +23,12 @@ public class RadC2SPacket {
 
     }
 
-    public boolean handle(Supplier<NetworkEvent.Context> supplier) {
+    public void handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
-           
+
+            assert player != null;
             player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(rads -> {
                 rads.addRads(20); //increase rad level
                 ModMessages.sendToPlayer(new RadsDataSyncS2CPacket(rads.getRads()), player);
@@ -38,6 +39,5 @@ public class RadC2SPacket {
 
             });
         });
-        return true;
     }
 }

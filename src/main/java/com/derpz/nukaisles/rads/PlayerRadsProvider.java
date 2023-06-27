@@ -12,7 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class PlayerRadsProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    public static final Capability<PlayerRads> PLAYER_RADS = CapabilityManager.get(new CapabilityToken<PlayerRads>() { });
+    public static final Capability<PlayerRads> PLAYER_RADS = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     private PlayerRads rads = null;
     private final LazyOptional<PlayerRads> optional = LazyOptional.of(this::createPlayerRads);

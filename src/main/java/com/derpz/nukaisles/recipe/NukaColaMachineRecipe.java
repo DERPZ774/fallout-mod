@@ -39,10 +39,10 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
         for (int i = 1; i <= 6; ++i) {
             if (input.test(pContainer.getItem(i))) {
                 slot = i;
-               return true;
+                return true;
             }
         }
-       return false;
+        return false;
     }
 
 
@@ -107,9 +107,8 @@ public class NukaColaMachineRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, NukaColaMachineRecipe recipe) {
-            buf.writeItemStack(recipe.getResultItem(buf.readRegistryId()), false);
+            buf.writeItemStack(recipe.getResultItem(null), false);
             recipe.input.toNetwork(buf);
         }
-        }
     }
-
+}
