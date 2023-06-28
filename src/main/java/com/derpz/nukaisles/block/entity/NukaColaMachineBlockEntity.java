@@ -50,7 +50,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class NukaColaMachineBlockEntity extends BlockEntity implements MenuProvider, GeoBlockEntity {
-private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     public final ItemStackHandler itemHandler = new ItemStackHandler(7) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -64,7 +64,7 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-    protected final ContainerData data;
+    protected ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
     private int extractionTickCounter = 0;
@@ -78,6 +78,7 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
     };
     private static final int ENERGY_REQ = 10;
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+    private BlockPos topBlockPos;
 
     public NukaColaMachineBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.NUKA_COLA_MACHINE.get(), pWorldPosition, pBlockState);
@@ -120,12 +121,44 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
         this.ENERGY_STORAGE.setEnergy(energy);
     }
 
+    public void setTopBlock(BlockPos topBlockPos) {
+        this.topBlockPos = topBlockPos;
+    }
+
+    public void copyDataFrom(NukaColaMachineBlockEntity bottomBlockEntity) {
+        // Copy the relevant data from the bottom block entity to the top block entity
+
+        this.data = new ContainerData() {
+            @Override
+            public int get(int index) {
+                return bottomBlockEntity.data.get(index);
+            }
+
+            @Override
+            public void set(int index, int value) {
+                bottomBlockEntity.data.set(index, value);
+            }
+
+            @Override
+            public int getCount() {
+                return bottomBlockEntity.data.getCount();
+            }
+        };
+
+        // Copy other necessary data here
+        // For example, if you have additional fields that need to be copied, you can do so like this:
+        // this.property1 = bottomBlockEntity.property1;
+        // this.property2 = bottomBlockEntity.property2;
+        // ...
+    }
+
+
     public ItemStack getRenderStack(int slot) {
         return itemHandler.getStackInSlot(slot);
     }
 
     public void setHandler(ItemStackHandler itemStackHandler) {
-        for(int i = 0; i < itemStackHandler.getSlots(); i++) {
+        for (int i = 0; i < itemStackHandler.getSlots(); i++) {
             itemHandler.setStackInSlot(i, itemStackHandler.getStackInSlot(i));
         }
     }
@@ -137,7 +170,7 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ENERGY) {
+        if (cap == ForgeCapabilities.ENERGY) {
             return lazyEnergyHandler.cast();
         }
 
@@ -281,7 +314,7 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
 
     private static void craft(NukaColaMachineBlockEntity pEntity) {
         NukaColaMachineRecipe recipe = getRecipe(pEntity);
-        if(recipe != null) {
+        if (recipe != null) {
             pEntity.itemHandler.extractItem(recipe.getSlot(), 0, false);
 
             pEntity.itemHandler.extractItem(recipe.getSlot(), 1, false);
@@ -322,4 +355,14 @@ private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(thi
     public double getTick(Object blockEntity) {
         return RenderUtils.getCurrentTick();
     }
+
+    public void setTopBlockPos(BlockPos topBlockPos) {
+        this.topBlockPos = topBlockPos;
+    }
+
+    public BlockPos getTopBlockPos() {
+        return topBlockPos;
+    }
+
+
 }

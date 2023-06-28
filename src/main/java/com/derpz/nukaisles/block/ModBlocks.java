@@ -3,6 +3,7 @@ package com.derpz.nukaisles.block;
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.custom.LampBlock;
 import com.derpz.nukaisles.block.custom.NukaColaMachineBlock;
+import com.derpz.nukaisles.block.custom.NukaColaMachineTop;
 import com.derpz.nukaisles.item.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -59,6 +60,10 @@ public class ModBlocks {
         public static final RegistryObject<Block> NUKA_COLA_MACHINE = BLOCKS.register("nuka_cola_machine",
                 () -> new NukaColaMachineBlock(BlockBehaviour.Properties.of(Material.METAL)
                         .strength(5f).requiresCorrectToolForDrops().noOcclusion()));
+
+    public static final RegistryObject<Block> NUKA_COLA_MACHINE_TOP = BLOCKS.register("nuka_cola_machine_top",
+            () -> new NukaColaMachineTop(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(5f).requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab, String tooltipKey) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

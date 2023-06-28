@@ -2,6 +2,11 @@ package com.derpz.nukaisles.block.custom;
 
 import javax.annotation.Nullable;
 
+import com.derpz.nukaisles.block.ModBlocks;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.NotNull;
 
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
@@ -34,11 +39,21 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class NukaColaMachineBlock extends BaseEntityBlock {
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public NukaColaMachineBlock(Properties properties) {
-        super(properties);
-    }
+        public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+        public static final IntegerProperty CLICKED = IntegerProperty.create("clicked", 0, 1);
+
+        public NukaColaMachineBlock(Properties properties) {
+            super(properties);
+            this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CLICKED, 0));
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(FACING, CLICKED);
+        }
+
+
 
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 32, 16);
 
@@ -65,12 +80,6 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-
-    @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
@@ -82,10 +91,24 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
             if (blockEntity instanceof NukaColaMachineBlockEntity) {
                 ((NukaColaMachineBlockEntity) blockEntity).drops();
             }
+        }
 
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        // Get the facing direction of the removed block
+        Direction facing = pState.getValue(FACING);
+
+        // Calculate the position of the top block based on the facing direction
+        BlockPos topPos = pPos.above();
+        BlockPos bottomPos = pPos.below();
+
+        // Remove the top block
+        if (pLevel.getBlockState(topPos).getBlock() instanceof NukaColaMachineTop) {
+            pLevel.destroyBlock(topPos, !pIsMoving);
+        }
+        if (pLevel.getBlockState(bottomPos).getBlock() instanceof NukaColaMachineBlock) {
+            pLevel.destroyBlock(bottomPos, !pIsMoving);
         }
     }
+
 
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
@@ -99,6 +122,38 @@ public class NukaColaMachineBlock extends BaseEntityBlock {
         }
         return InteractionResult.SUCCESS;
     }
+
+    @Override
+    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @org.jetbrains.annotations.Nullable LivingEntity pPlacer, ItemStack pStack) {
+        super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+        // Get the facing direction of the placed block
+        Direction facing = pState.getValue(FACING);
+
+        // Calculate the position for the top block based on the facing direction
+        BlockPos topPos = pPos.above();
+
+        // Place the top block
+        if (pLevel.getBlockState(topPos).isAir()) {
+            BlockState topBlockState = ModBlocks.NUKA_COLA_MACHINE_TOP.get().defaultBlockState().setValue(FACING, facing);
+            pLevel.setBlock(topPos, topBlockState, 3);
+
+            // Get the block entity of the bottom block
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof NukaColaMachineBlockEntity) {
+                NukaColaMachineBlockEntity bottomBlockEntity = (NukaColaMachineBlockEntity) blockEntity;
+
+                // Set the top block position
+                bottomBlockEntity.setTopBlock(topPos);
+
+                // Create a new block entity instance for the top block and copy data from the bottom block entity
+                BlockEntity topBlockEntity = pLevel.getBlockEntity(topPos);
+                if (topBlockEntity instanceof NukaColaMachineBlockEntity) {
+                    ((NukaColaMachineBlockEntity) topBlockEntity).copyDataFrom(bottomBlockEntity);
+                }
+            }
+        }
+    }
+
 
     @Override
     @Nullable
