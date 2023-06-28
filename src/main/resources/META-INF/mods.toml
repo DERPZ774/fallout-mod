@@ -29,9 +29,9 @@ displayName="Nuka-Isles" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="logo.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java" #optional
+credits="Thanks to FiskFille for code assistance and Waffle Warrior for textures" #optional
 # A text field displayed in the mod UI
-authors="DERPZ774, SkarMC" #optional
+authors="DERPZ774, SkarMC, CandyFreak2" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description=''' A mod that adds many items, mobs, and more from the fallout games!
 '''
