@@ -2,13 +2,16 @@ package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.entity.ModBlockEntities;
+import com.derpz.nukaisles.client.renderer.BulletRenderer;
 import com.derpz.nukaisles.client.renderer.NukaColaMachineBlockEntityRenderer;
+import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.particle.custom.RadiationParticles;
 import com.derpz.nukaisles.screen.ModMenuTypes;
 import com.derpz.nukaisles.screen.NukaColaMachineScreen;
 import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -31,6 +34,8 @@ public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.NUKA_COLA_MACHINE.get(), NukaColaMachineBlockEntityRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.BULLET.get(), BulletRenderer::new);
+
     }
 
     /*
