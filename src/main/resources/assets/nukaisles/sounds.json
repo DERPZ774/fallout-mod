@@ -10,5 +10,11 @@
     "sounds": [
       "nukaisles:decap"
     ]
+  },
+  "ten_mm_shoot": {
+    "subtitle": "sound.nukaisles.ten_mm_shoot",
+    "sounds": [
+      "nukaisles:ten_mm_shoot"
+    ]
   }
 }

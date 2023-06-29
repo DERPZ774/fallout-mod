@@ -58,8 +58,9 @@ public class ModItems {
                     new Item.Properties()));
 
     //ranged
-   /* public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
-            () ->   new Item(new Item.Properties()));*/
+    public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
+            () ->   new GunItem(
+                    new Item.Properties()));
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",

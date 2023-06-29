@@ -45,5 +45,6 @@
   "item.nukaisles.thirst_zapper": "Thirst Zapper",
   "tab.nukaisles.fallout": "Fallout",
   "tab.nukaisles.cola": "Colas",
-  "tab.nukaisles.melee": "Melee Weapons"
+  "tab.nukaisles.melee": "Melee Weapons",
+  "death.attack.bullet": "has been shot!"
 }

@@ -14,6 +14,7 @@ public class ModSounds {
 
     public static RegistryObject<SoundEvent> LAMP_USE = registerSoundEvents("lamp_use");
     public static RegistryObject<SoundEvent> COLA_DECAP = registerSoundEvents("cola_decap");
+    public static RegistryObject<SoundEvent> TEN_MM_SHOOT = registerSoundEvents("ten_mm_shoot");
 
 
   /*  public static final ForgeSoundType LAMP_SOUNDS = new ForgeSoundType(1f, 1f,
