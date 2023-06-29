@@ -76,6 +76,7 @@ public class BulletEntity extends AbstractArrow {
     @Override
     protected void onHitBlock(@NotNull BlockHitResult pResult) {
         super.onHitBlock(pResult);
+        remove(RemovalReason.DISCARDED);
     }
 
     @Override

@@ -62,6 +62,10 @@ public class ModItems {
             () ->   new GunItem(
                     new Item.Properties()));
 
+//    public static final RegistryObject<Item> TEN_MM_GUN = ITEMS.register("ten_mm_gun",
+//            () ->   new GunItem(
+//                    new Item.Properties()));
+
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",
             () -> new SwordItem(ModTiers.SCRAP_METAL, 2, 1f,

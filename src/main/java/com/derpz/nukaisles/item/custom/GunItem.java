@@ -1,25 +1,22 @@
 package com.derpz.nukaisles.item.custom;
 
 
-import com.derpz.nukaisles.entity.ModEntityTypes;
-import com.derpz.nukaisles.entity.custom.BulletEntity;
+import com.derpz.nukaisles.particle.ModParticles;
 import com.derpz.nukaisles.sound.ModSounds;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.phys.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.logging.Level;
+import java.util.List;
 
 public class GunItem extends Item {
     private int ammunitionCount;
@@ -48,9 +45,8 @@ public class GunItem extends Item {
         }
         return InteractionResultHolder.pass(itemStack);
     }
-    //pContext.getLevel().playSound(pContext.getPlayer(), pContext.getClickedPos(), ModSounds.COLA_DECAP.get(), SoundSource.BLOCKS, 4.0f, 1.0f);
 
-    private void shoot(net.minecraft.world.level.Level pLevel, LivingEntity shooter) {
+/*    private void shoot(net.minecraft.world.level.Level pLevel, LivingEntity shooter) {
         if (shooter instanceof Player player) {
             // Calculate the bullet's initial position based on the shooter's eye position
             double x = player.getX();
@@ -85,9 +81,63 @@ public class GunItem extends Item {
             pLevel.addFreshEntity(bullet);
 
             // Example: Spawn particles
-            pLevel.addParticle(ParticleTypes.EXPLOSION, x, y, z, 0, 0, 0);
+            pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(), x, y, z, 0, 0, 0);
+        }
+    }*/
+
+    private void shoot(net.minecraft.world.level.Level pLevel, LivingEntity shooter) {
+        if (shooter instanceof Player player) {
+            // Calculate the bullet's initial position based on the shooter's eye position
+            double x = player.getX();
+            double y = player.getEyeY() - 0.1;
+            double z = player.getZ();
+
+            // Calculate the direction vector based on the player's rotation angles
+            float yaw = player.getYRot();
+            float pitch = player.getXRot();
+
+            // Convert the rotation angles to radians
+            float yawRadians = yaw * ((float) Math.PI / 180f);
+            float pitchRadians = pitch * ((float) Math.PI / 180f);
+
+            // Calculate the motion vector based on the direction and desired velocity
+            double velocity = 3.0; // Adjust the velocity as needed
+            double motionX = -Math.sin(yawRadians) * Math.cos(pitchRadians) * velocity;
+            double motionY = -Math.sin(pitchRadians) * velocity;
+            double motionZ = Math.cos(yawRadians) * Math.cos(pitchRadians) * velocity;
+
+            // Create a ray from the shooter's position and direction
+            Vec3 shooterPos = new Vec3(x, y, z);
+            Vec3 shooterDir = new Vec3(motionX, motionY, motionZ);
+            Vec3 endPos = shooterPos.add(shooterDir.normalize().scale(100)); // Adjust the maximum range as needed
+
+            // Perform raycasting to check for collision with entities
+            List<Entity> entities = pLevel.getEntities(player, shooter.getBoundingBox().expandTowards(shooterDir), entity -> entity instanceof LivingEntity);
+
+            for (Entity entity : entities) {
+                // Handle each hit entity
+                if (entity instanceof LivingEntity livingEntity) {
+                    // Example: Spawn particles at the impact position
+                    double impactX = entity.getX();
+                    double impactY = entity.getY();
+                    double impactZ = entity.getZ();
+                    pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(), impactX, impactY, impactZ, 0, 0, 0);
+                    System.out.println("Entity shot");
+
+                    // Example: Play impact sound
+                    //pLevel.playSound(null, new BlockPos(impactX, impactY, impactZ), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+                    // Example: Damage the entity
+                    float damageAmount = 5.0f; // Adjust the damage amount as needed
+
+                    livingEntity.hurt(entity.m_269291_().m_268989_(), damageAmount);
+                    /// TODO: 6/29/2023 Fix range 
+                }
+            }
         }
     }
+
+
 
 
 
