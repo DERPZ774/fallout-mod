@@ -1,10 +1,7 @@
 package com.derpz.nukaisles.networking;
 
 import com.derpz.nukaisles.FalloutMod;
-import com.derpz.nukaisles.networking.packet.EnergySyncS2CPacket;
-import com.derpz.nukaisles.networking.packet.ItemStackSyncS2CPacket;
-import com.derpz.nukaisles.networking.packet.RadC2SPacket;
-import com.derpz.nukaisles.networking.packet.RadsDataSyncS2CPacket;
+import com.derpz.nukaisles.networking.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -48,10 +45,16 @@ public class ModMessages {
                 .consumerMainThread(EnergySyncS2CPacket::handle)
                 .add();
 
-        net.messageBuilder(ItemStackSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+        net.messageBuilder(ItemStackSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ItemStackSyncS2CPacket::new)
                 .encoder(ItemStackSyncS2CPacket::toBytes)
                 .consumerMainThread(ItemStackSyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(AimingSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(AimingSyncS2CPacket::decode)
+                .encoder(AimingSyncS2CPacket::encode)
+                .consumerMainThread(AimingSyncS2CPacket.Handler::handle)
                 .add();
     }
 

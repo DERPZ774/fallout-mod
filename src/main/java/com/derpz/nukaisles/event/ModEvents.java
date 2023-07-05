@@ -50,21 +50,7 @@ public class ModEvents {
         }
     }
 */
-    /*
-    @SubscribeEvent
-    public static void setEntityOnFireWhenHit(LivingDamageEvent event) {
-        //example event code
-        if(!event.getEntity().level.isClientSide()) {
-            if(event.getSource().getDirectEntity() instanceof Player player) {
-                if(player.getMainHandItem().getItem() == Items.NETHER_BRICK) {
-                    player.getMainHandItem().shrink(1);
-                    event.getEntityLiving().setSecondsOnFire(2);
-                }
-            }
-        }
-    }
 
- */
 
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent event) {
@@ -89,6 +75,16 @@ public class ModEvents {
                     event.player.setHealth(event.player.getHealth() - 1);
                 }
             }
+//            System.out.println(AimingHandler.isAiming());
+//            if(event.player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof GunItem && event.player.getItemInHand())
+
+        }
+
+        /*if (event.player.getUsedItemHand() == InteractionHand.MAIN_HAND) {
+            GunItem.setAiming(true);
+        } else {
+            GunItem.setAiming(false);
+        }*/
             /*if (event.side == LogicalSide.SERVER) {
                 event.player.getCapability(PlayerRadsProvider.PLAYER_RADS).ifPresent(playerRads -> {
                     if (playerRads.getRads() > 0 && event.player.getRandom().nextFloat() < 0.005F) {
@@ -99,7 +95,6 @@ public class ModEvents {
             }
 
              */
-        }
     }
 
     @SubscribeEvent
@@ -152,5 +147,6 @@ public class ModEvents {
 
         /// ToDo : Balance prices && add diff level rewards and prices using a formula
     }
+
 
 }

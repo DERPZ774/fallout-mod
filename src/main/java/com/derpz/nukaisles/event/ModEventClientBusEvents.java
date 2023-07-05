@@ -11,7 +11,7 @@ import com.derpz.nukaisles.screen.ModMenuTypes;
 import com.derpz.nukaisles.screen.NukaColaMachineScreen;
 import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -35,7 +35,6 @@ public class ModEventClientBusEvents {
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.NUKA_COLA_MACHINE.get(), NukaColaMachineBlockEntityRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.BULLET.get(), BulletRenderer::new);
-
     }
 
     /*

@@ -1,14 +1,7 @@
 package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
-
-import com.derpz.nukaisles.util.KeyBinding;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, value = Dist.CLIENT)
@@ -48,5 +41,4 @@ public class ModClientEvents {
         }
     }
      */
-
 }

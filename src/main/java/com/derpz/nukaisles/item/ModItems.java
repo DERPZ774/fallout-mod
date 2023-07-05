@@ -3,6 +3,7 @@ package com.derpz.nukaisles.item;
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.block.ModBlocks;
 import com.derpz.nukaisles.item.custom.*;
+import com.derpz.nukaisles.sound.ModSounds;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -59,12 +60,11 @@ public class ModItems {
 
     //ranged
     public static final RegistryObject<Item> THIRST_ZAPPER = ITEMS.register("thirst_zapper",
-            () ->   new GunItem(
-                    new Item.Properties()));
+            () ->   new GunItem(new Item.Properties(), 5, 100, 20, ModSounds.TEN_MM_SHOOT.get()));
 
-//    public static final RegistryObject<Item> TEN_MM_GUN = ITEMS.register("ten_mm_gun",
-//            () ->   new GunItem(
-//                    new Item.Properties()));
+
+/*    public static final RegistryObject<Item> TEN_MM_GUN = ITEMS.register("ten_mm_gun",
+            () ->   new GunItem(new Item.Properties(), 10));*/
 
     //tools
     public static final RegistryObject<Item> SCRAP_METAL_SWORD = ITEMS.register("scrap_metal_sword",
