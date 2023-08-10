@@ -14,6 +14,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -50,7 +51,11 @@ public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions e
 {
     //event.registerLayerDefinition(VAULT_SUIT, UnderArmorModel::createBodyLayer);
 }
-
+    @SubscribeEvent
+    public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+        event.register(KeyBinding.DRINKING_KEY);
+        event.register(KeyBinding.SHOOTING_KEY);
+    }
 
 
     @SubscribeEvent
@@ -59,10 +64,7 @@ public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions e
                 RadiationParticles.Provider::new);
     }
 
-    @SubscribeEvent
-    public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-        event.register(KeyBinding.DRINKING_KEY);
-    }
+
 
     /*@SubscribeEvent
     public static void  registerGuiOverlays(RegisterGuiOverlaysEvent event) {

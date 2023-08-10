@@ -1,11 +1,19 @@
 package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
+import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, value = Dist.CLIENT)
 public class ModClientEvents {
+
+
+
+
 //    @SubscribeEvent
 //    public static void renderPlayerPre(RenderPlayerEvent.Pre event)
 //    {
@@ -31,6 +39,7 @@ public class ModClientEvents {
 //            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Key pressed"));
 //        }
 //    }
+
 
 
 

@@ -56,6 +56,12 @@ public class ModMessages {
                 .encoder(AimingSyncS2CPacket::encode)
                 .consumerMainThread(AimingSyncS2CPacket.Handler::handle)
                 .add();
+
+        net.messageBuilder(ShootingSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(ShootingSyncS2CPacket::decode)
+                .encoder(ShootingSyncS2CPacket::encode)
+                .consumerMainThread(ShootingSyncS2CPacket.Handler::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG msg) {

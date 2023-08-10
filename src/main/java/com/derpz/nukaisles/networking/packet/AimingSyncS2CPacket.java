@@ -1,6 +1,6 @@
 package com.derpz.nukaisles.networking.packet;
 
-import com.derpz.nukaisles.util.handler.AimingHandler;
+//import com.derpz.nukaisles.util.handler.AimingHandler;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 

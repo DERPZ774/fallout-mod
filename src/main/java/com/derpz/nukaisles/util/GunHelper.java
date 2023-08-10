@@ -122,50 +122,53 @@ public class GunHelper {
             Vec3 endPos = shooterPos.add(normalizedDir.scale(range));
 
             // Iterate through each block along the ray and check for entity collision
-            for (double step = 0.0; step < range; step += 0.1) {
-                double posX = x + normalizedDir.x * step;
-                double posY = y + normalizedDir.y * step;
-                double posZ = z + normalizedDir.z * step;
 
-                BlockPos blockPos = new BlockPos((int) posX, (int) posY, (int) posZ);
-                BlockState blockState = pLevel.getBlockState(blockPos);
+                for (double step = 0.0; step < range; step += 0.1) {
+                    double posX = x + normalizedDir.x * step;
+                    double posY = y + normalizedDir.y * step;
+                    double posZ = z + normalizedDir.z * step;
 
-                if (blockState.getMaterial().isSolid()) {
-                    break; // Stop the ray if a solid block is encountered
-                }
-
-                // Perform raycasting to check for collision with entities
-                List<Entity> entities = pLevel.getEntities(player, new AABB(posX, posY, posZ, posX, posY, posZ), entity -> entity instanceof LivingEntity);
-
-                if (!entities.isEmpty()) {
-                    Entity targetEntity = entities.get(0); // Target the first entity hit
-
-                    // Handle the hit entity
-                    if (targetEntity instanceof LivingEntity livingEntity) {
-                        // Example: Spawn particles at the impact position
-                        double impactX = targetEntity.getX();
-                        double impactY = targetEntity.getY();
-                        double impactZ = targetEntity.getZ();
-                        pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(), impactX, impactY, impactZ, 0, 0, 0);
-                        System.out.println("Entity shot");
-
-                        // Example: Play impact sound
-                        //pLevel.playSound(null, new BlockPos(impactX, impactY, impactZ), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
-
-                        // Example: Damage the entity
-                        livingEntity.hurt(livingEntity.m_269291_().m_268989_(), damage);
+                    BlockPos blockPos = new BlockPos((int) posX, (int) posY, (int) posZ);
+                    BlockState blockState = pLevel.getBlockState(blockPos);
+                    if (!pLevel.isClientSide()) {
+                    if (blockState.getMaterial().isSolid()) {
+                        break; // Stop the ray if a solid block is encountered
                     }
 
-                    break; // Stop the ray after hitting the first entity
+                    // Perform raycasting to check for collision with entities
+                    List<Entity> entities = pLevel.getEntities(player, new AABB(posX, posY, posZ, posX, posY, posZ), entity -> entity instanceof LivingEntity);
+
+                    if (!entities.isEmpty()) {
+                        Entity targetEntity = entities.get(0); // Target the first entity hit
+
+                        // Handle the hit entity
+                        if (targetEntity instanceof LivingEntity livingEntity) {
+                            // Example: Spawn particles at the impact position
+                            double impactX = targetEntity.getX();
+                            double impactY = targetEntity.getY();
+                            double impactZ = targetEntity.getZ();
+                            System.out.println("Entity shot");
+
+                            // Example: Play impact sound
+                            //pLevel.playSound(null, new BlockPos(impactX, impactY, impactZ), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+                            // Example: Damage the entity
+                            livingEntity.hurt(livingEntity.m_269291_().m_268989_(), damage);
+
+                            break; // Stop the ray after hitting the first entity
+                        }
+                    }
+                    }
+                    pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(), posX, posY, posZ, 0, 0, 0);
                 }
-            }
         }
     }
 
 
 
 
-       public static void shootEntity(net.minecraft.world.level.Level pLevel, Entity shooter) {
+
+    public static void shootEntity(net.minecraft.world.level.Level pLevel, Entity shooter) {
         if (shooter instanceof Player player) {
             // Calculate the bullet's initial position based on the shooter's eye position
             double x = player.getX();

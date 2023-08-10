@@ -2,14 +2,18 @@ package com.derpz.nukaisles.util.handler;
 
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.item.custom.GunItem;
+import com.derpz.nukaisles.networking.ModMessages;
+import com.derpz.nukaisles.networking.packet.ItemStackSyncS2CPacket;
+import com.derpz.nukaisles.networking.packet.ShootingSyncS2CPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, value = Dist.CLIENT)
 
 public class ShootingHandler {
     /*Credits to MrCrayfish gun mod*/
@@ -22,11 +26,9 @@ public class ShootingHandler {
         if(player == null)
             return;
 
-        ///ToDo: add ammo check
         if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof GunItem) {
             event.setSwingHand(false);
             event.setCanceled(true);
-
         }
     }
 }
