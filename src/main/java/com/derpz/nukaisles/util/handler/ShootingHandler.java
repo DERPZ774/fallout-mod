@@ -2,9 +2,6 @@ package com.derpz.nukaisles.util.handler;
 
 import com.derpz.nukaisles.FalloutMod;
 import com.derpz.nukaisles.item.custom.GunItem;
-import com.derpz.nukaisles.networking.ModMessages;
-import com.derpz.nukaisles.networking.packet.ItemStackSyncS2CPacket;
-import com.derpz.nukaisles.networking.packet.ShootingSyncS2CPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;

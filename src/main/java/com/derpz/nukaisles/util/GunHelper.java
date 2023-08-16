@@ -2,6 +2,8 @@ package com.derpz.nukaisles.util;
 
 import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.entity.custom.BulletEntity;
+import com.derpz.nukaisles.networking.ModMessages;
+import com.derpz.nukaisles.networking.packet.ParticleSyncS2CPacket;
 import com.derpz.nukaisles.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,7 +13,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3d;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GunHelper {
@@ -92,6 +96,8 @@ public class GunHelper {
 
     public static void shootRay(net.minecraft.world.level.Level pLevel, Entity shooter, double range, float damage) {
         if (shooter instanceof Player player) {
+            List<Vector3d> particlePositions = new ArrayList<>(); // New list to store particle positions
+
             // Calculate the bullet's initial position based on the shooter's eye position
             double x = player.getX();
             double y = player.getEyeY() - 0.1;
@@ -122,15 +128,15 @@ public class GunHelper {
             Vec3 endPos = shooterPos.add(normalizedDir.scale(range));
 
             // Iterate through each block along the ray and check for entity collision
+            for (double step = 0.0; step < range; step += 0.1) {
+                double posX = x + normalizedDir.x * step;
+                double posY = y + normalizedDir.y * step;
+                double posZ = z + normalizedDir.z * step;
 
-                for (double step = 0.0; step < range; step += 0.1) {
-                    double posX = x + normalizedDir.x * step;
-                    double posY = y + normalizedDir.y * step;
-                    double posZ = z + normalizedDir.z * step;
+                BlockPos blockPos = new BlockPos((int) posX, (int) posY, (int) posZ);
+                BlockState blockState = pLevel.getBlockState(blockPos);
 
-                    BlockPos blockPos = new BlockPos((int) posX, (int) posY, (int) posZ);
-                    BlockState blockState = pLevel.getBlockState(blockPos);
-                    if (!pLevel.isClientSide()) {
+                if (!pLevel.isClientSide()) {
                     if (blockState.getMaterial().isSolid()) {
                         break; // Stop the ray if a solid block is encountered
                     }
@@ -147,7 +153,7 @@ public class GunHelper {
                             double impactX = targetEntity.getX();
                             double impactY = targetEntity.getY();
                             double impactZ = targetEntity.getZ();
-                            System.out.println("Entity shot");
+                            particlePositions.add(new Vector3d(impactX, impactY, impactZ));
 
                             // Example: Play impact sound
                             //pLevel.playSound(null, new BlockPos(impactX, impactY, impactZ), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -158,13 +164,21 @@ public class GunHelper {
                             break; // Stop the ray after hitting the first entity
                         }
                     }
-                    }
-                    pLevel.addParticle(ModParticles.RADIATION_PARTICLES.get(), posX, posY, posZ, 0, 0, 0);
                 }
+                particlePositions.add(new Vector3d(posX, posY, posZ)); // Add the current position to the particle positions list
+            }
+
+            // Send particle sync packet to clients
+            sendParticleSyncPacket(player, particlePositions);
         }
     }
 
+    private static void sendParticleSyncPacket(Player shooter, List<Vector3d> particlePositions) {
+        ModMessages.sendToClients(new ParticleSyncS2CPacket(particlePositions));
+    }
 
+
+//net.minecraft.world.level.Level pLevel
 
 
 

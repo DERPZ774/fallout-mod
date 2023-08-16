@@ -53,7 +53,6 @@ public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions e
 }
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-        event.register(KeyBinding.DRINKING_KEY);
         event.register(KeyBinding.SHOOTING_KEY);
     }
 
