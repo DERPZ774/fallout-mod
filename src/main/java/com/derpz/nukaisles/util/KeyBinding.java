@@ -12,4 +12,7 @@ public class KeyBinding {
 
     public static final KeyMapping SHOOTING_KEY = new KeyMapping("key.nukaisles.shoot", KeyConflictContext.UNIVERSAL,
             InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_1, KEY_CATEGORY_nukaisles);
+
+    public static final KeyMapping AIMING_KEY = new KeyMapping("key.nukaisles.aim", KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_2, KEY_CATEGORY_nukaisles);
 }

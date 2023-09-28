@@ -3,10 +3,11 @@ package com.derpz.nukaisles.util;
 import com.derpz.nukaisles.entity.ModEntityTypes;
 import com.derpz.nukaisles.entity.custom.BulletEntity;
 import com.derpz.nukaisles.networking.ModMessages;
-import com.derpz.nukaisles.networking.packet.ParticleSyncS2CPacket;
+import com.derpz.nukaisles.networking.packet.ShootingSyncS2CPacket;
 import com.derpz.nukaisles.particle.ModParticles;
+import com.derpz.nukaisles.sound.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -170,11 +171,12 @@ public class GunHelper {
 
             // Send particle sync packet to clients
             sendParticleSyncPacket(player, particlePositions);
+
         }
     }
 
     private static void sendParticleSyncPacket(Player shooter, List<Vector3d> particlePositions) {
-        ModMessages.sendToClients(new ParticleSyncS2CPacket(particlePositions));
+        ModMessages.sendToClients(new ShootingSyncS2CPacket(particlePositions));
     }
 
 

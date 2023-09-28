@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,21 +22,21 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 public class GunItem extends Item {
+    public static SoundEvent sound;
     private int ammunitionCount;
     private int maxAmmunition;
     private static float damage;
     private static double range;
-    private final SoundEvent sound;
+
     private final int fireRate;
-    private boolean isAiming;
-    private boolean isShooting;
+
     public GunItem(Properties properties, float damage, double range, int fireRate, SoundEvent sound) {
         super(properties);
 //        this.maxAmmunition = maxAmmunition;
         GunItem.damage = damage;
         GunItem.range = range;
         this.fireRate = fireRate;
-        this.sound = sound;
+        GunItem.sound = sound;
         /// TODO: 6/29/2023 etc is taken in via ItemRegistration Properties :Recoil, Accuracy, Spread Capacity,
     }
 
@@ -47,15 +46,6 @@ public class GunItem extends Item {
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, pPlayer.getItemInHand(pUsedHand));
         }
         return super.use(pLevel, pPlayer, pUsedHand);
-    }
-
-    public boolean isAiming() {
-        return isAiming;
-    }
-    public boolean isShooting() {return isShooting;}
-
-    public void setAiming(boolean aiming) {
-        this.isAiming = aiming;
     }
 
     @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, value = Dist.CLIENT)

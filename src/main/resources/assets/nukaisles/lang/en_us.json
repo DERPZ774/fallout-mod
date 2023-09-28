@@ -37,9 +37,10 @@
   "sound.nukaisles.lamp_use": "Lamp Used",
   "tooltip.nukaisles.nuka_cola_uncapped.tooltip": "De-Capped",
   "tooltip.nukaisles.nuka_cola_cold.tooltip": "Ice-Cold",
+
   "key.category.nukaisles" : "Nuka Isles",
-  "key.nukaisles.drink_cola": "Drink Cola",
   "key.nukaisles.shoot": "Shoot",
+  "key.nukaisles.aim": "Aim",
 
   "item.nukaisles.vault_suit": "Vault Suit",
 

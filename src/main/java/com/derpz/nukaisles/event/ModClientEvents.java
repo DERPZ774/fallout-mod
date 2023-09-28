@@ -1,11 +1,7 @@
 package com.derpz.nukaisles.event;
 
 import com.derpz.nukaisles.FalloutMod;
-import com.derpz.nukaisles.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = FalloutMod.MOD_ID, value = Dist.CLIENT)
@@ -31,23 +27,4 @@ public class ModClientEvents {
 //        /// TODO: 8/23/2022 "Flatten" the hat layer
 //    }
 
-
-//    @SubscribeEvent
-//    public static void onKeyInput(InputEvent.Key event) {
-//        if (KeyBinding.DRINKING_KEY.consumeClick()) {
-//            assert Minecraft.getInstance().player != null;
-//            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Key pressed"));
-//        }
-//    }
-
-
-
-
-    /*@SubscribeEvent
-    public static void onWhackerHit(AttackEntityEvent event) {
-       if (event.getEntity().getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CUMMIE_WHACKER.get()) && event.getEntity().getStringUUID().matches(DevUtil.derpz)) {
-           Minecraft.getInstance().player.sendSystemMessage(Component.literal("Oni Chan!"));
-        }
-    }
-     */
 }

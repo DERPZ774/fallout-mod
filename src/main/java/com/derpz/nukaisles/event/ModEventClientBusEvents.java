@@ -54,6 +54,7 @@ public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions e
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(KeyBinding.SHOOTING_KEY);
+        event.register(KeyBinding.AIMING_KEY);
     }
 
 

@@ -51,22 +51,16 @@ public class ModMessages {
                 .consumerMainThread(ItemStackSyncS2CPacket::handle)
                 .add();
 
-        net.messageBuilder(AimingSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(AimingSyncS2CPacket::decode)
-                .encoder(AimingSyncS2CPacket::encode)
-                .consumerMainThread(AimingSyncS2CPacket.Handler::handle)
-                .add();
-
         net.messageBuilder(ShootingSyncC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ShootingSyncC2SPacket::decode)
                 .encoder(ShootingSyncC2SPacket::encode)
                 .consumerMainThread(ShootingSyncC2SPacket.Handler::handle)
                 .add();
 
-        net.messageBuilder(ParticleSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(ParticleSyncS2CPacket::decode)
-                .encoder(ParticleSyncS2CPacket::encode)
-                .consumerMainThread(ParticleSyncS2CPacket.Handler::handle)
+        net.messageBuilder(ShootingSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ShootingSyncS2CPacket::decode)
+                .encoder(ShootingSyncS2CPacket::encode)
+                .consumerMainThread(ShootingSyncS2CPacket.Handler::handle)
                 .add();
     }
 
